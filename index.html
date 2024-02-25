@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('https://gifdb.com/images/high/anime-cute-purple-dream-catcher-nzqj5bzuihq6xzs2.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+            margin-bottom: 50px;
+        }
+        .banner-wrap {
+            display: block;
+            position: relative;
+            text-align: center;
+            margin: 60px auto;
+        }
+        .container {
+            position: relative;
+            margin-top: 20px;
+            margin-left: 30px;
+            width: 50%;
+            vertical-align: top;
+            max-width: 520px;
+            height: 180px;
+            padding: 10px 35px;
+            background: linear-gradient(to bottom, rgba(10, 0, 10, 0.8) 0%, rgba(10, 0, 10, 0.7) 50%, rgba(10, 0, 10, 0.6) 100%);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            display: inline-block;
+        }
+        .container p {
+            /*margin: 5px 0;*/
+            color: white;
+            font-weight: bold;
+            text-align: left;
+            font-size: 18px;
+            line-height: 28px;
+            font-family: sans-serif;
+        }
+        .circle-image {
+            position: relative;
+
+            margin-top: 20px;
+            margin-left: 0px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: inline-block;
+            text-align: center;
+            z-index: 1;
+        }
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .bottom-squares {
+            position: relative;
+            display: block;
+            width: calc(100% - 40px);
+            z-index: 2;
+            margin: 40px auto 0;
+            text-align: center;
+        }
+        .square {
+            width: calc(30% - 10px);
+            max-width: 220px;
+            height: 250px;
+            background-color: rgba(10, 0, 10, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            padding-top: 20px;
+            margin: 40px;
+            
+        }
+        .square img {
+            max-height: 60%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-position: top; 
+        }
+        .square p {
+            color: white;
+            font-size: 18px;
+            line-height: 28px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .footer-wrap {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            padding: 10px;
+            color: #fff;
+            text-align: right;
+            background-color: rgba(198, 115, 225, 0.5);
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            z-index: 100;
+        }
+
+        .footer-wrap span {
+            color: #fff;
+            text-align: right;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .circle-image {
+                position: relative;
+                display: block;
+                margin: 20px auto;
+                top: unset;
+                left: unset;
+            }
+            .container {
+                display: block;
+                margin: 0 auto;
+                height: auto;
+                line-height: 30px;
+            }
+            .square {
+                width: 72%;
+                display: block;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-wrap">
+        <div class="circle-image">
+            <img src="https://i.pinimg.com/474x/4a/c7/e5/4ac7e528c4e5d11396c7ffc5d27c89bd.jpg">
+        </div>
+        <div class="container">
+            <p>hiiii:3 my name is sofia</p>
+            <p>i am 20 years old from porto</p>
+            <p>i spend most of my time playing videogames and going out with friends :P</p>
+        </div>
+    </div>
+
+    <div class="bottom-squares">
+        <div class="square">
+            <img src="https://s3-eu-west-1.amazonaws.com/s3-helnwein-images-bucket/7377519819696189491/RAW">
+            <p>favourite band</p>
+        </div>
+        <div class="square">
+            <img src="https://m.media-amazon.com/images/I/61BlQmnK8XS.jpg">
+            <p>favourite game</p>
+        </div>
+        <div class="square">
+            <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/attack-on-titan-japan-anime-anime-art.jpg">
+            <p>favourite anime</p>
+        </div>
+    </div>
+    <div class="footer-wrap"><span>sofia claußen :3</span></div>
+</body>
+</html>
