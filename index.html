@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>sofia claußen</title>
     <style>
         body {
             background-image: url('https://gifdb.com/images/high/anime-cute-purple-dream-catcher-nzqj5bzuihq6xzs2.gif');
@@ -125,6 +126,111 @@
             font-weight: bold;
         }
 
+        hr {
+            border-color: purple;
+        }
+
+        .musicbox-wrap {
+            font-family: sans-serif;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            background: linear-gradient(to bottom, rgba(10, 0, 10, 0.8) 0%, rgba(10, 0, 10, 0.7) 50%, rgba(10, 0, 10, 0.6) 100%);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .musicbox-wrap th {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .musicbox-wrap {
+            text-align: center;
+        }
+
+        .musicbox-wrap table {
+            width: 50%; margin: 0 auto;
+        }
+
+        .musicbox-wrap table th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        
+        #play_sonne,
+        #play_lonelyDay {
+            display: none;
+        }
+
+        .musicBox-button {
+            background-color: #4f0a77;
+            color: white;
+            border: none;
+            padding: 20px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: sans-serif;
+            transition: background-color 0.3s ease;
+            margin: 15px 10px;
+        }
+        .musicBox-button.play {
+            background-color: #c055a9;
+        }
+        .musicBox-button:hover {
+            background-color: #6e16a8;
+        }
+        .musicBox-button.stop:hover {
+            background-color: #db18b1;
+        }
+        
+        .custom-select {
+        position: relative;
+        width: 200px;
+        margin: 0 auto;
+        }
+
+        .custom-select select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #420885; 
+        color: rgb(174, 91, 241); 
+        border: 1px solid #d093f8;
+        padding: 8px 25px 8px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        outline: none;
+        }
+
+        .custom-select select:focus {
+        border-color: #007bff;
+        }
+
+        .custom-select::after {
+        content: '\25BC'; 
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        }
+
+        .custom-select select option {
+        background-color: white;
+        }
+
+        #btns_lonelyDay {
+            display: none;
+        }
+        
+
+        /* media queries para manter a página responsive */
+
         @media only screen and (max-width: 600px) {
             .circle-image {
                 position: relative;
@@ -150,7 +256,7 @@
 <body>
     <div class="banner-wrap">
         <div class="circle-image">
-            <img src="https://i.pinimg.com/474x/4a/c7/e5/4ac7e528c4e5d11396c7ffc5d27c89bd.jpg">
+            <img src="images/img_0.jpeg">
         </div>
         <div class="container">
             <p>hiiii:3 my name is sofia</p>
@@ -158,21 +264,102 @@
             <p>i spend most of my time playing videogames and going out with friends :P</p>
         </div>
     </div>
+    <div class="musicbox-wrap">
+        <hr>
+        <table>
+            <tr>
+                <th>select a song</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="custom-select">
+                        <select id="select-song">
+                            <option value="rammstein">rammstein</option>
+                            <option value="soad">system of a down</option>
+                        </select>
+                    </div>
 
+                </td>
+                <td>
+                    <div id="btns_sonne">
+                        <button class="musicBox-button play" onclick="playAudioSonne();">play:3</button>
+                        <button class="musicBox-button stop" onclick="stopAudioSonne();">stop:(</button>
+                    </div>
+                    <div id="btns_lonelyDay">
+                        <button class="musicBox-button play" onclick="playAudioLonelyDay();">play:3</button>
+                        <button class="musicBox-button stop" onclick="stopAudioLonelyDay();">stop:(</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <hr>
+
+    </div>
     <div class="bottom-squares">
         <div class="square">
-            <img src="https://s3-eu-west-1.amazonaws.com/s3-helnwein-images-bucket/7377519819696189491/RAW">
+            <img src="images/img_1.png">
             <p>favourite band</p>
         </div>
         <div class="square">
-            <img src="https://m.media-amazon.com/images/I/61BlQmnK8XS.jpg">
+            <img src="images/img_2.jpg">
             <p>favourite game</p>
         </div>
         <div class="square">
-            <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/attack-on-titan-japan-anime-anime-art.jpg">
+            <img src="images/img_3.jpg">
             <p>favourite anime</p>
         </div>
     </div>
     <div class="footer-wrap"><span>sofia claußen :3</span></div>
+
+    <!-- to play rammstein -->
+    <audio id="play_sonne" controls autoplay>
+        <source src="music/sonne.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- to play soad -->
+    <audio id="play_lonelyDay" controls autoplay>
+        <source src="music/lonelyDay.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        //sonne
+        function playAudioSonne() {
+            stopAudioLonelyDay();
+            var sonne = document.getElementById("play_sonne");
+            sonne.play();
+        }
+
+        function stopAudioSonne() {
+            var mond = document.getElementById("play_sonne");
+            mond.pause();
+            mond.currentTime = 0; // Faz reset ao audio para o incio
+        }
+
+        //lonelyDay
+        function playAudioLonelyDay() {
+            stopAudioSonne();
+            var sonne = document.getElementById("play_lonelyDay");
+            sonne.play();
+        }
+
+        function stopAudioLonelyDay() {
+            var mond = document.getElementById("play_lonelyDay");
+            mond.pause();
+            mond.currentTime = 0; // Faz reset ao audio para o incio
+        }
+
+        document.getElementById("select-song").addEventListener("change", function() {
+            var selectedOption = this.value;
+            if (selectedOption === "rammstein") {
+            document.getElementById("btns_sonne").style.display = "block";
+            document.getElementById("btns_lonelyDay").style.display = "none";
+            } else if (selectedOption === "soad") {
+            document.getElementById("btns_sonne").style.display = "none";
+            document.getElementById("btns_lonelyDay").style.display = "block";
+            }
+        });
+
+    </script>
 </body>
 </html>
