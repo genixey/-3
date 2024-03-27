@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pagenotfound</title>
+<style>
+    body, html {
+        background-color: #6f50c4;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+    }
+
+    .page-content {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: none;
+    }
+
+    .falling-object {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 30px;
+        background-color: #333;
+        border-radius: 50%;
+        animation: fallAnimation 3s ease forwards;
+    }
+
+    @keyframes fallAnimation {
+        0% {
+            top: -100px;
+        }
+        100% {
+            top: calc(100vh - 30px);
+        }
+    }
+
+    .explosion {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        animation: explodeAnimation 1s forwards;
+    }
+
+    @keyframes explodeAnimation {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(50);
+        }
+    }
+
+    @keyframes fallTextAnimation {
+        0% {
+            transform: translate(-50%, -50%);
+        }
+        100% {
+            transform: translate(-50%, 100vh);
+        }
+    }
+</style>
+</head>
+<body>
+<div class="page-content">
+    <p>hiiii:3 i'm a website</p>
+</div>
+
+<script>
+function createFallingObject() {
+    const object = document.createElement('div');
+    object.classList.add('falling-object');
+    document.body.appendChild(object);
+
+    object.addEventListener('animationend', function() {
+        const explosion = document.createElement('div');
+        explosion.classList.add('explosion');
+        document.body.appendChild(explosion);
+
+        explosion.addEventListener('animationend', function() {
+            explosion.remove();
+            document.querySelector('.page-content').style.animation = 'fallTextAnimation 2s forwards';
+        });
+    });
+}
+
+setTimeout(createFallingObject, 1000);
+</script>
+</body>
+</html>
