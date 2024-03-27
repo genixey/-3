@@ -17,6 +17,34 @@
             min-height: 100vh;
             margin-bottom: 50px;
         }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #280655;
+            color: white;
+            padding: 10px 0;
+            opacity: 0.6;
+        }
+
+        .menu-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-bottom: 2px solid #fff;
+            text-decoration: none;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+
+        .menu-item:hover {
+            background-color: #c055a9;
+        }
         .banner-wrap {
             display: block;
             position: relative;
@@ -250,21 +278,36 @@
                 display: block;
                 margin: 20px auto;
             }
+            .menu {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .menu-item {
+                padding: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="menu">
+        <div class="menu-item"><a href="#profile">home</a></div>
+        <div class="menu-item"><a href="#profile">profile</a></div>
+        <div class="menu-item"><a href="#music">music</a></div>
+    </div>
     <div class="banner-wrap">
         <div class="circle-image">
             <img src="images/img_0.jpeg">
         </div>
-        <div class="container">
+        <div id="profile" class="container">
             <p>hiiii:3 my name is sofia</p>
             <p>i am 20 years old from porto</p>
             <p>i spend most of my time playing videogames and going out with friends :P</p>
         </div>
     </div>
-    <div class="musicbox-wrap">
+    <div id="music" class="musicbox-wrap">
         <hr>
         <table>
             <tr>
