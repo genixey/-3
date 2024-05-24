@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lost</title>
+    <style>
+
+        .stats {
+            color: white; 
+        }
+
+        .stats span {
+            color: red; 
+        }
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 110%;
+        }
+        #game-container {
+            width: 80%;
+            margin: 25% auto 0;
+            text-align: center;
+            position: relative; 
+            
+        }
+        #menu-btn {
+            position: fixed;
+            top: 1px; 
+            left: 1px; 
+            z-index: 1; 
+            margin: 8px;
+            box-shadow: 0 15px 30px -5px rgb(218, 16, 16);
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.521);
+            border: 1px solid rgba(255, 0, 0, 0.95);
+            border-radius: 10%;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #menu-btn:hover {
+            background-color: #720000;
+        }
+
+        #menu-dropdown {
+            backdrop-filter: blur(7px);
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, -50%);
+            background-color: #00000033; 
+            border: 1px solid rgba(255, 0, 0, 0.95);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px; 
+            padding: 20px;
+            z-index: 1000;
+            width: 300px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding-top: 40px;
+            background: #000;
+        }
+
+        #menu-dropdown.show {
+            display: block;
+        }
+
+        #menu-dropdown button {
+            display: block; 
+            width: 100%; 
+            background-color: #720000;
+            color: #fff;
+            border: none; 
+            border-radius: 5px; 
+            padding: 15px; 
+            margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #menu-dropdown button:hover {
+            background-color: #d31313;
+        }
+
+        #menu-dropdown button {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #text-container {
+            margin-bottom: 20px;
+        }
+
+        #button-container button {
+            margin: 5px;
+            box-shadow: 0 15px 30px -5px rgb(218, 16, 16);
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.95);
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #button-container button:hover {
+            background-color: #720000;
+        }
+
+        #timer {
+            margin-top: 10px;
+        }
+        #answer {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 2px solid #720000;
+            border-radius: 5px;
+            background-color: #00000010;
+            color: white;
+        }
+        #submit-answer {
+            margin: 5px;
+            box-shadow: rgb(218, 16, 16) 0 15px 30px -5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #00000010;
+            border: #ff0000f3;
+            border-radius: 10%;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #submit-answer:hover {
+            background-color: #720000;
+        }
+        #stats {
+            padding: 10px;
+            margin: 8px;
+            background-color: #000000; 
+            border: 1px solid #ff0000f3;
+            border-radius: 5px;
+            display: inline-block;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        #close-menu-btn {
+            background-color: transparent!important;
+            background: url('lost_images/close_button.png') no-repeat;
+            background-size: 20px 20px;
+            background-size: 30px 30px;
+            outline: none !important;
+            border: none !important;
+            width: 30px !important;
+            height: 30px !important;
+            margin-top: 0px !important;
+            right: 0;
+            top: 0;
+            position: absolute;
+            cursor: pointer;
+        }
+        #play_gameMusic {
+            display: none;
+        }
+        #overlay {    
+            display: none;
+            position: absolute;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+            z-index: 950;
+            opacity: 0.9;
+            background-color:#818181;
+            visibility: visible;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #stats {
+                position: fixed;
+                bottom: 0;
+                top: unset;
+                display: inline-flex;
+                left: 0;
+                justify-content: center;
+                align-items: center;
+            }
+            #stats p {margin: 0 10px;}
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+    <div id="game-container">
+        <button id="menu-btn">Menu</button>
+        <div id="text-container">
+            <p id="story-text">I woke up in the cold, damp darkness of the catacombs, my head throbbing with confusion. How did I end up here?</p>
+        </div>
+        <div id="button-container">
+            <button id="choice1">Turn left</button>
+            <button id="choice2">Turn right</button>
+        </div>
+        <div id="menu-dropdown" style="display: none;">
+            <button id="close-menu-btn"></button>
+            <button id="dark-mode-btn">light mode</button>
+            <button id="activate-sound" onclick="playAudioGameMusic();">turn on music</button>
+            <audio id="play_gameMusic" controls="" autoplay="">
+                <source src="lost_music/music1.mp3" type="audio/mp3">
+            </audio>
+            <script>
+                
+                function playAudioGameMusic() {
+                    var gameMusic = document.getElementById("play_gameMusic");
+                    var activateSoundElement = document.getElementById('activate-sound');
+                    
+                    if (activateSoundElement.classList.contains('on')) {
+                        activateSoundElement.classList.remove('on');
+                        activateSoundElement.textContent = 'turn on music';
+                        gameMusic.pause();
+                    } else {
+                        activateSoundElement.classList.add('on');
+                        activateSoundElement.textContent = 'turn off music';
+                        gameMusic.play();
+                    }
+                }
+
+            </script>
+        </div>
+    </div>
+
+    <div id="stats" class="stats">
+        <p>Health: <span id="health">1</span></p>
+        <p>Intelligence: <span id="intelligence">1</span></p>
+        <p>Strength: <span id="strength">1</span></p>
+    </div>
+
+    <input id="score" type="number" style="display: none;" value="">
+    <script>
+        
+        score = 0;
+                
+        const story = {
+            "1": {
+        text: "I woke up in the cold, damp darkness of the catacombs, my head throbbing with confusion. How did I end up here?",
+        choices: [
+            { text: "explore", nextVersion: "1.1" }
+        ]
+    },
+    "1.1": {
+        text: "I explore the depths of the catacombs and am faced with a choice.",
+        choices: [
+        { text: "turn left", nextVersion: "1.1.2" },
+            { text: "turn right", nextVersion: "1.1.1" }  
+        ]
+    },
+   
+//left
+
+    "1.1.2": {
+        text: "You start hearing a mysterious voice echoing through the catacombs guiding you towards its direction",
+        choices: [
+            { text: "follow the voice", nextVersion: "1.2.1" },
+            { text: "go another direction", nextVersion: "1.2.2" }
+        ]   
+    },
+    "1.2.1": {
+        text: "You decide to follow you instincts and go after the voice. You are faced with a small creature that looks wounded.",
+        choices: [
+            { text: "try and help", nextVersion: "1.2.1.1" },
+            { text: "ignore it", nextVersion: "dead_killed" }
+        ]
+    },
+    "1.2.1.1": {
+        text: "You help the small creature and its mother appears before you",
+        choices: [
+            { text: "approach her", nextVersion: "1.2.1.1.1" },
+            { text: "run away", nextVersion: "1.2.1.1.2" },
+            { text: "attack her", nextVersion: "dead_killed" }
+        ]
+    },
+                    //riddle
+
+    "1.2.1.1.2": {
+                text: "You find a riddle inscribed on the wall",
+                choices: [
+                    { text: "solve the riddle", nextVersion: "riddle" }
+                ]
+            },
+            "riddle": {
+                text: "'I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?'",
+                input: true,
+                correctAnswer: "echo",
+                correctNextVersion: "success",
+                wrongNextVersion: "dead_problem"
+            },
+            "success": {
+                text: "You solved the riddle and a hidden passage opens!",
+                choices: [
+                    { text: "continue", nextVersion: "3.3" }
+                ]
+            },
+            "3.3": {
+        text: "You find a staircase leading deeper into the catacombs.",
+        choices: [
+            { text: "descend the staircase", nextVersion: "5.1" },
+            { text: "stay on the current level", nextVersion: "L.2" }
+        ]
+    },
+    "5.1": {
+        text: "The staircase leads to a lower level filled with ancient relics and artifacts.",
+        choices: [
+            { text: "inspect the relics", nextVersion: "5.1.1" },
+            { text: "ignore the relics", nextVersion: "5.1.1.1.1.3.1.2" }
+        ]
+    },
+    "5.1.1": {
+        text: "One of the relics is a magical amulet that glows when you touch it.",
+        choices: [
+            { text: "take the amulet", nextVersion: "5.1.1.1" },
+            { text: "leave the amulet", nextVersion: "5.1.1.1.1.3.1.2" }
+        ]
+    },
+  
+    "5.1.1.1": {
+        text: "The amulet takes you to a secret passage. You get to an underground garden with healing herbs.",
+        choices: [
+            { text: "continue", nextVersion: "5.1.1.1.1" }
+        ]
+    },
+    "5.1.1.1.1": {
+        text: "As you are about to leave the garden, you find a tiny green creature",
+        choices: [
+            { text: "fight it", nextVersion: "5.1.1.1.1.2" },
+            { text: "approach it", nextVersion: "5.1.1.1.1.3" }
+        ]
+    },
+    "5.1.1.1.1.3": {
+        text: "You approach the small creature but it runs away scared",
+        choices: [
+            { text: "leave", nextVersion: "5.1.1.1.1.3.1" }
+        ]
+    },
+    "5.1.1.1.1.2": {
+        text: "You go after the creature but it's too fast. You trip on a branch and injure yourself",
+        choices: [
+            { text: "leave", nextVersion: "5.1.1.1.1.3.1" }
+        ]
+    },
+    "5.1.1.1.1.3.1": {
+        text: "You successfuly leave the garden and continue exploring.",
+        choices: [
+            { text: "turn left", nextVersion: "37" },
+            { text: "go straight ahead", nextVersion: "5.1.1.1.1.3.1.2" },
+            { text: "turn right", nextVersion: "5.1.1.1.1.3.1.3" },
+        ]
+    },
+    
+    "5.1.1.1.1.3.1.3": {
+        text: "You have reached a dead end.",
+        choices: [
+            { text: "turn back", nextVersion: "5.1.1.1.1.3.1" }
+        ]
+    },
+    "5.1.1.1.1.3.1.2": {
+        text: "You fall into a trap and must solve a problem.",
+        choices: [
+            { text: "solve it", nextVersion: "6" },
+        ]
+    },
+    "6": {
+        text: "10 + 7 + 9 - 3",
+        choices: [
+            { text: "21", nextVersion: "dead_problem" },
+            { text: "23", nextVersion: "6.1" },
+            { text: "24", nextVersion: "dead_problem" },
+        ]
+    },
+    "6.1": {
+        text: "You come across a treasure room",
+        choices: [
+            { text: "enter", nextVersion: "6.1.1" },
+            { text: "leave", nextVersion: "1.2.1.1.2" },
+        ]
+    },
+    "6.1.1": {
+        text: "Inside you find a sword with gold details",
+        choices: [
+            { text: "look for more", nextVersion: "6.1.1.1" },
+            { text: "leave the room", nextVersion: "1.2.1.1.2" },
+        ]
+    },
+    "6.1.1.1": {
+        text: "You also find a shield but when you least expect it a monster appears",
+        choices: [
+            { text: "fight it", nextVersion: "3.1" },
+            { text: "run away", nextVersion: "dead_killed3" },
+        ]
+    },
+
+
+    "1.2.1.1.1": {
+        text: "The creature hands you a key before retreating with its child",
+        choices: [
+            { text: "keep the key", nextVersion: "L.1" },
+            { text: "leave the key", nextVersion: "L.2" }
+        ]
+    },
+    "L.1": {
+        text: "The key leads you to a hidden door that opens to a mysterious chamber.",
+        choices: [
+            { text: "enter the chamber", nextVersion: "L.1.1" },
+            { text: "turn back", nextVersion: "L.1.2" }
+        ]
+    },
+    "L.1.1": {
+        text: "Inside the chamber, you find an ancient artifact glowing.",
+        choices: [
+            { text: "take the artifact", nextVersion: "L.1.1.1" },
+            { text: "leave it", nextVersion: "L.1.1.2" }
+        ]
+    },
+    "L.1.1.1": {
+        text: "The artifact makes you feel stronger and guides you somewhere",
+        choices: [
+            { text: "leave the chamber", nextVersion: "L.1.1.1.1" }
+        ]
+    },
+    "L.1.1.1.1": {
+        text: "You discover a mysterious altar with ancient inscriptions.",
+        choices: [
+            { text: "read the inscriptions", nextVersion: "L.7" },
+            { text: "ignore the altar", nextVersion: "5.1.1.1.1.3.1.2" }
+        ]
+    },
+    "L.7": {
+        text: "The inscriptions are full of knowledge and reveal a hidden path.",
+        choices: [
+            { text: "follow the hidden path", nextVersion: "31" },
+        ]
+    },
+  
+    "L.7.1.2": {
+        text: "You fall into a trap and must solve a problem.",
+        choices: [
+            { text: "solve it", nextVersion: "L.7.1.2.1" }
+        ]
+    },
+    "L.7.1.2.1": {
+        text: "18 / 2 + 7 - 3",
+        choices: [
+            { text: "17", nextVersion: "dead_problem" },
+            { text: "15", nextVersion: "dead_problem" },
+            { text: "13", nextVersion: "37" }
+        ]
+    },
+
+
+    "L.1.2": {
+        text: "You turn back and come across a room with 2 different doors, one of them old and falling apart, the other looks cleaner",
+        choices: [
+            { text: "older door", nextVersion: "2.2.2" },
+            { text: "cleaner door", nextVersion: "dead" }
+        ]
+    },
+                            //leave the key
+    "L.2": {
+        text: "You continue your journey and discover an underground lake with a boat moored at the shore.",
+        choices: [
+            { text: "take the boat", nextVersion: "L.2.1" },
+            { text: "walk around the lake", nextVersion: "L.2.2" }
+        ]
+    },
+    "L.2.1": {
+        text: "As you row across the lake, something stirs beneath the water.",
+        choices: [
+            { text: "investigate the disturbance", nextVersion: "L.2.1.1" },
+            { text: "row faster", nextVersion: "dead_drowning" }
+        ]
+    },
+    "L.2.1.1": {
+        text: "A giant sea creature emerges with some vegetables in its mouth.",
+        choices: [
+            { text: "try to befriend the creature", nextVersion: "L.2.1.1.1" },
+            { text: "avoid the creature", nextVersion: "dead_drowning" }
+        ]
+    },
+    "L.2.1.1.1": {
+        text: "The creature helps you find a hidden exit under the lake.",
+        choices: [
+            { text: "take the exit", nextVersion: "end" }//ending
+        ]
+    },
+    "L.2.2": {
+        text: "Walking around the lake, you find ancient ruins.",
+        choices: [
+            { text: "explore the ruins", nextVersion: "L.2.2.1" }
+        ]
+    },
+    "L.2.2.1": {
+        text: "You find a riddle written in one of the walls",
+        choices: [
+            { text: "solve it", nextVersion: "ri2" }
+        ]
+    },
+    "ri2": {
+                text: "'I am always hungry and will die if not fed, but whatever I touch will soon turn red. What am I?'",
+                input: true,
+                correctAnswer: "fire",              //riddle
+                correctNextVersion: "yes",
+                wrongNextVersion: "dead_problem"
+            },
+            "yes": {
+                text: "You solved the riddle and a hidden passage opens!",
+                choices: [
+                    { text: "continue", nextVersion: "18" }
+                ]
+            },
+
+
+    "1.2.2": {
+        text: "You run away but end up falling into a trap.",
+        choices: [
+            { text: "solve it", nextVersion: "1.2.2.1" }
+        ]   
+    },
+    "1.2.2.1": {
+        text: "2 + 7 / 2",        
+        choices: [
+            { text: "3,5", nextVersion: "dead_problem" },
+            { text: "4,5", nextVersion: "dead_problem" },         //math
+            { text: "5,5", nextVersion: "1.2.2.2" }
+        ]
+    },  
+    "1.2.2.2": {
+        text: "You find a series of tunnels that seem to lead upwards.",
+        choices: [
+            { text: "explore the tunnels", nextVersion: "1.2.2.2.1" },
+            { text: "look for another path", nextVersion: "18" }
+        ]
+    },
+    "18": {
+        "text": "You come across a pool of crystal-clear water in a cavern.",
+        "choices": [
+            { "text": "drink from the pool", "nextVersion": "18.1" },
+            { "text": "ignore the pool", "nextVersion": "17" }
+        ]
+    },
+    "18.1": {
+        "text": "The water rejuvenates you, healing your wounds and quenching your thirst.",
+        "choices": [
+            { "text": "rest by the pool", "nextVersion": "18.1.1" },
+            { "text": "continue exploring", "nextVersion": "17" }
+        ]
+    },
+    "18.1.1": {
+        "text": "While resting, you notice something glimmering at the bottom of the pool.",
+        "choices": [
+            { "text": "dive in to retrieve it", "nextVersion": "18.1.1.1" },
+            { "text": "ignore it and move on", "nextVersion": "17" }
+        ]
+    },
+    "18.1.1.1": {
+        "text": "You retrieve a small, intricately carved key from the pool.",
+        "choices": [
+            { "text": "keep the key", "nextVersion": "18.1.1.1.1" },
+            { "text": "discard the key", "nextVersion": "17" }
+        ]
+    },
+    "18.1.1.1.1": {
+        "text": "The key might unlock something valuable deeper in the catacombs.",
+        "choices": [
+            { "text": "search for the lock", "nextVersion": "17.1" }
+        ]
+    },
+    "17": {
+        "text": "You enter a room and the door locks behind you",
+        "choices": [
+            { "text": "look for a way out", "nextVersion": "170" }
+        ]
+    },
+    "170": {
+        "text": "You find solve a problem written on the wall to leave",
+        "choices": [
+            { "text": "solve it", "nextVersion": "171" }
+        ]
+    },
+    "171": {
+        "text": "8 * 2 - 4 + 7",
+        "choices": [
+            { "text": "19", "nextVersion": "37" },
+            { "text": "17", "nextVersion": "dead_problem" },
+            { "text": "23", "nextVersion": "dead_problem" }
+        ]
+    },
+    
+    "17.1": {
+        "text": "You find a large, ornately carved door in the catacombs.",
+        "choices": [
+            { "text": "open the door", "nextVersion": "17.1.1" },
+            { "text": "leave it and move on", "nextVersion": "17" }
+        ]
+    },
+    "17.1.1": {
+        "text": "The door creaks open to reveal a chamber filled with ancient machinery.",
+        "choices": [
+            { "text": "inspect the machinery", "nextVersion": "21.1" },
+            { "text": "turn back", "nextVersion": "L.1.2" }
+        ]
+    },
+    "21.1": {
+        "text": "One of the machines appears to be still functional.",
+        "choices": [
+            { "text": "attempt to activate it", "nextVersion": "21.1.1" },
+        ]
+    },
+    "21.1.1": {
+        "text": "Activating the machine reveals a hidden passage.",
+        "choices": [
+            { "text": "explore the passage", "nextVersion": "21.1.1.1" },
+            { "text": "ignore it", "nextVersion": "L.1.2" }
+        ]
+    },
+    "21.1.1.1": {
+        "text": "The passage leads to an auditorium filled with armour.",
+        "choices": [
+            { "text": "take the armour", "nextVersion": "21.1.1.1.1" },
+            { "text": "leave it", "nextVersion": "L.1.2" }
+        ]
+    },
+    "21.1.1.1": {
+        "text": "You take the armour and keep exploring.",
+        "choices": [
+            { "text": "leave the auditorium", "nextVersion": "17.1" }
+        ]
+    },
+    
+    "1.2.2.2.1": {
+        text: "The tunnels lead to a cavern filled with bioluminescent plants.",
+        choices: [
+            { text: "explore the cavern", nextVersion: "1.2.2.2.1.1" },
+            { text: "continue through the tunnels", nextVersion: "3.3" }
+        ]
+    },
+    "1.2.2.2.1.1": {
+        text: "You discover that the plants have healing properties.",
+        choices: [
+            { text: "leave the cavern", nextVersion: "3.3" }
+        ]
+    },
+    "37": {
+        "text": "You stumble upon a dimly lit room with candles and strange symbols drawn on the floor.",
+        "choices": [
+            { "text": "investigate", "nextVersion": "37.1" },
+            { "text": "leave the room", "nextVersion": "3.3" }
+        ]
+    },
+    "37.1": {
+        "text": "You notice remnants of an occult ritual and strange markings surrounding the symbol.",
+        "choices": [
+            { "text": "continue investigating", "nextVersion": "37.1.1" },
+            { "text": "leave the area", "nextVersion": "3.3" }
+        ]
+    },
+    "37.1.1": {
+        "text": "As you draw closer to the symbol, you feel the warmth of recently extinguished candles.",
+        "choices": [
+            { "text": "inspect", "nextVersion": "37.1.1.1" },
+            { "text": "run away", "nextVersion": "37.3" }
+        ]
+    },
+    "37.1.1.1": {
+        "text": "Suddenly, humanoid figures emerge from the shadows, their eyes glowing whilst looking at you.",
+        "choices": [
+            { "text": "try to reason with them", "nextVersion": "dead_killed2" },
+            { "text": "attack them", "nextVersion": "dead_killed2" },
+            { "text": "flee", "nextVersion": "37.2" }
+        ]
+    },
+    "37.2": {
+        "text": "You try to run but the figures follow you and capture you",
+        "choices": [
+            { "text": "try to escape", "nextVersion": "dead_killed2" }
+        ]
+    },
+    "37.3": {
+        "text": "You run away scared but some humanoid figures appear and capture you",
+        "choices": [
+            { "text": "try to escape", "nextVersion": "dead_killed2" }
+        ]
+    },
+    //right
+
+    "1.1.1": {
+        text: "You look around and stumble across footprints on the floor ",
+        choices: [
+            { text: "follow the footprints", nextVersion: "2.1" },
+            { text: "find another way", nextVersion: "2.2" }
+        ]   
+    },
+    
+    "2.1": {
+        text: "You follow the footprints which lead to an old looking chest",
+        choices: [
+            { text: "open the chest", nextVersion: "2.1.1" },
+            { text: "don't open it", nextVersion: "2.1.2" }
+        ]
+    },
+    "2.1.1": {
+        text: "Inside of the chest you find a rusty looking sword",
+        choices: [
+            { text: "keep the sword", nextVersion: "2.1.1.1" },
+            { text: "leave it", nextVersion: "2.1.1.2" }
+        ]
+    },
+    "2.2": {
+        text: "You continue exploring, hoping you can find a way out. Ahead, another junction awaited, offering yet another choice ",
+        choices: [
+            { text: "turn left", nextVersion: "2.2.0.1" },
+            { text: "go straight ahead", nextVersion: "2.2.2" }
+        ]
+    },
+    "2.2.2": {
+        text: "You keep walking for what it seems forever",
+        choices: [
+            { text: "turn left", nextVersion: "2.2.2.1" },
+            { text: "turn right", nextVersion: "2.2.2.2" }
+        ]
+    },
+    "2.2.2.1": {
+        text: "You have reached a dead end",
+        choices: [
+            { text: "turn back", nextVersion: "2.2.2" }
+        ]
+    },
+    "2.2.2.2": {
+        text: "You turn right and come across an underground garden.",
+        choices: [
+            { text: "explore the garden", nextVersion: "2.2.2.2.1" },
+            { text: "ignore the garden", nextVersion: "L.7.1.2" }
+        ]
+    },
+    "2.2.2.2.1": {
+        text: "In the garden, you find rare herbs with healing properties.",
+        choices: [
+            { text: "leave the garden", nextVersion: "5.1.1.1.1.3.1" }
+        ]
+    },
+    "2.1.1.1": {
+        text: "You reach for the sword, and as you grab it a monster appears",
+        choices: [
+            { text: "fight it", nextVersion: "3.1" },
+            { text: "flee", nextVersion: "1.2.2" },
+            { text: "talk to him", nextVersion: "dead_killed" }
+        ]
+    },
+    "3.1": {
+        text: "You defeat the monster and already feel stronger although you were left injured",
+        choices: [
+            { text: "continue exploring", nextVersion: "03.1.1" }
+        ]
+    },
+    "03.1.1": {
+        text: "You come across a labyrinth of narrow passages.",
+        choices: [
+            { text: "navigate the labyrinth", nextVersion: "lab" }
+        ]
+    },
+
+
+    "lab": {
+        text: "You start navigating the labyrinth",
+        choices: [
+            { text: "turn left", nextVersion: "lab1" }, //yes
+            { text: "turn right", nextVersion: "lab1" }
+        ]
+    },
+    "lab1": {
+        text: "You are navigating the labyrinth",
+        choices: [
+            { text: "turn left", nextVersion: "lab1.1" },//yes
+            { text: "move forward", nextVersion: "lab1.2" }//yes
+        ]
+    },
+    "lab1.1": {
+        text: "You are navigating the labyrinth",
+        choices: [
+            { text: "turn left", nextVersion: "lab1.1.1" },//yes
+            { text: "turn right", nextVersion: "lab1.2.2" }//yes
+        ]
+    },
+    "lab1.2.2": {
+        text: "You are navigating the labyrinth",
+        choices: [
+            { text: "turn left", nextVersion: "lab1.2.2.1" },//yes
+            { text: "move forward", nextVersion: "lab1.2.2.2" }//yes
+        ]
+    },
+    "lab1.2.2.1": {
+        text: "You are navigating the labyrinth",
+        choices: [
+            { text: "move forward", nextVersion: "lab1.2.2.1.1" },//yes
+            { text: "turn right", nextVersion: "lab1.2.2.1.2" }//yes
+        ]
+    },
+    "lab1.2.2.1.1": {
+        text: "You are navigating the labyrinth",
+        choices: [
+            { text: "turn left", nextVersion: "lab1.2.2.1.1.1" },//yes
+            { text: "turn right", nextVersion: "lab1.2.2.1.1.2" }//yes
+        ]
+    },
+    "lab1.2.2.1.1.1": {
+        text: "You are navigating the labyrinth",
+        choices: [
+            { text: "turn left", nextVersion: "lab1.2.2.1.1.1.1" },//yes
+            { text: "move forward", nextVersion: "lab1.2.2.1.1.1.2" }//yes
+        ]
+    },
+
+    "lab1.2.2.1.1.1.2": {
+        text: "You reached the end of the labyrinth!",
+        choices: [
+            { text: "keep exploring", nextVersion: "1.2.2.2" }
+        ]
+    },
+    "lab1.2.2.2": {
+        text: "You reached a dead end:(",
+        choices: [
+            { text: "turn back", nextVersion: "lab1.2.2" }
+        ]
+    },
+    "lab1.2": {
+        text: "You reached a dead end:(",
+        choices: [
+            { text: "turn back", nextVersion: "lab1" }
+        ]
+    },
+    "lab1.1.1": {
+        text: "You reached a dead end:(",
+        choices: [
+            { text: "turn back", nextVersion: "lab1.1" }
+        ]
+    },
+    "lab1.2.2.1.2": {
+        text: "You reached a dead end:(",
+        choices: [
+            { text: "turn back", nextVersion: "lab1.2.2.1" }
+        ]
+    },
+    "lab1.2.2.1.1.2": {
+        text: "You reached a dead end:(",
+        choices: [
+            { text: "turn back", nextVersion: "lab1.2.2.1.1" }
+        ]
+    },
+    "lab1.2.2.1.1.1.1": {
+        text: "You reached a dead end:(",
+        choices: [
+            { text: "turn back", nextVersion: "lab1.2.2.1.1.1" }
+        ]
+    },
+
+
+    "3.1.1": {
+        text: "You defeat the monster and already feel stronger although you were left injured",
+        choices: [
+            { text: "continue exploring", nextVersion: "3.1.1" }
+        ]
+    },
+    "2.1.2": {
+        text: "You continue to look for a way out and are faced with a collapsed tunnel blocking your path",
+        choices: [
+            { text: "find alternate route", nextVersion: "L.7.1.2" },
+            { text: "move the debris", nextVersion: "dead" }
+        ]
+    },
+    "2.2.0.1": {
+        text: "You fell into a trapdoor and are faced with a problem",
+        choices: [
+            { text: "solve it", nextVersion: "2.2.1" }
+        ]
+    },  
+    "2.2.1": {
+        text: "9 + 3 + 4 - 2",
+        choices: [
+            { text: "16", nextVersion: "dead_problem" },
+            { text: "14", nextVersion: "3.2" },     //math
+            { text: "15", nextVersion: "dead_problem" }
+        ]
+    },
+    "3.2": {
+        text: "You move on and are left with a rusty door and a small tunnel",
+        choices: [
+            { text: "door", nextVersion: "3.2.1" },
+            { text: "tunnel", nextVersion: "3.2.2" }
+        ]
+    },
+    "3.2.1": {
+        text: "You force the door open but trigger a trap.",
+        choices: [
+            { text: "disarm the trap", nextVersion: "31" },
+            { text: "run through", nextVersion: "dead" }
+        ]
+    },
+
+
+    "31": {
+        "text": "You find a place that resembles a graveyard, filled with scattered bones and crosses made of wood.",
+        "choices": [
+            { "text": "inspect the graves", "nextVersion": "31.1" },
+            { "text": "run away", "nextVersion": "1.2.2" }
+        ]
+    },
+    "31.1": {
+        "text": "The tombstones bear the names of those who were lost in the catacombs.",
+        "choices": [
+            { "text": "read the inscriptions", "nextVersion": "31.1.1" },
+            { "text": "run away", "nextVersion": "1.2.2" }
+        ]
+    },  "31.1.1": {
+        "text": "The inscriptions tell tales of adventurers and explorers who met their end here.",
+        "choices": [
+            { "text": "search for clues", "nextVersion": "31.1.1.1" },
+            { "text": "leave", "nextVersion": "1.2.2" }
+        ]
+    },
+    "31.1.1.1": {
+        "text": "You find a journal left by one of the deceased, detailing their last moments.",
+        "choices": [
+            { "text": "read the journal", "nextVersion": "31.1.1.1.1" }
+        ]
+    },
+    "31.1.1.1.1": {
+        "text": "The journal contains hints about the dangers ahead and possible escape routes.",
+        "choices": [
+            { "text": "look for a way out", "nextVersion": "31.1.1.1.1.1" },
+            { "text": "continue exploring", "nextVersion": "31.1.1.1.1.2" }
+        ]
+    },
+
+    "31.1.1.1.1.2": {
+        "text": "You encounter yet another journal.",
+        "choices": [
+            { "text": "read the journal", "nextVersion": "33.1" },
+            { "text": "look for a way out", "nextVersion": "31.1.1.1.1.1" }
+        ]
+    },
+    "33.1": {
+        "text": "The journal ends with a warning about a grave danger at the end of the catacombs.",
+        "choices": [
+            { "text": "leave the graveyard", "nextVersion": "31.1.1.1.1.1" }
+        ]
+    },
+    "31.1.1.1.1.1": {
+        "text": "Following the knowledge of the journal, you find a hidden pathway.",
+        "choices": [
+            { "text": "explore", "nextVersion": "31.1.1.1.1.1.1" }
+        ]
+    },
+    "31.1.1.1.1.1.1": {
+        "text": "The journal leads you to another room with weapons and some supplies.",
+        "choices": [
+            { "text": "go back", "nextVersion": "end" }//ending
+        ]
+    },
+
+
+
+    "3.2.2": {
+        text: "The tunnel starts collapsing behind you and you are left with an injury in your leg.",
+        choices: [
+            { text: "wrap you leg with cloth", nextVersion: "18" },
+            { text: "continue walking", nextVersion: "dead_bleeding" }
+        ]
+    },
+
+
+    "end": {
+        text: "You finally find a light showing you the exit.",
+        choices: [
+            { text: "leave", nextVersion: "end2" }
+        ]
+    },
+    "end2": {
+        text: "When you think you can leave a giant monster appears blocking your way.",
+        choices: [
+            { text: "fight him", nextVersion: "end3" }
+        ]
+    },
+    "end3": {
+        text: "You defeated the monster and are finally able to escape! Congratulations.",
+        choices: [
+            { text: "play again", nextVersion: "1" }
+        ]
+    },
+
+    "dead": {
+        text: "You died :(",
+        choices: [
+            { text: "try again", nextVersion: "1" }
+        ]
+    },
+    "dead_bleeding": {
+        text: "You bled out :(",
+        choices: [
+            { text: "try again", nextVersion: "1" }
+        ]
+    },
+    "dead_drowning": {
+        text: "You fell into the water and drowned :(",
+        choices: [
+            { text: "try again", nextVersion: "1" }
+        ]
+    },
+    "dead_killed": {
+        text: "You were killed :(",
+        choices: [
+            { text: "try again", nextVersion: "1" }
+        ]
+    },
+    "dead_killed2": {
+        text: "You were sacrificed :(",
+        choices: [
+            { text: "try again", nextVersion: "1" }
+        ]
+    },
+    "dead_killed3": {
+        text: "You tried to run but got killed :(",
+        choices: [
+            { text: "try again", nextVersion: "1" }
+        ]
+    },
+    "dead_problem": {
+        text: "Wrong answer! You died :(",
+        choices: [
+            { text: "try again", nextVersion: "1" }
+        ]
+    },
+   
+    
+
+
+};
+
+//menuu
+document.getElementById("menu-btn").addEventListener("click", function() {
+    var menu = document.getElementById("menu-dropdown");
+    menu.classList.toggle("show");
+    var overlay = document.getElementById('overlay'); 
+    if (menu.classList.contains('show')) {
+        overlay.style.display = 'block';
+    } else {
+        overlay.style.display = 'none';
+    }
+});
+
+let stats = {
+            health: 1,
+            intelligence: 1,
+            strength: 1
+        };
+
+        let timeout;
+        let timerInterval;
+
+function resetStats() {
+    stats.health = 1;
+    stats.intelligence = 1;
+    stats.strength = 1;
+  
+    document.getElementById("health").textContent = stats.health;
+    document.getElementById("intelligence").textContent = stats.intelligence;
+    document.getElementById("strength").textContent = stats.strength;
+
+}
+
+
+function updateStats(stat, amount) {
+    stats[stat] += amount;
+    document.getElementById(stat).textContent = stats[stat];
+
+    var health = document.getElementById('health');
+    var intelligence = document.getElementById('intelligence');
+    var strength = document.getElementById('strength');
+    score = parseInt(health.textContent) + parseInt(intelligence.textContent) + parseInt(strength.textContent);
+    scoreInput = document.getElementById('score');
+    scoreInput.value = score;
+    story.end3.text = "You defeated the monster and are finally able to escape! Congratulations. Your score is "+score+".";
+}
+
+function updateStory(version) {
+    const storyTextElement = document.getElementById("story-text");
+    const buttonContainer = document.getElementById("button-container");
+    const currentVersion = story[version];
+
+    clearTimeout(timeout);
+    clearInterval(timerInterval);
+    document.getElementById("timer")?.remove();
+
+    if (version === "2.2.1" || version === "1.2.2.1" || version === "171"|| version === "6"|| version === "L.7.1.2.1" ) {
+        const timerElement = document.createElement("div");
+        timerElement.id = "timer";
+        document.getElementById("game-container").appendChild(timerElement);
+        let timeLeft = 10; // 10 seconds
+        updateTimer();
+
+        timerInterval = setInterval(updateTimer, 1000); // update the timer every second
+
+        function updateTimer() {
+            if (timeLeft > 0) {
+                document.getElementById("timer").textContent = `time left: ${timeLeft} seconds`;
+                timeLeft--;
+            } else {
+                clearInterval(timerInterval);
+                document.getElementById("timer").style.display = "none"; 
+                updateStory("dead"); 
+            }
+        }
+
+        timeout = setTimeout(() => {
+            updateStory("dead");
+        }, 10000); // 10 seconds
+    }
+
+    storyTextElement.textContent = currentVersion.text;
+    buttonContainer.innerHTML = "";
+
+    if (currentVersion.input) {
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = "answer";
+        buttonContainer.appendChild(input);
+
+        const submitButton = document.createElement("button");
+        submitButton.id = "submit-answer";
+        submitButton.textContent = "submit";
+        submitButton.addEventListener("click", () => {
+            const userAnswer = document.getElementById("answer").value.toLowerCase();
+            if (userAnswer === currentVersion.correctAnswer) {
+                if (currentVersion.correctNextVersion === "success") {
+                    updateStats("intelligence", 1); 
+                }
+                updateStory(currentVersion.correctNextVersion);
+            } else {
+                updateStory(currentVersion.wrongNextVersion);
+            }
+        });
+        buttonContainer.appendChild(submitButton);
+    } else {
+        currentVersion.choices.forEach(choice => {
+            const button = document.createElement("button");
+            button.textContent = choice.text;
+            button.addEventListener("click", () => {
+                clearTimeout(timeout);
+                clearInterval(timerInterval);
+                //add
+                if (choice.nextVersion === "1.2.2.2" || choice.nextVersion === "172" ||choice.nextVersion === "L.7.1.2.1.1" || choice.nextVersion === "L.7" || choice.nextVersion === "3.2" || choice.nextVersion === "success"|| choice.nextVersion === "L.7.1.2.1" || choice.nextVersion === "yes" || choice.nextVersion === "6.1" || choice.nextVersion === "yes" || choice.nextVersion === "31.1.1.1.1"|| choice.nextVersion === "lab1.2.2.1.1.1.2") {
+                    updateStats("intelligence", 1); 
+                }
+                if (choice.nextVersion === "2.1.1.1"||choice.nextVersion === "6.1.1"||choice.nextVersion === "6.1.1.1"||choice.nextVersion === "L.1.1.1"|| choice.nextVersion === "31.1.1.1.1.1.1" || choice.nextVersion === "3.1"|| choice.nextVersion === "21.1.1.1.1") {
+                    updateStats("strength", 1); 
+                }
+                if (choice.nextVersion === "2.2.2.2.1"|| choice.nextVersion === "31.1.1.1.1.1.1" || choice.nextVersion === "5.1.1.1.1" || choice.nextVersion === "1.2.2.2.1.1"|| choice.nextVersion === "18.1"|| choice.nextVersion === "18.1.1") {
+                    updateStats("health", 1); 
+                }
+                //-
+                if (choice.nextVersion === "3.1" || choice.nextVersion === "3.2.2" || choice.nextVersion === "5.1.1.1.1.2") {
+                    updateStats("health", -1); 
+                }
+                if (choice.nextVersion === "1") {
+                    resetStats(); 
+                }
+                updateStory(choice.nextVersion);
+            });
+            buttonContainer.appendChild(button);
+        });
+    }
+}
+        updateStory("1");
+
+const menuBtn = document.getElementById("menu-btn");
+const menuDropdown = document.getElementById("menu-dropdown");
+const closeMenuBtn = document.getElementById("close-menu-btn");
+const darkModeBtn = document.getElementById("dark-mode-btn");
+
+
+
+// Event listener for the menu button
+menuBtn.addEventListener("click", () => {
+    menuDropdown.style.display = "block";
+});
+
+// Event listener for the close button
+closeMenuBtn.addEventListener("click", () => {
+    menuDropdown.style.display = "none";
+    var menux = document.getElementById("menu-dropdown");
+    menux.classList.remove('show');
+    var overlayx = document.getElementById('overlay'); 
+    if (menux.classList.contains('show')) {
+        overlayx.style.display = 'block';
+    } else {
+        overlayx.style.display = 'none';
+    }
+});
+
+
+// Event listener for the dark mode button
+darkModeBtn.addEventListener("click", () => {
+    const body = document.body;
+    const textColor = body.style.color;
+    var statsElement = document.getElementById('stats');
+    var menuBtn = document.getElementById('menu-btn');
+    var buttonContainer = document.getElementById('button-container');
+    var buttons_wawa = buttonContainer.querySelectorAll('button');
+    var menuBg = document.getElementById('menu-dropdown'); 
+
+    
+    if (textColor === "white" || textColor === "") { // check for both white and default (empty)
+        // Switch to light mode
+        body.style.backgroundColor = "white";
+        body.style.color = "black";
+
+        darkModeBtn.textContent = "dark mode";
+
+        // change status background color
+        statsElement.style.backgroundColor = '#ffffff';
+
+        //menu
+        menuBg.style.backgroundColor = '#ffffff';
+
+        // change btns colors
+        buttons_wawa.forEach(function(button_wawa) {
+            button_wawa.style.backgroundColor = '#ffffff';
+            button_wawa.style.color = '#000000';
+        });
+        menuBtn.style.backgroundColor = '#ffffff';
+        menuBtn.style.color = '#000000';
+
+        // Change text color for all text elements
+        const textElements = document.querySelectorAll("p");
+        textElements.forEach(element => {
+            element.style.color = "black";
+        });
+    } else {
+        // Switch to dark mode
+        body.style.backgroundColor = "black";
+        body.style.color = "white";
+        darkModeBtn.textContent = "light mode";
+
+        // change status background color
+        statsElement.style.backgroundColor = '#000000';
+
+        //menu
+        menuBg.style.backgroundColor = '#000000';
+
+        // change btns colors
+        buttons_wawa.forEach(function(button_wawa) {
+            button_wawa.style.backgroundColor = '#000000';
+            button_wawa.style.color = '#ffffff';
+        });
+        menuBtn.style.backgroundColor = '#000000';
+        menuBtn.style.color = '#ffffff';
+
+        // Change text color for all text elements
+        const textElements = document.querySelectorAll("p");
+        textElements.forEach(element => {
+            element.style.color = "white";
+        });
+    }
+});
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
