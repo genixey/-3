@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy 8th Birthday!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Press Start 2P', sans-serif;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      height: 100vh;  
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #startScreen, #loadingScreen, #finalScreen {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #2d2d2d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: opacity 1s ease;
+    }
+
+    #loadingScreen, #finalScreen {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #loadingText span {
+      display: inline-block;
+      animation: bounce 1.2s infinite;
+    }
+    #loadingText span:nth-child(1) { animation-delay: 0s; }
+    #loadingText span:nth-child(2) { animation-delay: 0.2s; }
+    #loadingText span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    #creeper {
+      width: 200px;
+      transition: opacity 0.5s ease;
+      animation: shake 1s infinite;
+    }
+    #lastScreen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #2d2d2d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+#lastScreen.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#photo1, #photo2, #photo3, #photo4 {
+  width: 200px; /* Adjust this value as needed */
+  height: auto; /* Maintains the aspect ratio */
+  border-radius: 10px; /* Optional: adds rounded corners */
+  object-fit: cover;
+  width: 200px; /* Same width for all */
+  height: 200px; /* Same height for all */
+}
+
+
+
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(3px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(3px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+
+    .visible {
+      opacity: 1 !important;
+      pointer-events: auto;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('background_gif.gif') no-repeat center center fixed;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    button {
+      padding: 20px 40px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background-color: #4CAF50;
+      color: white;
+      font-family: 'Press Start 2P', sans-serif;
+    }
+    button:hover {
+      opacity: 0.6;
+      color:#2d2d2d;
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .showMessage h1, .showMessage #cake {
+      opacity: 1;
+    }
+
+    #cake {
+      width: 300px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #background_gif {
+      width: 450px;
+      margin-bottom: 80px;
+    }
+    .photo-container {
+  display: flex;
+  flex-direction: row; /* Places images in a row */
+  justify-content: center; /* Centers images horizontally */
+  align-items: center; /* Centers images vertically */
+  gap: 20px; /* Adds space between images */
+}
+#photo1, #photo2, #photo3, #photo4 {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.orb {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 0;
+  top: -200px;
+  transition: opacity 1s ease;
+  animation: fall 5s linear infinite, glow 2s infinite alternate;
+}
+
+@keyframes fall {
+  0% { top: -200px; }
+  100% { top: 100%; }
+}
+
+@keyframes glow {
+  from { filter: brightness(0.8); transform: scale(1); }
+  to { filter: brightness(1.2); transform: scale(1.1); }
+}
+
+
+@keyframes fall {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+
+@keyframes glow {
+  from { filter: brightness(0.8); transform: scale(1); }
+  to { filter: brightness(1.2); transform: scale(1.1); }
+}
+
+.photo-container {
+  position: relative;
+  z-index: 1; /* Ensures photos are on top */
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Start Screen -->
+  <div id="startScreen">
+    <img id="background_gif" src="background_gif.gif" alt="Creeper">
+    <button id="startBtn"> Click Me! </button>
+  </div>
+
+  <!-- Loading Screen -->
+  <div id="loadingScreen">
+    <h2 id="loadingText">Loading<span>.</span><span>.</span><span>.</span></h2>
+  </div>
+
+  <!-- Final Screen -->
+  <div id="finalScreen">
+    <img id="creeper" src="creeper.png" alt="Creeper">
+    <img id="cake" src="cake_gif.webp" alt="Birthday Cake"> <!-- 🎂 Cake Image Added -->
+    <h1>Herzlichen Glückwunsch zum 8. Geburtstag!</h1>
+  </div>
+  <p id="typedMessage"></p> <!-- Updated: Added an ID here -->
+
+  <div id="lastScreen">
+    <div class="photo-container">
+      <img id="photo1" src="together_1.jpeg" alt="photo1">
+      <img id="photo2" src="together_2.jpeg" alt="photo2">
+      <img id="photo3" src="together_3.jpeg" alt="photo3">
+      <img id="photo4" src="together_4.jpeg" alt="photo4">
+    </div>
+    <p>Von deiner Tante Sofia❤️💌</p>
+  </div>
+  
+  <!-- Audio -->
+  <audio id="bgMusic" loop>
+    <source src="C418.mp3" type="audio/mpeg">
+  </audio>
+<!-- Orb Falling Sound -->
+<audio id="orbSound">
+  <source src="level_up.mp3" type="audio/mpeg">
+</audio>
+
+  <!-- Creeper Explosion Audio -->
+  <audio id="creeperExplosion">
+    <source src="creeper_explosion.mp3" type="audio/mpeg">
+  </audio>
+
+<!-- Orbs -->
+<img class="orb" id="orb1" src="orb.webp" alt="Glowing Orb">
+<img class="orb" id="orb2" src="orb.webp" alt="Glowing Orb">
+<img class="orb" id="orb3" src="orb.webp" alt="Glowing Orb">
+<img class="orb" id="orb4" src="orb.webp" alt="Glowing Orb">
+<img class="orb" id="orb5" src="orb.webp" alt="Glowing Orb">
+<img class="orb" id="orb6" src="orb.webp" alt="Glowing Orb">
+<img class="orb" id="orb7" src="orb.webp" alt="Glowing Orb">
+
+
+
+  <script>
+   const startBtn = document.getElementById('startBtn');
+const startScreen = document.getElementById('startScreen');
+const loadingScreen = document.getElementById('loadingScreen');
+const finalScreen = document.getElementById('finalScreen');
+const lastScreen = document.getElementById('lastScreen');
+const bgMusic = document.getElementById('bgMusic');
+const creeper = document.getElementById('creeper');
+const cake = document.getElementById('cake');
+const creeperExplosion = document.getElementById('creeperExplosion');
+const orbSound = document.getElementById('orbSound');
+
+
+// Photos
+const photos = [
+  document.getElementById('photo1'),
+  document.getElementById('photo2'),
+  document.getElementById('photo3'),
+  document.getElementById('photo4')
+];
+
+// Orbs
+const orbs = [
+  document.getElementById('orb1'),
+  document.getElementById('orb2'),
+  document.getElementById('orb3'),
+  document.getElementById('orb4'),
+  document.getElementById('orb5'),
+  document.getElementById('orb6'),
+  document.getElementById('orb7')
+];
+
+startBtn.addEventListener('click', () => {
+  bgMusic.volume = 0.3;
+  bgMusic.play();
+  startScreen.style.opacity = 0;
+
+  // Show loading screen
+  setTimeout(() => loadingScreen.classList.add('visible'), 500);
+
+  // Show creeper after loading
+  setTimeout(() => {
+    loadingScreen.style.opacity = 0;
+    setTimeout(() => {
+      finalScreen.classList.add('visible');
+      creeperExplosion.volume = 0.5;
+      creeperExplosion.play();
+
+      setTimeout(() => {
+        creeper.style.opacity = 0;
+        cake.style.opacity = 1;
+        finalScreen.classList.add('showMessage');
+
+        // Transition to last screen with photos and orbs
+        setTimeout(() => {
+          finalScreen.style.opacity = 0;
+          setTimeout(() => {
+            lastScreen.classList.add('visible');
+          }, 1000);
+        }, 4000);
+
+      }, 3000);
+
+    }, 1000);
+  }, 6000);
+});
+
+// ✨ Show photos one by one
+function showPhotosSequentially() {
+  photos.forEach((photo, index) => {
+    setTimeout(() => {
+      photo.style.opacity = 1;
+      photo.style.transform = 'scale(1)';
+    }, index * 1000); // Delay each photo by 1 second
+  });
+}
+
+// 🌟 Position orbs evenly across the page
+function positionOrbs() {
+  const screenWidth = window.innerWidth;
+  const spacing = screenWidth / (orbs.length + 1);
+
+  // 🎵 Play orb sound when they start falling
+  orbSound.volume = 0.4;
+  orbSound.play();
+
+  orbs.forEach((orb, index) => {
+    const leftPosition = spacing * (index + 1);
+    orb.style.left = `${leftPosition}px`;
+    orb.style.opacity = 0.8;
+    orb.style.animation = 'fall 5s linear infinite, glow 2s infinite alternate';
+  });
+}
+
+
+// 🎇 Handle showing orbs and photos when the last screen appears
+lastScreen.addEventListener('transitionend', () => {
+  if (lastScreen.classList.contains('visible')) {
+    positionOrbs();
+    showPhotosSequentially();
+  }
+});
+
+// 🔄 Reposition orbs when window size changes
+window.addEventListener('resize', positionOrbs);
+
+// ✅ Ensure the start screen is visible on load
+window.onload = () => {
+  startScreen.classList.add('visible');
+};
+
+  </script>
+</body>
+</html>
