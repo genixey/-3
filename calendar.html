@@ -3,11 +3,9 @@
 <html lang="en">
 <head>
 
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +29,7 @@
 
     .calendar {
       max-width: 100%;
-      border: 1px solid #ddd;
+      border: 1px solid #ececec;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
@@ -65,7 +63,7 @@
     .calendar-dates div {
       padding: 20px;
       text-align: center;
-      border: 1px solid #ddd;
+      border: 1px solid #ececec;
       position: relative;
       cursor: pointer;
     }
@@ -80,7 +78,7 @@
       position: absolute;
       bottom: 100%;
       left: 50%;
-      transform: translateX(0);
+      transform: translateX(-50%);
       background-color: rgba(0, 0, 0, 0.8);
       color: white;
       padding: 5px;
@@ -101,7 +99,6 @@
     .calendar-dates div:hover .festivals {
       display: block;
     }
-
 
     @media (max-width: 600px) {
       .calendar {
@@ -131,6 +128,7 @@
         max-width: 250px;
         white-space: normal;
         text-align: center;
+        
       }
       }
 
@@ -142,9 +140,6 @@
     <div class="calendar">
         <div class="calendar-header">junho 2025</div>
 
-
-
-
         <div class="calendar-days">
           <div>Dom</div>
           <div>Seg</div>
@@ -155,26 +150,12 @@
           <div>Sáb</div>
         </div>
 
-
-
-
         <div class="calendar-dates">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
-            <div>11</div>
+            <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
 
             <div class="highlight">12
               <span class="festivals"><strong>Primavera Sound</strong> - Porto</span>
             </div>
-
 
             <div class="highlight">13
                 <span class="festivals">
@@ -216,11 +197,7 @@
               <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa</span>
             </div>
 
-            <div>22</div>
-            <div>23</div>
-            <div>24</div>
-            <div>25</div>
-            <div>26</div>
+            <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
 
             <div class="highlight">
               27
@@ -261,9 +238,7 @@
 
         <div class="calendar-dates">
             <div></div><div></div>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
+            <div>1</div><div>2</div><div>3</div>
 
             <div class="highlight">
               4
@@ -280,8 +255,7 @@
               <span class="festivals"><strong>RFM SOMNII Intermarché</strong> - Figueira da Foz</span>
             </div>
 
-            <div>7</div>
-            <div>8</div>
+            <div>7</div><div>8</div>
 
             <div class="highlight">
               9
@@ -303,10 +277,7 @@
               <span class="festivals"><strong>NOS Alive</strong> - Oeiras</span>
             </div>
 
-            <div>13</div>
-            <div>14</div>
-            <div>15</div>
-            <div>16</div>
+            <div>13</div><div>14</div><div>15</div><div>16</div>
 
             <div class="highlight">
               17
@@ -348,12 +319,7 @@
               <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
             </div>
 
-            <div>25</div>
-            <div>26</div>
-            <div>27</div>
-            <div>28</div>
-            <div>29</div>
-            <div>30</div>
+            <div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
 
             <div class="highlight">
               31
@@ -363,15 +329,6 @@
         </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -499,7 +456,7 @@
     </div>
   </div>
 
-
+  
   
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -536,18 +493,3 @@
     
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
