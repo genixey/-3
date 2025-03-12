@@ -118,15 +118,19 @@
       .calendar-dates div {
           padding: 15px;
           position: relative;
+          min-width: 50px;
       }
 
       .festivals {
         font-size: 0.85em; /* Slightly larger text for readability */
-    max-width: 90vw; /* Use more screen space */
-    white-space: normal; /* Allow text to wrap */
-    text-align: center;
-    padding: 8px; /* More space around text */
-    word-wrap: break-word;
+        position: absolute;
+        bottom: 100%;
+        left: 0; /* Start from the left */
+        right: 0; /* Extend to the right */
+        margin: auto; /* Auto-centers the div */
+        max-width: 300px; 
+        white-space: normal;
+        text-align: center;
       }
       }
 
