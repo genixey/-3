@@ -30,7 +30,7 @@
 
 
     .calendar {
-      width: 450px;
+      max-width: 100%;
       border: 1px solid #ddd;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -123,15 +123,35 @@
     }
 
 
-
-
-
-
-        /* Show festivals on hover */
     .calendar-dates div:hover .festivals {
       display: block;
     }
 
+
+    @media (max-width: 600px) {
+      .calendar {
+          width: 100%;
+          max-width: 350px;
+      }
+
+      .calendar-header {
+          font-size: 1em;
+          padding: 8px;
+      }
+
+      .calendar-days, .calendar-dates {
+          font-size: 0.9em;
+      }
+
+      .calendar-dates div {
+          padding: 15px;
+      }
+
+      .festivals {
+          font-size: 0.75em;
+          padding: 3px;
+      }
+      }
 
 
 
@@ -656,8 +676,40 @@
   </div>
 
 
-
-
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const dates = document.querySelectorAll(".calendar-dates div");
+    
+      dates.forEach(date => {
+        date.addEventListener("click", function () {
+          const festivalInfo = this.querySelector(".festivals");
+    
+          if (festivalInfo) {
+            // Toggle visibility
+            festivalInfo.style.display = festivalInfo.style.display === "block" ? "none" : "block";
+    
+            // Hide others when clicking a new one
+            document.querySelectorAll(".festivals").forEach(other => {
+              if (other !== festivalInfo) {
+                other.style.display = "none";
+              }
+            });
+          }
+        });
+      });
+    
+      // Close tooltips if user clicks outside
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".calendar-dates div")) {
+          document.querySelectorAll(".festivals").forEach(festival => {
+            festival.style.display = "none";
+          });
+        }
+      });
+    });
+    </script>
+    
 </body>
 </html>
 
