@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,7 +84,7 @@
       padding: 8px;
       border-radius: 5px;
       white-space: nowrap;
-      font-size: 14px;
+      font-size: 15px;
       z-index: 10;
       text-align: center;
       font-weight: normal;
@@ -100,27 +101,28 @@
     }
 
     .artists, .artists-w{
-      color:rgba(240, 240, 240, 0.829);
-      font-size:13px;
+      color:rgba(240, 240, 240, 0.856);
+      font-size:14px;
     }
 
     .info{
-        color:rgba(240, 240, 240, 0.555);
-        font-size:11px;
+        color:rgba(240, 240, 240, 0.664);
+        font-size:12px;
     }
 
     .title, .paragraph{
-        text-align:center;
-        max-width: 400px;
+      text-align:center;
+        
     }
 
     .title{
-        font-size:25px;
+      font-size:25px;
     }
 
     .paragraph{
-        font-size: 17px;
-        color: rgb(37, 37, 37);
+      font-size: 17px;
+      color: rgb(37, 37, 37);
+      max-width: 450px;
     }
 
     
@@ -129,7 +131,7 @@
 
             .calendar {
                 width: 100%;
-                max-width: 320px;
+                max-width: 350px;
             }
 
             .calendar-header {
@@ -170,15 +172,13 @@
 </head>
 <body>
 
-    
-    <div class="title"> Prepare a sua agenda para os melhores festivais de verão </div>
-    <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país. De junho a agosto, há eventos espalhados por toda a região, com cartazes imperdíveis. Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. Consulta aqui o calendário dos principais festivais e descobre onde vais viver o teu próximo grande concerto!
+    <div class="title"> Prepare a sua agenda para os melhores festivais de verão</div>
+    <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país.
+         De junho a agosto, há eventos espalhados por toda a região, com cartazes imperdíveis. 
+         Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. 
+         Consulta aqui o calendário dos principais festivais e descobre onde vais viver o teu próximo grande concerto!
     </div>
-
   <div>
-
-
-
     <div class="calendar">
         <div class="calendar-header">junho 2025</div>
 
@@ -612,7 +612,7 @@
       if (applyMobileBehavior()) {
         dates.forEach(date => {
           date.addEventListener("click", function (event) {
-            event.stopPropagation(); 
+            event.stopPropagation(); // Prevents immediate closing
             const festivalInfo = this.querySelector(".festivals");
   
             if (festivalInfo) {
