@@ -29,13 +29,14 @@
     .calendar {
       max-width: 100%;
       border: 1px solid #ececec;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(255, 166, 0, 0.192);
     }
 
     .calendar-header {
       text-align: center;
-      background-color: #0069a6;
-      color: white;
+      background-image: linear-gradient(to right, #ff7c15 , #ffb400);
+      
+      color: #f0f2e7;
       padding: 10px;
       font-size: 1.2em;
       font-weight: bold;
@@ -44,8 +45,8 @@
     .calendar-days {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      background-color: #0069a6;
-      color: white;
+      background-image: linear-gradient(to right, #ff7c15 , #ffb400);
+      color: #f0f2e7;
     }
 
     .calendar-days div {
@@ -68,7 +69,8 @@
     }
 
     .highlight {
-      background-color: #ffc457;
+      background-image: linear-gradient(rgb(224, 106, 137), rgb(255, 153,183));
+      
       font-weight: bold;
     }
        
@@ -78,7 +80,7 @@
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.95);
+      background-color: rgba(88, 0, 44, 0.993);
       box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
       color: white;
       padding: 8px;
