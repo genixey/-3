@@ -116,7 +116,8 @@
     }
 
     .title{
-      font-size:25px;
+      font-size:35px;
+      font-weight: bold;
     }
 
     .paragraph{
@@ -167,6 +168,15 @@
 
       }
 
+      @media (max-width: 350px) {
+
+     
+    .title, .paragraph{
+        max-width: 290px;
+    }
+
+    }
+
 
     </style>
 </head>
@@ -176,8 +186,9 @@
     <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país.
          De junho a agosto, há eventos espalhados por toda a região, com cartazes imperdíveis. 
          Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. 
-         Consulta aqui o calendário dos principais festivais e descobre onde vais viver o teu próximo grande concerto!
+         Consulte aqui o calendário dos principais festivais e descubra onde viver o próximo grande concerto!
     </div>
+    
   <div>
     <div class="calendar">
         <div class="calendar-header">junho 2025</div>
@@ -612,7 +623,7 @@
       if (applyMobileBehavior()) {
         dates.forEach(date => {
           date.addEventListener("click", function (event) {
-            event.stopPropagation(); // Prevents immediate closing
+            event.stopPropagation(); 
             const festivalInfo = this.querySelector(".festivals");
   
             if (festivalInfo) {
