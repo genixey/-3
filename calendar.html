@@ -27,7 +27,7 @@ body {
       margin: 0;
       flex-direction: column;
       gap: 30px;
-      padding-top:30px;
+      /*padding-top:30px;*/
       padding-bottom: 30px;
     }
 
@@ -45,7 +45,6 @@ body {
       color: #f0f2e7;
       padding: 10px;
       font-size: 1.2em;
-      
       font-family: "Original Surfer", sans-serif;
       font-weight: 400;
       font-style: normal;
@@ -137,7 +136,8 @@ body {
 
 
     .title{
-      font-size:35px;
+      font-size:34px;
+      padding-top: 110px;
     }
 
 
@@ -145,6 +145,7 @@ body {
       font-size: 19px;
       color: rgb(37, 37, 37);
       max-width: 450px;
+      padding-top: 60px;
     }
 
     
@@ -155,16 +156,20 @@ body {
       gap:20px;
     }
 
-    .images{
-      max-width: 100%;
-    }
+    
 
     .stage{
       position:absolute;
       z-index: -1;
-      
     }
     
+    .images{
+      width: 540px;
+      align-self: center;
+      flex-grow:0;
+      margin:0 auto;
+      display:inline-block;
+    }
 
 
     /*
@@ -230,14 +235,14 @@ body {
 
       }
 
-      @media (max-width: 350px) {     /* SMALL!!!!*/
+     /* @media (max-width: 350px) {     /* SMALL!!!!*/
 
      
-        .title, .paragraph{
+       /* .title, .paragraph{
             max-width: 290px;
         }
 
-        }
+        }*/
 
       @media (max-width: 1320px) {    /* LARGE!!!!*/
 
