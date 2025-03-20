@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,18 +132,17 @@ body {
 
     .title, .paragraph{
       text-align:center;
-       
+      font-family: "Original Surfer", sans-serif;
     }
 
 
     .title{
       font-size:35px;
-      font-weight: bold;
     }
 
 
     .paragraph{
-      font-size: 17px;
+      font-size: 19px;
       color: rgb(37, 37, 37);
       max-width: 450px;
     }
@@ -154,6 +154,19 @@ body {
       justify-content: space-between;
       gap:20px;
     }
+
+    .images{
+      max-width: 100%;
+    }
+
+    .stage{
+      position:absolute;
+      z-index: -1;
+      
+    }
+    
+
+
     /*
     .v{
       color:#ff598f;
@@ -248,6 +261,14 @@ body {
 </head>
 <body>
 
+
+    <div class="images">
+      <div class="stage">
+        <img src="calendar_images/stage.png">
+      </div>
+
+    </div>
+
     <div class="title"> Prepare a sua agenda para os melhores festivais de 
       <span class="v">v</span><span class="e">e</span><span class="r">r</span><span class="a">ã</span><span class="o">o</span></div>
     <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país.
@@ -255,8 +276,7 @@ body {
          Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. 
          Consulte aqui o calendário dos principais festivais e descubra onde viver o próximo grande concerto!
     </div>
-  
-    
+
 <div class="container">  
   <div>
     <div class="calendar">
