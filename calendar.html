@@ -193,42 +193,61 @@ body {
 
     @media (max-width: 600px) {   /* MEDIUM!!!!*/
 
-            .calendar {
-                width: 100%;
-                max-width: 350px;
-            }
+      .calendar {
+        width: 100%;
+        max-width: 350px;
+      }
 
-            .calendar-header {
-                font-size: 1em;
-                padding: 8px;
-            }
+      .calendar-header {
+        font-size: 1em;
+        padding: 8px;
+      }
 
-            .calendar-days, .calendar-dates {
-                font-size: 0.9em;
+      .calendar-days, .calendar-dates {
+        font-size: 0.9em;
                 
-            }
+      }
 
-            .calendar-dates div {
-                padding: 15px;
-                position: relative;
-            }
+      .calendar-dates div {
+        padding: 15px;
+        position: relative;
+      }
 
-            .festivals {
-                font-size: 0.95em;
-                /*left: 50%;
-                transform: translateX(-50%);*/
-                transform: none!important;
-                right: 0px!important;
-                left: 0px!important;
-                width: 180px;
-                max-width: 250px;
-                white-space: normal;
-                text-align: center;
-            }
+        /*   
+      .festivals {
+        font-size: 0.95em;
+        margin-inline-start: 50px;
+        margin-inline-end: 50px;               
+      } */
+       /*
 
-            .title, .paragraph{
-                max-width: 330px;
-            }
+      .festivals {
+        transform: translateX(-50%);
+        width: 150px;
+        white-space: normal;
+        text-align: center;
+        padding: 5px; 
+        word-wrap: break-word; 
+      }
+*/
+
+      .festivals {
+        font-size: 0.95em;
+        position: fixed;
+        transform: none;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        min-width: 100%;
+        white-space: normal;
+        text-align: center;
+        padding: 15px 0 20px;
+      }
+
+
+      .title, .paragraph{
+        max-width: 330px;
+      }
 
             
    
@@ -247,19 +266,18 @@ body {
       @media (max-width: 1320px) {    /* LARGE!!!!*/
 
         .container{
-        display:grid;
-      }
+          display:grid;
+        }
 
       }
 
       @media (min-width: 1321px) {    
 
         .paragraph{
-            max-width: 820px;
+          max-width: 820px;
         }
 
     }
-
 
 
     </style>
@@ -267,20 +285,20 @@ body {
 <body>
 
 
-    <div class="images">
-      <div class="stage">
-        <img src="calendar_images/stage.png">
-      </div>
-
+  <div class="images">
+    <div class="stage">
+      <img src="calendar_images/stage.png">
     </div>
 
-    <div class="title"> Prepare a sua agenda para os melhores festivais de 
-      <span class="v">v</span><span class="e">e</span><span class="r">r</span><span class="a">ã</span><span class="o">o</span></div>
-    <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país.
-         De junho a agosto, há eventos espalhados por toda a região, com cartazes imperdíveis. 
-         Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. 
-         Consulte aqui o calendário dos principais festivais e descubra onde viver o próximo grande concerto!
-    </div>
+  </div>
+
+  <div class="title"> Prepare a sua agenda para os melhores festivais de 
+    <span class="v">v</span><span class="e">e</span><span class="r">r</span><span class="a">ã</span><span class="o">o</span></div>
+  <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país.
+    De junho a agosto, há eventos espalhados por toda a região, com cartazes imperdíveis. 
+    Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. 
+    Consulte aqui o calendário dos principais festivais e descubra onde viver o próximo grande concerto!
+  </div>
 
 <div class="container">  
   <div>
@@ -298,12 +316,12 @@ body {
         </div>
 
         <div class="calendar-dates">
-            <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
 
-            <div class="highlight">12
-              <span class="festivals"><strong>Primavera Sound</strong> - Porto<br>
-              <small class="artists">Charlie XCX</small> </span>
-            </div>
+          <div class="highlight">12
+            <span class="festivals"><strong>Primavera Sound</strong> - Porto<br>
+            <small class="artists">Charlie XCX</small> </span>
+          </div>
 
             <div class="highlight">13
                 <span class="festivals">
