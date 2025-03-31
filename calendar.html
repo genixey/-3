@@ -17,6 +17,10 @@
 /*FONT "Original Surfer"*/
 
     body {
+      background-image: url("stage_1.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top center; 
       font-family: "Playfair Display", sans-serif;
       display: flex;
       justify-content: center;
@@ -26,8 +30,8 @@
       margin: 0;
       flex-direction: column;
       gap: 30px;
-      /*padding-top:30px;*/
       padding-bottom: 30px;
+     
     }
 
 
@@ -39,17 +43,20 @@
 
 
     .calendar-header {
-      text-align: center;
-      background-color:#3ec1d3;
-      color: #f0f2e7;
-      padding: 10px;
-      font-size: 1.2em;
-      font-family: "Original Surfer", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      max-height: 24px;
-    }
-
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 15px; 
+    text-align: center;
+    background-color: #3ec1d3;
+    color: #f0f2e7;
+    padding: 10px;
+    font-size: 1.2em;
+    font-family: "Original Surfer", sans-serif;
+    font-weight: 400;
+    max-height: 24px;
+    
+}
 
     .calendar-days {
       display: grid;
@@ -78,6 +85,7 @@
       border: 1px solid #ececec;
       position: relative;
       cursor: pointer;
+      background-color: white;
     }
 
 
@@ -137,7 +145,6 @@
       font-size:30px;
       padding-top: 113px;
       text-align: center;
-      width:220px;
     }
 
     .paragraph{
@@ -153,92 +160,38 @@
       gap:20px;
     }
 
-    .stage{
-      max-width: 750px;
-      position: absolute;   
-      z-index: -1;
-      left:360px;
-    }
-    .stage img{
-      width: 650px;
-      height: 400px;
-    }
-   
-    .note {
-      max-width: 220px;
-      height: 250px;
-      position: absolute;   
-      display: inline-block;
-      left: 120px;
-      top:557px;
-      transform: rotate(8deg);
-    }
-    .note img {
-      max-height: 12%;
-    }
+ 
+   .note, .note2, .note3, .note4 {
+    display: flex;
+    gap: 5px; 
+}
 
-    .note2 {
-      max-width: 220px;
-      height: 250px;
-      position: absolute;   
-      display: inline-block;
-      left: 125px;
-      top:555px;
-      transform: rotate(-8deg);
-    }
-    .note2 img {
-      max-height: 12%;
-    }
-    .note3 {
-      max-width: 220px;
-      height: 250px;
-      position: absolute;   
-      display: inline-block;
-      left: 280px;
-      top:555px;
-      transform: rotate(8deg);
-    }
-    .note3 img {
-      max-height: 12%;
+.note img {
+    width: 25px; 
+    height: auto;
+}
 
 
-    }.jnote {
-      max-width: 220px;
-      height: 250px;
-      position: absolute;   
-      display: inline-block;
-      left: 570px;
-      top:557px;
-      transform: rotate(8deg);
-    }
-    .jnote img {
-      max-height: 12%;
-    }
-    .jnote2 {
-      max-width: 220px;
-      height: 250px;
-      position: absolute;   
-      display: inline-block;
-      left: 575px;
-      top:555px;
-      transform: rotate(-8deg);
-    }
-    .jnote2 img {
-      max-height: 12%;
-    }
-    .jnote3 {
-      max-width: 220px;
-      height: 250px;
-      position: absolute;   
-      display: inline-block;
-      left: 725px;
-      top:555px;
-      transform: rotate(8deg);
-    }
-    .jnote3 img {
-      max-height: 12%;
-    }
-    
+.note2 img {
+    width: 20px;
+    height: auto;
+    transform: rotate(8deg);
+} 
+
+
+.note3 img {
+    width: 12px; 
+    height: auto;
+    transform: rotate(-10deg);
+}
+
+
+.note4 img {
+    width: 20px;
+    height: auto;
+    transform: rotate(7deg);
+}
+
 
     .waves {
       max-width: 1000px;
@@ -349,9 +302,9 @@
   
    
   <div class="images">
-    <div class="stage">
-      <img src="calendar_images/stage.png">
-    </div>
+  <!--  <div class="stage">
+      <img src="palco_gradient_orange_pink.png">
+    </div>--> 
 
   </div>
 
@@ -370,15 +323,19 @@
   <div>
    
     <div class="calendar">
-        <div class="calendar-header">junho 2025
+        <div class="calendar-header">
+          <div class ="note3">
+            <img src ="music note - lilac.png">
+          </div>
+          <div class="note4">
+            <img src="music note - pink.png">
+          </div>
+          <p>junho 2025</p>
           <div class ="note">
-            <img src ="calendar_images/music note - yellow.png">
+            <img src ="music note - yellow.png">
           </div>
           <div class ="note2">
-            <img src="calendar_images/music note - peach.png">
-          </div>
-          <div class ="note3">
-            <img src ="calendar_images/music note - lilac.png">
+            <img src="music note - peach.png">
           </div>
         </div>
 
@@ -486,17 +443,21 @@
 
   <div>
     <div class="calendar">
-        <div class="calendar-header">julho 2025
-          <div class ="jnote">
-            <img src ="calendar_images/music note - yellow.png">
-          </div>
-          <div class ="jnote2">
-            <img src="calendar_images/music note - peach.png">
-          </div>
-          <div class ="jnote3">
-            <img src ="calendar_images/music note - lilac.png">
-          </div>
+      <div class="calendar-header">
+        <div class ="note2">
+          <img src ="music note - peach.png">
         </div>
+        <div class="note">
+          <img src="music note - yellow.png">
+        </div>
+        <p>julho 2025</p>
+        <div class ="note">
+          <img src ="music note - orange.png">
+        </div>
+        <div class ="note3">
+          <img src="music note - lilac.png">
+        </div>
+      </div>
 
         <div class="calendar-days">
           <div>Dom</div>
@@ -644,7 +605,21 @@
  
   <div>
     <div class="calendar">
-        <div class="calendar-header">agosto 2025</div>
+      <div class="calendar-header">
+        <div class ="note">
+          <img src ="music note - yellow.png">
+        </div>
+        <div class="note3">
+          <img src="music note - lilac.png">
+        </div>
+        <p>agosto 2025</p>
+        <div class ="note4">
+          <img src ="music note - pink.png">
+        </div>
+        <div class ="note">
+          <img src="music note - orange.png">
+        </div>
+      </div>
 
         <div class="calendar-days">
           <div>Dom</div>
@@ -812,7 +787,7 @@
 </div>  
   
   <div class="waves">
-    <img src="calendar_images/music_waves_pink-orange-yellow.png">
+    <img src="music_waves_pink-orange-yellow.png">
   </div>
   
   <script>
