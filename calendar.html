@@ -192,7 +192,7 @@
     transform: rotate(7deg);
 }
 
-
+/*
     .waves {
       max-width: 1000px;
       height: 1000px;
@@ -205,8 +205,27 @@
       max-height: 60%;
       max-width: auto;
     }
+*/
+    .calendar-container {
+    display: none; /* Hide all calendars by default */
+}
+.calendar-container.active {
+    display: block; /* Show only the active calendar */
+}
+.calendar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+button {
+    cursor: pointer;
+    font-size: 20px;
+    background: none;
+    border: none;
+    padding: 10px;
+}
 
-  
   
 
     @media (max-width: 600px) {   /* MEDIUM!!!!*/
@@ -321,126 +340,129 @@
 
 <div class="container">  
   <div>
-   
-    <div class="calendar">
-        <div class="calendar-header">
-          <div class ="note3">
-            <img src ="calendar_images/music note - lilac.png">
-          </div>
-          <div class="note4">
-            <img src="calendar_images/music note - pink.png">
-          </div>
-          <p>junho 2025</p>
-          <div class ="note">
-            <img src ="calendar_images/music note - yellow.png">
-          </div>
-          <div class ="note2">
-            <img src="calendar_images/music note - peach.png">
-          </div>
-        </div>
-
-        <div class="calendar-days">
-          <div>Dom</div>
-          <div>Seg</div>
-          <div>Ter</div>
-          <div>Qua</div>
-          <div>Qui</div>
-          <div>Sex</div>
-          <div>Sáb</div>
-        </div>
-
-        <div class="calendar-dates">
-          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
-
-          <div class="highlight">12
-            <span class="festivals"><strong>Primavera Sound</strong> - Porto<br>
-            <small class="artists">Charlie XCX</small> </span>
-          </div>
-
-            <div class="highlight">13
-                <span class="festivals">
-                  <strong>Primavera Sound</strong> - Porto <br>
-                  <small class="artists">Central Cee, Deftones</small> <br> <p></p>
-                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
-                  <small class="artists">GNR, Capitão Fausto</small>
-                </span>
-              </div>
-             
-              <div class="highlight">14
-                <span class="festivals">
-                  <strong>Primavera Sound</strong> - Porto <br>
-                  <small class="artists">Jamie XX, Capitão Fausto</small> <br> <p></p>
-                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
-                  <small class="artists">Miguel Araújo</small>
-                </span>
-              </div>
-             
-              <div class="highlight">15
-                <span class="festivals">
-                  <strong>Primavera Sound</strong> - Porto <br>
-                  <small class="artists">Mura Masa</small> <br> <p></p>
-                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
-                  <small class="artists">Anaquim</small>
-                </span>
-              </div>
-
-            <div>16</div><div>17</div><div>18</div>
-
-            <div class="highlight">
-              19
-              <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
-              <small class="artists-w">Pet Shop Boys, Azealia Banks</small> <br>
-              <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
-              </span>
+    <div class="calendar-wrapper">
+      <button id="prevMonth">&lt;</button> <!-- Left Arrow -->
+      
+      <div class="calendar-container active" id="juneCalendar">
+        <div class="calendar">
+          <div class="calendar-header">
+            <div class ="note3">
+              <img src ="calendar_images/music note - lilac.png">
             </div>
-
-            <div class="highlight">
-              20
-              <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa<br>
-              <small class="artists-w">Pet Shop Boys, Azealia Banks</small> <br>
-              <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
-            </span>
+            <div class="note4">
+              <img src="calendar_images/music note - pink.png">
             </div>
-
-            <div class="highlight">
-              21
-              <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
+            <p>junho 2025</p>
+            <div class ="note">
+              <img src ="calendar_images/music note - yellow.png">
+            </div>
+            <div class ="note2">
+              <img src="calendar_images/music note - peach.png">
+            </div>
+          </div>
+  
+          <div class="calendar-days">
+            <div>Dom</div>
+            <div>Seg</div>
+            <div>Ter</div>
+            <div>Qua</div>
+            <div>Qui</div>
+            <div>Sex</div>
+            <div>Sáb</div>
+          </div>
+  
+          <div class="calendar-dates">
+            <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
+  
+            <div class="highlight">12
+              <span class="festivals"><strong>Primavera Sound</strong> - Porto<br>
+              <small class="artists">Charlie XCX</small> </span>
+            </div>
+  
+              <div class="highlight">13
+                  <span class="festivals">
+                    <strong>Primavera Sound</strong> - Porto <br>
+                    <small class="artists">Central Cee, Deftones</small> <br> <p></p>
+                    <strong>Praxis Beer Fest</strong> - Coimbra <br>
+                    <small class="artists">GNR, Capitão Fausto</small>
+                  </span>
+                </div>
+               
+                <div class="highlight">14
+                  <span class="festivals">
+                    <strong>Primavera Sound</strong> - Porto <br>
+                    <small class="artists">Jamie XX, Capitão Fausto</small> <br> <p></p>
+                    <strong>Praxis Beer Fest</strong> - Coimbra <br>
+                    <small class="artists">Miguel Araújo</small>
+                  </span>
+                </div>
+               
+                <div class="highlight">15
+                  <span class="festivals">
+                    <strong>Primavera Sound</strong> - Porto <br>
+                    <small class="artists">Mura Masa</small> <br> <p></p>
+                    <strong>Praxis Beer Fest</strong> - Coimbra <br>
+                    <small class="artists">Anaquim</small>
+                  </span>
+                </div>
+  
+              <div>16</div><div>17</div><div>18</div>
+  
+              <div class="highlight">
+                19
+                <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
+                <small class="artists-w">Pet Shop Boys, Azealia Banks</small> <br>
+                <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+                </span>
+              </div>
+  
+              <div class="highlight">
+                20
+                <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa<br>
                 <small class="artists-w">Pet Shop Boys, Azealia Banks</small> <br>
                 <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
               </span>
-            </div>
-
-            <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
-
-            <div class="highlight">
-              27
-              <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
-              <small class="artists">Judas Priest</small>
-              </span>
-            </div>
-           
-            <div class="highlight">
-              28
-              <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
-              <small class="artists">Korn</small>
-              </span>
-            </div>
-
-            <div class="highlight">
-              29
-              <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
-              <small class="artists">Slipknot</small>
-              </span>
-            </div>
-            <div>30</div>
-            <div></div> <div></div> <div></div> <div></div> <div></div>
-        </div>
+              </div>
+  
+              <div class="highlight">
+                21
+                <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
+                  <small class="artists-w">Pet Shop Boys, Azealia Banks</small> <br>
+                  <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+                </span>
+              </div>
+  
+              <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
+  
+              <div class="highlight">
+                27
+                <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+                <small class="artists">Judas Priest</small>
+                </span>
+              </div>
+             
+              <div class="highlight">
+                28
+                <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+                <small class="artists">Korn</small>
+                </span>
+              </div>
+  
+              <div class="highlight">
+                29
+                <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+                <small class="artists">Slipknot</small>
+                </span>
+              </div>
+              <div>30</div>
+              <div></div> <div></div> <div></div> <div></div> <div></div>
+          </div>
+      </div>
     </div>
-  </div>
-
-
-
-
+  
+      </div>
+      <div class="calendar-container" id="julyCalendar">
+         
   <div>
     <div class="calendar">
       <div class="calendar-header">
@@ -600,8 +622,9 @@
     </div>
   </div>
 
-
-
+      </div>
+      <div class="calendar-container" id="augustCalendar">
+          
  
   <div>
     <div class="calendar">
@@ -785,10 +808,20 @@
   </div>
   
 </div>  
+      </div>
+  
+      <button id="nextMonth">&gt;</button> <!-- Right Arrow -->
+  </div>
+   
+
+
+
+
+<!--
   
   <div class="waves">
     <img src="calendar_images/music_waves_pink-orange-yellow.png">
-  </div>
+  </div>-->
   
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -826,7 +859,35 @@
       }
     });
   </script>
-  
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const calendars = document.querySelectorAll(".calendar-container");
+    const prevButton = document.getElementById("prevMonth");
+    const nextButton = document.getElementById("nextMonth");
+    
+    let currentMonthIndex = 0; // Start with June (0)
+
+    function showCalendar(index) {
+        calendars.forEach((cal, i) => {
+            cal.classList.toggle("active", i === index);
+        });
+    }
+
+    prevButton.addEventListener("click", function() {
+        currentMonthIndex = (currentMonthIndex - 1 + calendars.length) % calendars.length;
+        showCalendar(currentMonthIndex);
+    });
+
+    nextButton.addEventListener("click", function() {
+        currentMonthIndex = (currentMonthIndex + 1) % calendars.length;
+        showCalendar(currentMonthIndex);
+    });
+
+    showCalendar(currentMonthIndex); // Show the first calendar initially
+});
+
+  </script>
     
 </body>
 </html>
