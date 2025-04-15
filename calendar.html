@@ -8,10 +8,6 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Delius&family=Original+Surfer&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <meta charset="UTF-8">
@@ -53,8 +49,8 @@
         color: #ffffff;
         padding: 10px;
         font-size: 1.3em;
-        font-family: "Original Surfer", sans-serif;
-        font-weight: 400;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
         max-height: 24px;
         justify-content: center;
       }
@@ -87,7 +83,7 @@
       }
       
       .highlight {
-        background-image: linear-gradient( #ff9253, #ffbe81);
+        background-image: linear-gradient(#ff9253, #ffbe81);
         font-weight: bold;
       }
       
@@ -159,13 +155,11 @@
       
       .calendar-container {
         display: none;
-        /* Hide all calendars by default */
         position: relative;
       }
       
       .calendar-container.active {
         display: block;
-        /* Show only the active calendar */
       }
       
       .calendar-wrapper {
@@ -191,7 +185,7 @@
       @media (max-width: 600px) {
         /* MEDIUM!!!!*/
         .mobile-images{
-          display: none;
+          display: none; /*CHANGE*/
         }
         .mobile-images img{
           width:auto;
@@ -216,33 +210,26 @@
         }
           /*   
         .festivals {
-          font-size: 0.95em;
-          margin-inline-start: 50px;
-          margin-inline-end: 50px;               
+          left: 50%;
+          transform: translateX(-50%);
+          max-width: 250px;
+          max-width: 250px;
+          white-space: normal;
+          text-align: center;
+          padding: 5px;            
         } */
         .festivals {
           transform: translateX(-50%);
           font-size: 0.96em;
           max-width: 200px;
-          /* white-space: nowrap;*/
+          white-space: normal;
           text-align: center;
           padding: 5px;
+          /*!!! when white-space:normal = too small but fits screen; white-space-nowrap=doesnt fit(overflows)*/
         }
         .artists{
           font-size:0.89em;
         }
-          /*    .festivals {
-       font-size: 0.75em;
-       left: 50%;
-       transform: translateX(-50%);
-       max-width: 250px;
-       max-width: 250px;
-       white-space: normal;
-       text-align: center;
-       padding: 5px; 
-       word-wrap: break-word; 
-       }
-       */
         .title,
         .paragraph {
           max-width: 330px;
@@ -251,26 +238,6 @@
           margin-top:10px;
         }
       }
-      /* @media (max-width: 350px) {     /* SMALL!!!!*/
-      /* .title, .paragraph{
-       max-width: 290px;
-       }
-       }*/
-      
-      @media (max-width: 1320px) {
-        /* LARGE!!!!*/
-        .container {
-          display: grid;
-        }
-      }
-      
-      @media (min-width: 1321px) {
-        .paragraph {
-          max-width: 820px;
-        }
-       
-      }
-
       
     </style>
 </head>
@@ -279,8 +246,8 @@
   <div class="calendar-content-wrap">
    
     <div class="title"> Prepare a sua agenda para os festivais de verão</div>
-    <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país. De junho a agosto, há eventos espalhados por toda a região, com cartazes imperdíveis. Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. Consulte aqui o
-      calendário dos principais festivais e descubra onde viver o próximo grande concerto!
+    <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país. De junho a agosto, há eventos espalhados por toda a região, com cartazes imperdíveis. 
+      Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. Consulte aqui o calendário dos principais festivais e descubra onde viver o próximo grande concerto!
     </div>
     <div class="mobile-images">
       <img src="calendar_images/stage_dblue_lights.png">
@@ -396,11 +363,7 @@
                   </span>
                 </div>
                 <div>30</div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div></div><div></div><div></div><div></div><div></div>
                 </div>
             </div>
           </div>
@@ -759,7 +722,7 @@
                     4
                   <span class="festivals">
                   <strong>Indie Music Fest</strong> - Paredes<br>
-                    <small class="artists-w">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
+                    <small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
                     <span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
                   </span>
                   </div>
@@ -767,7 +730,7 @@
                     5
                     <span class="festivals">
                     <strong>Indie Music Fest</strong> - Paredes<br>
-                    <small class="artists-w">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
+                    <small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
                     <span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
                     </span>
                   </div>
@@ -775,7 +738,7 @@
                     6
                     <span class="festivals">
                       <strong>Indie Music Fest</strong> - Paredes<br>
-                      <small class="artists-w">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
+                      <small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
                       <span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
                       </span>
                   </div>
@@ -853,7 +816,7 @@
 
         showCalendar(currentMonthIndex);
     });
-</script>
-</body>
+    </script>
+  </body>
 
 </html>
