@@ -115,8 +115,7 @@
         display: block;
       }
       
-      .artists,
-      .artists {
+      .artists, .artists {
         color: rgba(240, 240, 240, 0.856);
         font-size: 14px;
       }
@@ -126,8 +125,7 @@
         font-size: 12px;
       }
       
-      .title,
-      .paragraph {
+      .title, .paragraph {
         text-align: center;
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
@@ -138,14 +136,14 @@
       .title {
         font-size: 30px;
         text-align: center;
-        margin-top:75px;
+        margin-top:70px;
       }
       
       .paragraph {
         font-size: 19px;
         max-width: 820px;
-        margin-bottom: 180px;
-        margin-top: 15px;
+        margin-bottom: 170px;
+        margin-top: 5px;
       }
       
       .container {
@@ -168,7 +166,7 @@
         gap: 10px;
       }
 
-      .mobile-images{
+      .mobile-lights,.mobile-speaker,.mobile-floor{
         display:none;
       }
 
@@ -184,12 +182,24 @@
       
       @media (max-width: 600px) {
         /* MEDIUM!!!!*/
-        .mobile-images{
-          display: none; /*CHANGE*/
+        .mobile-lights,.mobile-floor{
+          display: block; /*CHANGE*/
         }
-        .mobile-images img{
-          width:auto;
+        .mobile-lights img{
+          max-width:350px;
         }
+        .mobile-floor img{
+          max-width:350px;
+        }
+        .mobile-speaker{
+          display:grid;
+          grid-template-columns: repeat(2, 1fr);
+          margin-top:8px;
+        }
+        .mobile-speaker img{
+          max-width:50px;
+        }
+
         .calendar-content-wrap{
           background-image:none;
         }
@@ -198,7 +208,7 @@
           max-width: 350px;
         }
         .calendar-header {
-          font-size: 1em;
+          font-size: 1.1em;
           padding: 8px;
         }
         .calendar-days, .calendar-dates {
@@ -246,22 +256,133 @@
   <div class="calendar-content-wrap">
    
     <div class="title"> Prepare a sua agenda para os festivais de verão</div>
-    <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país. De junho a agosto, há eventos espalhados por toda a região, com cartazes imperdíveis. 
+    <div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país. De junho a setembro, há eventos espalhados por toda a região, com cartazes imperdíveis. 
       Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. Consulte aqui o calendário dos principais festivais e descubra onde viver o próximo grande concerto!
     </div>
-    <div class="mobile-images">
+    <div class="mobile-lights">
       <img src="calendar_images/stage_dblue_lights.png">
     </div>
     <div class="container">
-        <div style="position: relative;">
+      <div style="position: relative;">
 
-          <button id="prevMonth" style=" position:absolute; left: 10px; top:10px; color: #3ec1d3; background: #fff; z-index: 2; text-align: center;">&#x25C0;</button> 
-          <button id="nextMonth" style=" position:absolute; right: 10px; top:10px; color: #3ec1d3; background: #fff; z-index: 2;">&#x25B6;</button> 
+        <button id="prevMonth" style=" position:absolute; left: 10px; top:10px; color: #3ec1d3; background: #fff; z-index: 2; text-align: center;">&#x25C0;</button> 
+        <button id="nextMonth" style=" position:absolute; right: 10px; top:10px; color: #3ec1d3; background: #fff; z-index: 2;">&#x25B6;</button> 
 
-          <div class="calendar-container" id="juneCalendar">
+        <div class="calendar-container" id="juneCalendar">
+          <div class="calendar">
+            <div class="calendar-header"> 
+              <p>junho 2025</p>
+            </div>
+            <div class="calendar-days">
+              <div>Dom</div>
+              <div>Seg</div>
+              <div>Ter</div>
+              <div>Qua</div>
+              <div>Qui</div>
+              <div>Sex</div>
+              <div>Sáb</div>
+            </div>
+            <div class="calendar-dates">
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+              <div>4</div>
+              <div>5</div>
+              <div>6</div>
+              <div>7</div>
+              <div>8</div>
+              <div>9</div>
+              <div>10</div>
+              <div>11</div>
+              <div class="highlight">12
+                <span class="festivals"><strong>Primavera Sound</strong> - Porto<br>
+                  <small class="artists">Charlie XCX</small> </span>
+              </div>
+              <div class="highlight">
+                13
+                <span class="festivals">
+                  <strong>Primavera Sound</strong> - Porto <br>
+                  <small class="artists">Central Cee, Deftones</small> <br> 
+                  <p></p>
+                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
+                  <small class="artists">GNR, Capitão Fausto</small>
+                </span>
+              </div>
+              <div class="highlight">
+                14
+                <span class="festivals">
+                  <strong>Primavera Sound</strong> - Porto <br>
+                  <small class="artists">Jamie XX, Capitão Fausto</small> <br> 
+                  <p></p>
+                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
+                  <small class="artists">Miguel Araújo</small>
+                </span>
+              </div>
+              <div class="highlight">
+                15
+                <span class="festivals">
+                  <strong>Primavera Sound</strong> - Porto <br>
+                  <small class="artists">Mura Masa</small> <br> 
+                  <p></p>
+                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
+                  <small class="artists">Anaquim</small>
+                </span>
+              </div>
+              <div>16</div>
+              <div>17</div>
+              <div>18</div>
+              <div class="highlight">
+                19
+                <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
+                  <small class="artists">Pet Shop Boys</small>
+                </span>
+              </div>
+              <div class="highlight">
+                20
+                <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa<br>
+                  <small class="artists">Azealia Banks</small>
+                </span>
+              </div>
+              <div class="highlight">
+                21
+                <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
+                  <small class="artists">Damiano David, Jorja Smith</small>
+                </span>
+              </div>
+              <div>22</div>
+              <div>23</div>
+              <div>24</div>
+              <div>25</div>
+              <div>26</div>
+              <div class="highlight">
+                27
+                <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+                  <small class="artists">Judas Priest</small>
+                </span>
+              </div>
+              <div class="highlight">
+                28
+                <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+                  <small class="artists">Korn</small>
+                </span>
+              </div>
+              <div class="highlight">
+                29
+                <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+                  <small class="artists">Slipknot</small>
+                </span>
+              </div>
+              <div>30</div>
+              <div></div><div></div><div></div><div></div><div></div>
+              </div>
+            </div>
+        </div>
+
+        <div class="calendar-container" id="julyCalendar">
+          <div>
             <div class="calendar">
-              <div class="calendar-header"> 
-                <p>junho 2025</p>
+              <div class="calendar-header">
+                <p>julho 2025</p>
               </div>
               <div class="calendar-days">
                 <div>Dom</div>
@@ -273,160 +394,49 @@
                 <div>Sáb</div>
               </div>
               <div class="calendar-dates">
+                <div></div>
+                <div></div>
                 <div>1</div>
                 <div>2</div>
                 <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
+                <div class="highlight">
+                  4
+                  <span class="festivals">
+                    <strong>Sumol Summer Fest</strong> - Costa da Caparica<br>
+                    <small class="artists">Lil Tecca, MC Cabelinho</small> <br> 
+                    <p></p>
+                    <strong>RFM SOMNII Intermarché</strong> - Figueira da Foz <br>
+                    <small class="artists">Alok</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  5
+                  <span class="festivals">
+                    <strong>Sumol Summer Fest</strong> - Costa da Caparica<br>
+                    <small class="artists">Lil Tjay</small> <br> 
+                  <p></p>
+                    <strong>RFM SOMNII Intermarché</strong> - Figueira da Foz<br>
+                    <small class="artists">Steve Aoki</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  6
+                  <span class="festivals"><strong>RFM SOMNII Intermarché</strong> - Figueira da Foz <br>
+                    <small class="artists">Timmy Trumpet</small>
+                  </span>
+                </div>
                 <div>7</div>
                 <div>8</div>
-                <div>9</div>
-                <div>10</div>
-                <div>11</div>
-                <div class="highlight">12
-                  <span class="festivals"><strong>Primavera Sound</strong> - Porto<br>
-                <small class="artists">Charlie XCX</small> </span>
-                </div>
                 <div class="highlight">
-                  13
-                  <span class="festivals">
-                  <strong>Primavera Sound</strong> - Porto <br>
-                  <small class="artists">Central Cee, Deftones</small> <br> 
-                  <p></p>
-                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
-                  <small class="artists">GNR, Capitão Fausto</small>
-                </span>
-                </div>
-                <div class="highlight">
-                  14
-                  <span class="festivals">
-                  <strong>Primavera Sound</strong> - Porto <br>
-                  <small class="artists">Jamie XX, Capitão Fausto</small> <br> 
-                  <p></p>
-                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
-                  <small class="artists">Miguel Araújo</small>
-                </span>
-                </div>
-                <div class="highlight">
-                  15
-                  <span class="festivals">
-                  <strong>Primavera Sound</strong> - Porto <br>
-                  <small class="artists">Mura Masa</small> <br> 
-                  <p></p>
-                  <strong>Praxis Beer Fest</strong> - Coimbra <br>
-                  <small class="artists">Anaquim</small>
-                </span>
-                </div>
-                <div>16</div>
-                <div>17</div>
-                <div>18</div>
-                <div class="highlight">
-                  19
-                  <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
-                <small class="artists">Pet Shop Boys</small>
-                  </span>
-                </div>
-                <div class="highlight">
-                  20
-                  <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa<br>
-                <small class="artists">Azealia Banks</small>
-                  </span>
-                </div>
-                <div class="highlight">
-                  21
-                  <span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
-                <small class="artists">Damiano David, Jorja Smith</small>
-                  </span>
-                </div>
-                <div>22</div>
-                <div>23</div>
-                <div>24</div>
-                <div>25</div>
-                <div>26</div>
-                <div class="highlight">
-                  27
-                  <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
-                <small class="artists">Judas Priest</small>
-                  </span>
-                </div>
-                <div class="highlight">
-                  28
-                  <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
-                <small class="artists">Korn</small>
-                  </span>
-                </div>
-                <div class="highlight">
-                  29
-                  <span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
-                <small class="artists">Slipknot</small>
-                  </span>
-                </div>
-                <div>30</div>
-                <div></div><div></div><div></div><div></div><div></div>
-                </div>
-            </div>
-          </div>
-
-          <div class="calendar-container" id="julyCalendar">
-            <div>
-              <div class="calendar">
-                <div class="calendar-header">
-                  <p>julho 2025</p>
-                </div>
-                <div class="calendar-days">
-                  <div>Dom</div>
-                  <div>Seg</div>
-                  <div>Ter</div>
-                  <div>Qua</div>
-                  <div>Qui</div>
-                  <div>Sex</div>
-                  <div>Sáb</div>
-                </div>
-                <div class="calendar-dates">
-                  <div></div>
-                  <div></div>
-                  <div>1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div class="highlight">
-                    4
-                  <span class="festivals">
-                  <strong>Sumol Summer Fest</strong> - Costa da Caparica<br>
-                  <small class="artists">Lil Tecca, MC Cabelinho</small> <br> 
-                  <p></p>
-                  <strong>RFM SOMNII Intermarché</strong> - Figueira da Foz <br>
-                  <small class="artists">Alok</small>
-                  </span>
-                  </div>
-                  <div class="highlight">
-                    5
-                  <span class="festivals">
-                  <strong>Sumol Summer Fest</strong> - Costa da Caparica<br>
-                  <small class="artists">Lil Tjay</small> <br> 
-                  <p></p>
-                  <strong>RFM SOMNII Intermarché</strong> - Figueira da Foz<br>
-                  <small class="artists">Steve Aoki</small>
-                    </span>
-                  </div>
-                  <div class="highlight">
-                    6
-                  <span class="festivals"><strong>RFM SOMNII Intermarché</strong> - Figueira da Foz <br>
-                  <small class="artists">Timmy Trumpet</small>
-                  </span>
-                  </div>
-                  <div>7</div>
-                  <div>8</div>
-                  <div class="highlight">
-                    9
+                  9
                   <span class="festivals"><strong>Afro Nation</strong> - Portimão <br>
-                  <small class="artists">Burna Boy, Tems, Davido</small> <br>
+                    <small class="artists">Burna Boy, Tems, Davido</small> <br>
                     <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
-                    </span>
-                  </div>
-                  <div class="highlight">
-                    10
-                    <span class="festivals">
+                  </span>
+                </div>
+                <div class="highlight">
+                  10
+                  <span class="festivals">
                     <strong>Afro Nation</strong> - Portimão<br>
                     <small class="artists">Burna Boy, Tems, Davido</small> <br> 
                     <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
@@ -434,11 +444,11 @@
                     <br>
                     <strong>NOS Alive</strong> - Oeiras <br>
                     <small class="artists">Olivia Rodrigo, Glass Animals</small>
-                    </span>
-                  </div>
-                  <div class="highlight">
-                    11
-                    <span class="festivals">
+                  </span>
+                </div>
+                <div class="highlight">
+                  11
+                  <span class="festivals">
                     <strong>Afro Nation</strong> - Portimão<br>
                     <small class="artists">Burna Boy, Tems, Davido</small> <br>
                     <span class="info">&#40;ainda sem datas confirmadas&#41; </span>
@@ -447,376 +457,404 @@
                     <strong>NOS Alive</strong> - Oeiras <br>
                     <small class="artists">Mother Mother, Girl in Red</small>
                   </span>
-                    </div>
-                    <div class="highlight">
-                      12
-                      <span class="festivals"><strong>NOS Alive</strong> - Oeiras <br>
-                   <small class="artists">Nine Inch Nails</small>
-                   </span>
-                    </div>
-                    <div>13</div>
-                    <div>14</div>
-                    <div>15</div>
-                    <div>16</div>
-                    <div class="highlight">
-                      17
-                      <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
-                    </div>
-                    <div class="highlight">
-                        18
-                        <span class="festivals">
-                      <strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
-                      <p></p>
-                      <strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
-                      <small class="artists">Scorpions, Xutos e Pontapés</small>
-                   </span>
-                    </div>
-                    <div class="highlight">
-                        19
-                        <span class="festivals">
-                      <strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
-                      <p></p>
-                      <strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
-                      <small class="artists"> Thirty Seconds to Mars</small>
-                   </span>
-                    </div>
-                    <div class="highlight">
-                        20
-                        <span class="festivals">
-                      <strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
-                      <p></p>
-                      <strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
-                      <small class="artists">Pedro Sampaio, Calema</small>
-                   </span>
-                    </div>
-                    <div class="highlight">
-                      21
-                      <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
-                    </div>
-                    <div class="highlight">
-                      22
-                      <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
-                    </div>
-                    <div class="highlight">
-                      23
-                      <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
-                    </div>
-                    <div class="highlight">
-                      24
-                      <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
-                    </div>
-                    <div>25</div>
-                    <div>26</div>
-                    <div>27</div>
-                    <div>28</div>
-                    <div>29</div>
-                    <div>30</div>
-                    <div class="highlight">
-                      31
-                      <span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
-                   <small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small> <br>
-                   <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
-                      </span>
-                    </div>
-                    <div></div>
-                    <div></div>
                 </div>
+                  <div class="highlight">
+                    12
+                    <span class="festivals"><strong>NOS Alive</strong> - Oeiras <br>
+                      <small class="artists">Nine Inch Nails</small>
+                    </span>
+                  </div>
+                <div>13</div>
+                <div>14</div>
+                <div>15</div>
+                <div>16</div>
+                <div class="highlight">
+                  17
+                  <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+                </div>
+                <div class="highlight">
+                  18
+                  <span class="festivals">
+                    <strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
+                    <p></p>
+                    <strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
+                    <small class="artists">Scorpions, Xutos e Pontapés</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  19
+                  <span class="festivals">
+                    <strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
+                    <p></p>
+                    <strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
+                    <small class="artists"> Thirty Seconds to Mars</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  20
+                  <span class="festivals">
+                    <strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
+                    <p></p>
+                    <strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
+                    <small class="artists">Pedro Sampaio, Calema</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  21
+                  <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+                </div>
+                <div class="highlight">
+                  22
+                  <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+                </div>
+                <div class="highlight">
+                  23
+                  <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+                </div>
+                <div class="highlight">
+                  24
+                  <span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+                </div>
+                <div>25</div>
+                <div>26</div>
+                <div>27</div>
+                <div>28</div>
+                <div>29</div>
+                <div>30</div>
+                <div class="highlight">
+                  31
+                  <span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
+                    <small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small> <br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+                  </span>
+                </div>
+                <div></div>
+                <div></div>
               </div>
             </div>
           </div>
-          <div class="calendar-container" id="augustCalendar">
-              <div>
-                  <div class="calendar">
-                      <div class="calendar-header">
-                          <p>agosto 2025</p>
-                      </div>
-                      <div class="calendar-days">
-                          <div>Dom</div>
-                          <div>Seg</div>
-                          <div>Ter</div>
-                          <div>Qua</div>
-                          <div>Qui</div>
-                          <div>Sex</div>
-                          <div>Sáb</div>
-                      </div>
-                      <div class="calendar-dates">
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div class="highlight">
-                              1
-                              <span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
-                         <small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small> <br>
-                         <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
-                              </span>
-                          </div>
-                          <div class="highlight">
-                              2
-                              <span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
-                         <small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small><br>
-                         <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
-                              </span>
-                          </div>
-                          <div class="highlight">
-                              3
-                              <span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
-                         <small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small><br>
-                         <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
-                              </span>
-                          </div>
-                          <div>4</div>
-                          <div>5</div>
-                          <div>6</div>
-                          <div class="highlight">
-                              7
-                              <span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
-                         <small class="artists">Biia, Aurora Halal</small>
-                              </span>
-                          </div>
-                          <div class="highlight">
-                              8
-                              <span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
-                         <small class="artists">Ben Klock</small>
-                          </div>
-                          <div class="highlight">
-                              9
-                              <span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
-                         <small class="artists">Nina Kraviz</small>
-                          </div>
-                          <div>10</div>
-                          <div>11</div>
-                          <div>12</div>
-                          <div class="highlight">
-                              13
-                              <span class="festivals"><strong>Mar Me Quer</strong> - Portimão <br>
-                         <small class="artists">Calema, Dillaz</small> <br> 
-                         <p></p>
-                         <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
-                         <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small><br>
-                         <span class="info">&#40;ainda sem datas confirmadas&#41;
-                         </span>
-                          </div>
-                          <div class="highlight">
-                              14
-                              <span class="festivals">
-                            <strong>Mar Me Quer</strong> - Portimão<br>
-                            <small class="artists">Da Weasel</small> <br> 
-                            <p></p>
-                            <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br> 
-                            <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small> <br>
-                            <span class="info">&#40;ainda sem datas confirmadas&#41; </span><br>
-                              <p></p>
-                              <strong>Sol da Caparica</strong> - Costa da Caparica<br>
-                              <small class="artists">Plutónio, Dillaz</small>
-                              </span>
-                          </div>
-                          <div class="highlight">
-                              15
-                              <span class="festivals">
-                            <strong>Mar Me Quer</strong> - Portimão<br>
-                            <small class="artists">Plutónio</small> <br> 
-                            <p></p>
-                            <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
-                            <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small> <br>
-                            <span class="info">&#40;ainda sem datas confirmadas&#41;</span> <br>
-                              <p></p>
-                              <strong>Sol da Caparica</strong> - Costa da Caparica <br>
-                              <small class="artists">Menos é Mais</small>
-                              </span>
-                          </div>
-                          <div class="highlight">
-                              16
-                              <span class="festivals">
-                            <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
-                            <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small> <br>
-                            <span class="info">&#40;ainda sem datas confirmadas&#41;</span> <br>
-                              <p></p>
-                              <strong>Sol da Caparica</strong> - Costa da Caparica <br>
-                              <small class="artists">Lon3r Johny, Da Weasel</small>
-                              </span>
-                          </div>
-                          <div class="highlight">
-                              17
-                              <span class="festivals">
-                            <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
-                            <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small> <br>  
-                            <span class="info">&#40;ainda sem datas confirmadas&#41;</span> <br>
-                              <p></p>
-                              <strong>Sol da Caparica</strong> - Costa da Caparica <br>
-                              <small class="artists">Wet Bed Gang</small>
-                              </span>
-                          </div>
-                          <div>18</div>
-                          <div>19</div>
-                          <div>20</div>
-                          <div class="highlight">
-                              21
-                              <span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
-                         <small class="artists">Da Weasel</small> <br>
-                         <span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
-                          </div>
-                          <div class="highlight">
-                              22
-                              <span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
-                         <small class="artists">Da Weasel</small> <br>
-                         <span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
-                          </div>
-                          <div class="highlight">
-                              23
-                              <span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
-                         <small class="artists">Da Weasel</small> <br>
-                         <span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
-                          </div>
-                          <div>24</div>
-                          <div>25</div>
-                          <div>26</div>
-                          <div>27</div>
-                          <div>28</div>
-                          <div class="highlight">
-                              29
-                              <span class="festivals"><strong>Barrelas Summer Fest</strong> - Viseu <br>
-                         <small class="artists">Gabriel o Pensador, Ornatos Violeta</small> 
-                              </span>
-                          </div>
-                          <div class="highlight">
-                              30
-                              <span class="festivals"><strong>Barrelas Summer Fest</strong> - Viseu <br>
-                         <small class="artists">Hybrid Theory, Richie Campbell</small>
-                              </span>
-                          </div>
-                          <div>31</div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                      </div>
-                  </div>
+        </div>
+        <div class="calendar-container" id="augustCalendar">
+          <div>
+            <div class="calendar">
+              <div class="calendar-header">
+                <p>agosto 2025</p>
               </div>
-              
-          </div>
-          <div class="calendar-container" id="septemberCalendar">
-            <div>
-              <div class="calendar">
-                <div class="calendar-header">
-                  <p>setembro 2025</p>
-                </div>
-                <div class="calendar-days">
-                  <div>Dom</div>
-                  <div>Seg</div>
-                  <div>Ter</div>
-                  <div>Qua</div>
-                  <div>Qui</div>
-                  <div>Sex</div>
-                  <div>Sáb</div>
-                </div>
-                <div class="calendar-dates">
-                  <div></div>
-                  <div>1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div class="highlight">
-                    4
-                  <span class="festivals">
-                  <strong>Indie Music Fest</strong> - Paredes<br>
-                    <small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
-                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
+              <div class="calendar-days">
+                <div>Dom</div>
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sáb</div>
+              </div>
+              <div class="calendar-dates">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="highlight">
+                  1
+                  <span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
+                    <small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small> <br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
                   </span>
-                  </div>
-                  <div class="highlight">
-                    5
-                    <span class="festivals">
+                </div>
+                <div class="highlight">
+                  2
+                  <span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
+                    <small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small><br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+                  </span>
+                </div>
+                <div class="highlight">
+                  3
+                  <span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
+                    <small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small><br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+                  </span>
+                </div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div class="highlight">
+                  7
+                  <span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
+                    <small class="artists">Biia, Aurora Halal</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  8
+                  <span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
+                    <small class="artists">Ben Klock</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  9
+                  <span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
+                    <small class="artists">Nina Kraviz</small>
+                  </span>
+                </div>
+                <div>10</div>
+                <div>11</div>
+                <div>12</div>
+                <div class="highlight">
+                  13
+                  <span class="festivals"><strong>Mar Me Quer</strong> - Portimão <br>
+                    <small class="artists">Calema, Dillaz</small> <br> 
+                    <p></p>
+                    <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
+                    <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small><br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;
+                  </span>
+                </div>
+                <div class="highlight">
+                  14
+                  <span class="festivals">
+                    <strong>Mar Me Quer</strong> - Portimão<br>
+                    <small class="artists">Da Weasel</small> <br> 
+                    <p></p>
+                    <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br> 
+                    <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small> <br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41; </span><br>
+                    <p></p>
+                    <strong>Sol da Caparica</strong> - Costa da Caparica<br>
+                    <small class="artists">Plutónio, Dillaz</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  15
+                  <span class="festivals">
+                    <strong>Mar Me Quer</strong> - Portimão<br>
+                    <small class="artists">Plutónio</small> <br> 
+                    <p></p>
+                    <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
+                    <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small> <br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span> <br>
+                    <p></p>
+                    <strong>Sol da Caparica</strong> - Costa da Caparica <br>
+                    <small class="artists">Menos é Mais</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  16
+                  <span class="festivals">
+                    <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
+                    <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small> <br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span> <br>
+                    <p></p>
+                    <strong>Sol da Caparica</strong> - Costa da Caparica <br>
+                    <small class="artists">Lon3r Johny, Da Weasel</small>
+                  </span>
+                </div>
+                <div class="highlight">
+                  17
+                  <span class="festivals">
+                    <strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
+                    <small class="artists">Franz Ferdinand, King Krule, Vampire Weekend</small> <br>  
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span> <br>
+                    <p></p>
+                    <strong>Sol da Caparica</strong> - Costa da Caparica <br>
+                    <small class="artists">Wet Bed Gang</small>
+                  </span>
+                </div>
+                <div>18</div>
+                <div>19</div>
+                <div>20</div>
+                <div class="highlight">
+                  21
+                  <span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
+                    <small class="artists">Da Weasel</small> <br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
+                </div>
+                <div class="highlight">
+                  22
+                  <span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
+                    <small class="artists">Da Weasel</small> <br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
+                </div>
+                <div class="highlight">
+                  23
+                  <span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
+                    <small class="artists">Da Weasel</small> <br>
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
+                </div>
+                <div>24</div>
+                <div>25</div>
+                <div>26</div>
+                <div>27</div>
+                <div>28</div>
+                <div class="highlight">
+                  29
+                  <span class="festivals"><strong>Barrelas Summer Fest</strong> - Viseu <br>
+                    <small class="artists">Gabriel o Pensador, Ornatos Violeta</small> 
+                  </span>
+                </div>
+                <div class="highlight">
+                    30
+                    <span class="festivals"><strong>Barrelas Summer Fest</strong> - Viseu <br>
+                small class="artists">Hybrid Theory, Richie Campbell</small>
+                    </span>
+                </div>
+                <div>31</div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="calendar-container" id="septemberCalendar">
+          <div>
+            <div class="calendar">
+              <div class="calendar-header">
+                <p>setembro 2025</p>
+              </div>
+              <div class="calendar-days">
+                <div>Dom</div>
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sáb</div>
+              </div>
+              <div class="calendar-dates">
+                <div></div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div class="highlight">
+                  4
+                  <span class="festivals">
                     <strong>Indie Music Fest</strong> - Paredes<br>
                     <small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
                     <span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
+                  </span>
+                </div>
+                <div class="highlight">
+                  5
+                  <span class="festivals">
+                    <strong>Indie Music Fest</strong> - Paredes<br>
+                    <small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
+                  </span>
+                </div>
+                <div class="highlight">
+                  6
+                  <span class="festivals">
+                    <strong>Indie Music Fest</strong> - Paredes<br>
+                    <small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
+                    <span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
+                  </span>
+                </div>
+                <div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div>
+                <div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
+
+                  <div class="highlight">
+                    26
+                    <span class="festivals">
+                      <strong>Under the Doom</strong> - Lisboa<br>
+                      <small class="artists">My Dying Bride, Saturnus</small> <br>
+                      <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
                     </span>
                   </div>
                   <div class="highlight">
-                    6
+                    27
                     <span class="festivals">
-                      <strong>Indie Music Fest</strong> - Paredes<br>
-                      <small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
-                      <span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
-                      </span>
+                      <strong>Under the Doom</strong> - Lisboa<br>
+                      <small class="artists">My Dying Bride, Saturnus</small> <br>
+                      <span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+                    </span>
                   </div>
-                  <div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
-                    <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div></div><div></div><div></div><div></div>
-                </div>
+                  <div>28</div><div>29</div><div>30</div><div></div><div></div><div></div><div></div>
               </div>
             </div>
-        </div>
+          </div>
+      </div>
     </div>
+    
 
   </div>
+  <div class="mobile-speaker">
+    <img src="calendar_images/stage_dblue_speakers.png">
+    <img src="calendar_images/stage_dblue_speakers.png">
+  </div>
+  <div class="mobile-floor">
+    <img src="calendar_images/stage_dblue_floor.png">
+  </div>
+
+
     
-    
-        
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const dates = document.querySelectorAll(".calendar-dates div");
+    document.addEventListener("DOMContentLoaded", function() {
+      const dates = document.querySelectorAll(".calendar-dates div");
 
-        function applyMobileBehavior() {
-          return window.matchMedia("(max-width: 600px)").matches;
-        }
+      function applyMobileBehavior() {
+        return window.matchMedia("(max-width: 600px)").matches;
+      }
 
-        if (applyMobileBehavior()) {
-          dates.forEach(date => {
-            date.addEventListener("click", function(event) {
-              event.stopPropagation();
-              const festivalInfo = this.querySelector(".festivals");
+      if (applyMobileBehavior()) {
+        dates.forEach(date => {
+          date.addEventListener("click", function(event) {
+            event.stopPropagation();
+            const festivalInfo = this.querySelector(".festivals");
 
-              if (festivalInfo) {
-                festivalInfo.style.display = festivalInfo.style.display === "block" ? "none" : "block";
+            if (festivalInfo) {
+              festivalInfo.style.display = festivalInfo.style.display === "block" ? "none" : "block";
 
-                document.querySelectorAll(".festivals").forEach(other => {
-                  if (other !== festivalInfo) {
-                    other.style.display = "none";
-                  }
-                });
-              }
-            });
-          });
-
-          document.addEventListener("click", function(event) {
-            if (!event.target.closest(".calendar-dates div")) {
-              document.querySelectorAll(".festivals").forEach(festival => {
-                festival.style.display = "none";
+              document.querySelectorAll(".festivals").forEach(other => {
+                if (other !== festivalInfo) {
+                  other.style.display = "none";
+                }
               });
             }
           });
-        }
-      });
+        });
+
+        document.addEventListener("click", function(event) {
+          if (!event.target.closest(".calendar-dates div")) {
+            document.querySelectorAll(".festivals").forEach(festival => {
+              festival.style.display = "none";
+            });
+          }
+        });
+      }
+    });
     </script>
    <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const calendars = document.querySelectorAll(".calendar-container");
-        const prevButton = document.getElementById("prevMonth");
-        const nextButton = document.getElementById("nextMonth");
+      const calendars = document.querySelectorAll(".calendar-container");
+      const prevButton = document.getElementById("prevMonth");
+      const nextButton = document.getElementById("nextMonth");
 
-        let currentMonthIndex = 0;
+      let currentMonthIndex = 0;
 
-        function showCalendar(index) {
-            calendars.forEach((cal, i) => {
-                cal.classList.toggle("active", i === index);
-            });
-        }
-
-        prevButton.addEventListener("click", function() {
-            currentMonthIndex = (currentMonthIndex - 1 + calendars.length) % calendars.length;
-            showCalendar(currentMonthIndex);
+      function showCalendar(index) {
+        calendars.forEach((cal, i) => {
+          cal.classList.toggle("active", i === index);
         });
+      }
 
-        nextButton.addEventListener("click", function() {
-            currentMonthIndex = (currentMonthIndex + 1) % calendars.length;
-            showCalendar(currentMonthIndex);
-        });
-
+      prevButton.addEventListener("click", function() {
+        currentMonthIndex = (currentMonthIndex - 1 + calendars.length) % calendars.length;
         showCalendar(currentMonthIndex);
+      });
+
+      nextButton.addEventListener("click", function() {
+        currentMonthIndex = (currentMonthIndex + 1) % calendars.length;
+        showCalendar(currentMonthIndex);
+      });
+
+      showCalendar(currentMonthIndex);
     });
-    </script>
+  </script>
   </body>
 
 </html>
