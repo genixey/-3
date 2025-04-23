@@ -131,7 +131,6 @@
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
         color:white;
-        /*font-family: "Englebert";*/ 
       }
       
       .title {
@@ -162,7 +161,6 @@
       }
       
       .calendar-wrapper {
-        /* display: flex;*/
         align-items: center;
         gap: 10px;
       }
@@ -223,16 +221,6 @@
           padding: 15px;
           position: relative;
         }
-          /*   
-        .festivals {
-          left: 50%;
-          transform: translateX(-50%);
-          max-width: 250px;
-          max-width: 250px;
-          white-space: normal;
-          text-align: center;
-          padding: 5px;            
-        } */
         .festivals {
           transform: translateX(-50%);
           font-size: 0.96em;
@@ -253,20 +241,21 @@
           margin-top:10px;
         }
       }
+
       @media (min-width:651px) and (max-width:717px){
         .paragraph{
-          margin-bottom:125px;
+          margin-bottom:130px;
         }
         .title{
-          margin-bottom:60px;
-          margin-top:40px;
+          margin-bottom:45px;
+          margin-top:30px;
         }
       } /*smaller tablet*/
 
       @media (min-width:718px) and (max-width:830px){
         .title{
           margin-bottom: 80px;
-          margin-top:60px;
+          margin-top:40px;
         }
         .paragraph{
           margin-bottom:120px;
@@ -274,7 +263,7 @@
       }/*bigger tablet*/
 
       @media (min-width: 651px) and (max-width: 830px) {
-        /*tablet*/
+        /*tablet overall*/
         .calendar-content-wrap {
           background-image: url("calendar_images/stage_dblue.png");
           background-size: 900px auto; 
@@ -834,8 +823,7 @@
     <img src="calendar_images/stage_dblue_floor.png">
   </div>
 
-
-    
+  
     <script>
     document.addEventListener("DOMContentLoaded", function() {
       const dates = document.querySelectorAll(".calendar-dates div");
