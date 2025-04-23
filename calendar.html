@@ -180,7 +180,7 @@
         height: 25px;
       }
       
-      @media (max-width: 600px) {
+      @media (max-width: 650px) {
         /* MEDIUM!!!!*/
         .mobile-lights,.mobile-floor{
           display: block; /*CHANGE*/
@@ -192,12 +192,16 @@
           max-width:350px;
         }
         .mobile-speaker{
-          display:grid;
-          grid-template-columns: repeat(2, 1fr);
+          display:block;
           margin-top:8px;
+          width: 100%;
+          max-width: 350px;
         }
         .mobile-speaker img{
           max-width:50px;
+        }
+        .mobile-speaker2{
+          float: right;
         }
 
         .calendar-content-wrap{
@@ -248,6 +252,25 @@
           margin-top:10px;
         }
       }
+      @media (min-width: 651px) and (max-width: 800px) {
+        .calendar-content-wrap {
+          background-image: url("calendar_images/stage_dblue.png");
+          background-size: 900px auto; /* always 600px wide */
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .title{
+          color:black;
+          margin-bottom: 73px;
+          margin-top: 30px;
+        }
+        .paragraph{
+          font-size:1.1em;
+          padding: 0 20px;
+          margin-bottom:120px;
+        }
+      }
+
       
     </style>
 </head>
@@ -265,8 +288,8 @@
     <div class="container">
       <div style="position: relative;">
 
-        <button id="prevMonth" style=" position:absolute; left: 10px; top:10px; color: #3ec1d3; background: #fff; z-index: 2; text-align: center;">&#x25C0;</button> 
-        <button id="nextMonth" style=" position:absolute; right: 10px; top:10px; color: #3ec1d3; background: #fff; z-index: 2;">&#x25B6;</button> 
+        <button id="prevMonth" style=" position:absolute; left: 10px; top:6px; font-size: 17px; color: #3ec1d3; background: #fff; z-index: 2; text-align: center;">&#x25C0;</button> 
+        <button id="nextMonth" style=" position:absolute; right: 10px; top:6px; font-size: 17px; color: #3ec1d3; background: #fff; z-index: 2;">&#x25B6;</button> 
 
         <div class="calendar-container" id="juneCalendar">
           <div class="calendar">
@@ -783,8 +806,8 @@
 
   </div>
   <div class="mobile-speaker">
-    <img src="calendar_images/stage_dblue_speakers.png">
-    <img src="calendar_images/stage_dblue_speakers.png">
+    <img class="mobile-speaker1" src="calendar_images/stage_dblue_speakers.png">
+    <img class="mobile-speaker2" src="calendar_images/stage_dblue_speakers.png">
   </div>
   <div class="mobile-floor">
     <img src="calendar_images/stage_dblue_floor.png">
