@@ -24,7 +24,8 @@
         background-size: auto;
         background-repeat: no-repeat;
         background-position: top center;
-        font-family: "Playfair Display", sans-serif;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 450;
         display: flex;
         align-items: center;
         min-height: 100vh;
@@ -84,7 +85,7 @@
       
       .highlight {
         background-image: linear-gradient(#ff9253, #ffbe81);
-        font-weight: bold;
+        font-weight: 650;
       }
       
       .festivals {
@@ -181,9 +182,9 @@
       }
       
       @media (max-width: 650px) {
-        /* MEDIUM!!!!*/
+        /* phone*/
         .mobile-lights,.mobile-floor{
-          display: block; /*CHANGE*/
+          display: block; 
         }
         .mobile-lights img{
           max-width:350px;
@@ -252,24 +253,44 @@
           margin-top:10px;
         }
       }
-      @media (min-width: 651px) and (max-width: 800px) {
+      @media (min-width:651px) and (max-width:717px){
+        .paragraph{
+          margin-bottom:125px;
+        }
+        .title{
+          margin-bottom:60px;
+          margin-top:40px;
+        }
+      } /*smaller tablet*/
+
+      @media (min-width:718px) and (max-width:830px){
+        .title{
+          margin-bottom: 80px;
+          margin-top:60px;
+        }
+        .paragraph{
+          margin-bottom:120px;
+        }
+      }/*bigger tablet*/
+
+      @media (min-width: 651px) and (max-width: 830px) {
+        /*tablet*/
         .calendar-content-wrap {
           background-image: url("calendar_images/stage_dblue.png");
-          background-size: 900px auto; /* always 600px wide */
+          background-size: 900px auto; 
           background-repeat: no-repeat;
           background-position: center;
         }
         .title{
           color:black;
-          margin-bottom: 73px;
-          margin-top: 30px;
         }
         .paragraph{
           font-size:1.1em;
           padding: 0 20px;
-          margin-bottom:120px;
+          max-width: 670px;
         }
       }
+     
 
       
     </style>
