@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quintessential&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+
+  <title>Brewing Trouble</title>
+
+  <style>
+    body{
+      background-color: #8E4630;
+      margin:0;
+    }
+    
+    .images img{
+      max-width: 300px;
+    }
+    .top-rectangle{
+      align-items: center;
+      background-color: #C6451D;
+      color: white;
+      opacity: 0.8;
+    }
+
+    .rectangle-text{
+      font-family: "UnifrakturCook", cursive;
+      font-weight: 700;
+      font-size:2.5em;
+      font-style: normal;
+      margin-left:20px;
+    }
+
+    .game-images{
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 20px; 
+      max-width: 400px; 
+      margin: 20px auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .game-images img{
+      border: 3px inset #FBF034;
+    }
+    .paragraph{
+      font-family: "Quintessential", serif;
+      text-align: center;
+      font-weight: 600;
+      font-style: normal;
+      font-size: 1.5em;
+      width: 500px;
+      margin: 0 auto;
+    }
+    .socials{
+      display: flex;
+      flex-direction:row;
+      align-items: flex-end;
+      gap:6px;
+      margin-left: 6px;
+    }
+    .socials img{
+      max-width: 40px;
+    }
+    
+    .tiktok:hover,.insta:hover,.twitter:hover{
+      opacity: 0.5;
+    }
+
+    @media (max-width:700px) {
+      .game-images{
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+    }
+ 
+  </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+      <div class="top-rectangle">
+        <div class="rectangle-text">
+          <p style="margin:0; ">Brewing Trouble</p>
+        </div>
+
+      </div>
+      <div class="paragraph">
+        <p>Brewing Trouble is a narrative-driven alchemy simulator where you step into the worn shoes of
+          a reclusive alchemist trying to revive their business one strange customer at a time.
+        </p>
+        <p>
+          Inspired by Potion Craft, Papers, Please, and Presentable Liberty, this game blends potion making mechanics with time-based decisions and light resource management.
+        </p>
+        <p>
+          Set in a quiet, isolated world, each day brings new orders, new challenges, and a chance to refine your skills.
+        </p>
+
+      </div>
+      <div class="images">
+       <!-- <img src="brewing_trouble_images/brewing_header.png">-->
+        <div class="game-images">
+          <img src="brewing_trouble_images/image_1.png">
+          <img src="brewing_trouble_images/image_2.png">
+          <img src="brewing_trouble_images/image_3.png">
+          <img src="brewing_trouble_images/image_4.png">
+        </div>
+      </div>
+
+      <div class="socials">
+        <div class="insta">
+          <a href="https://www.instagram.com/brewing_trouble/">
+            <img src="brewing_trouble_images/Instagram_icon.webp">
+          </a>
+        </div>
+
+        <div class="tiktok">
+          <a href="https://www.tiktok.com/@brewing.trouble4">
+            <img src="brewing_trouble_images/tiktok_icon.png">
+          </a> 
+        </div>
+
+        <div class="twitter">
+          <a href="https://x.com/?lang=en">
+            <img src="brewing_trouble_images/twitter_icon.webp">
+          </a>    <!--CHANGE LINK!!!!!!!!!-->
+        </div>
+        
+      </div>
+
+    </div>
+</body>
+    
+
+
+
+
+</html>
