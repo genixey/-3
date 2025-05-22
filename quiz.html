@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Qual festival combina com você?</title>
+  <title>Qual festival combina consigo?</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -92,26 +92,62 @@
           <label class="option"><input type="radio" name="q1" value="rock">Rock</label>
           <label class="option"><input type="radio" name="q1" value="eletronica">Eletrónica</label>
           <label class="option"><input type="radio" name="q1" value="pop">Pop</label>
-          <label class="option"><input type="radio" name="q1" value="indie">Hip-Hop</label> <!-- nova opção -->
+          <label class="option"><input type="radio" name="q1" value="hip-hop">Hip-Hop</label> 
+          <label class="option"><input type="radio" name="q1" value="indie">Indie</label> 
+          <label class="option"><input type="radio" name="q1" value="metal">Metal</label> 
           
         </div>
       </div>
 
       <div class="question">
-        <h3>Você prefere festivais com música ao vivo ou DJs?</h3>
+        <h3>Qual é o seu cenário ideal para um festival?</h3>
         <div class="options" data-question="q2">
-          <label class="option"><input type="radio" name="q2" value="aoVivo">Música ao vivo</label>
-          <label class="option"><input type="radio" name="q2" value="djs">DJs</label>
-          <label class="option"><input type="radio" name="q2" value="ambos">Ambos</label>
+          <label class="option"><input type="radio" name="q2" value="arLivre">Ao ar livre</label>
+          <label class="option"><input type="radio" name="q2" value="recintos">Em grandes recintos</label>
+          <label class="option"><input type="radio" name="q2" value="espaçoPequeno">Num espaço mais pequeno e alternativo</label>
         </div>
       </div>
 
       <div class="question">
-        <h3>Qual é a sua vibe durante um festival?</h3>
+        <h3>A duração de um festival é um fator importante para si?</h3>
         <div class="options" data-question="q3">
-          <label class="option"><input type="radio" name="q3" value="dancar">Quero dançar a noite toda</label>
-          <label class="option"><input type="radio" name="q3" value="relaxar">Curtir uma boa música e relaxar</label>
-          <label class="option"><input type="radio" name="q3" value="energia">Viver a experiência ao máximo</label>
+          <label class="option"><input type="radio" name="q3" value="longo">Não, quanto mais longo, melhor</label>
+          <label class="option"><input type="radio" name="q3" value="curto">Sim, prefiro eventos mais curtos</label>
+          <label class="option"><input type="radio" name="q3" value="depende1">Depende da programação e dos artistas</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>Como encara novos estilos musicais?</h3>
+        <div class="options" data-question="q4">
+          <label class="option"><input type="radio" name="q4" value="descobrir">Gosto de descobrir novas músicas e artistas</label>
+          <label class="option"><input type="radio" name="q4" value="conhecido">Prefiro ouvir o que já conheço</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>O que mais valoriza num festival?</h3>
+        <div class="options" data-question="q5">
+          <label class="option"><input type="radio" name="q5" value="qualidade">A qualidade do som</label>
+          <label class="option"><input type="radio" name="q5" value="diversidade">A diversidade de artistas</label>
+          <label class="option"><input type="radio" name="q5" value="ambiente">O ambiente e o público</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>Como costuma ser o seu estado de espírito durante um festival?</h3>
+        <div class="options" data-question="q6">
+          <label class="option"><input type="radio" name="q5" value="dancar">Quero dançar do início ao fim</label>
+          <label class="option"><input type="radio" name="q5" value="tranquilidade">Gosto de desfrutar da música com tranquilidade</label>
+          <label class="option"><input type="radio" name="q5" value="intensidade">Quero viver cada momento com intensidade</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>Valoriza festivais que oferecem atividades para além da música?</h3>
+        <div class="options" data-question="q7">
+          <label class="option"><input type="radio" name="q5" value="experiencias">Sim, considero importante haver experiências complementares</label>
+          <label class="option"><input type="radio" name="q5" value="musica">Não, o essencial é a música</label>
         </div>
       </div>
 
@@ -121,7 +157,7 @@
   </div>
 
   <script>
-    // Marca a opção como "selected" visualmente
+    
     document.querySelectorAll('.options').forEach(group => {
       group.querySelectorAll('.option').forEach(option => {
         option.addEventListener('click', () => {
@@ -137,54 +173,165 @@
       const answers = new FormData(this);
 
       const scores = {
-        'NOS Alive': 0,
-        'MEO Kalorama': 0,
-        'Brunch Electronik': 0
+        'Primavera Sound':0,
+        'MEO Kalorama':0,
+        'Evil Live':0,
+        'Sumol Summer Fest':0,
+        'RFM SOMNII Intermaché':0,
+        'NOS Alive':0,
+        'BOOM Festival':0,
+        'MEO Marés Vivas':0,
+        'Neopop':0,
+        'Vodafone Paredes de Coura':0,
+        'Indie Music Fest':0
       };
 
-      // Pergunta 1
+      // question1
       switch (answers.get('q1')) {
         case 'rock':
-          scores['NOS Alive'] += 2;
+          scores['NOS Alive'] += 3;
+          scores['Primavera Sound'] += 3;
+          scores['MEO Marés Vivas'] += 3;
+          scores['MEO Kalorama'] += 3;
+          scores['Vodafone Paredes de Coura'] += 3;
           break;
         case 'eletronica':
-          scores['Brunch Electronik'] += 2;
+          scores['Neopop'] += 3;
+          scores['BOOM Festival'] += 3;
+          scores['Primavera Sound'] += 1;
+          scores['RFM SOMNII Intermaché'] += 3;
+          scores['MEO Kalorama'] += 1;
+          scores['NOS Alive'] += 1;
           break;
         case 'pop':
+          scores['Primavera Sound'] += 1; 
+          scores['MEO Kalorama'] += 2;
+          scores['MEO Marés Vivas'] += 2;
+          scores['NOS Alive'] += 2;
+          scores['Sumol Summer Fest'] += 1;
+          break;
+        case 'hip-hop':
+          scores['Sumol Summer Fest'] += 4;
+          scores['MEO Marés Vivas'] += 1;
+          scores['Primavera Sound'] += 2;
           scores['MEO Kalorama'] += 2;
           break;
         case 'indie':
-          scores['MEO Kalorama'] += 2;
+          scores['Indie Music Fest'] += 4;
+          scores['Primavera Sound'] += 2;
+          scores['Vodafone Paredes de Coura'] += 2;
+          break;
+        case 'metal':
+          scores['Evil Live'] += 4;
           break;
       }
 
-      // Pergunta 2
       switch (answers.get('q2')) {
-        case 'aoVivo':
+        case 'arLivre':
+          scores['RFM SOMNII Intermaché'] += 2;
+          scores['BOOM Festival'] += 2;
+          scores['Vodafone Paredes de Coura'] += 2;
+          scores['MEO Marés Vivas'] += 1;
+          scores['Sumol Summer Fest'] += 1;
+          break;
+        case 'recintos':
           scores['NOS Alive'] += 2;
+          scores['MEO Marés Vivas'] += 2;
+          scores['Evil Live'] += 1;
+          scores['Primavera Sound'] += 1;
+
+          break;
+        case 'espaçoPequeno':
+          scores['Indie Music Fest'] += 2;
+          scores['Neopop'] += 2;
           scores['MEO Kalorama'] += 1;
           break;
-        case 'djs':
-          scores['Brunch Electronik'] += 2;
+      }
+
+      switch (answers.get('q3')) {
+        case 'longo':
+          scores['BOOM Festival'] += 2;
+          scores['Neopop'] += 1;
+          scores['Primavera Sound'] += 1;
           break;
-        case 'ambos':
+        case 'curto':
+          scores['Sumol Summer Fest'] += 2;
+          scores['MEO Kalorama'] += 1;
+          scores['Evil Live'] += 1;
+          scores['RFM SOMNII Intermaché'] += 1;
           scores['NOS Alive'] += 1;
-          scores['Brunch Electronik'] += 1;
+          scores['MEO Marés Vivas'] += 1;
+          scores['Indie Music Fest'] += 1;
           break;
       }
 
-      // Pergunta 3
-      switch (answers.get('q3')) {
-        case 'dancar':
-          scores['Brunch Electronik'] += 2;
-          break;
-        case 'relaxar':
+      switch (answers.get('q4')) {
+        case 'descobrir':
+          scores['BOOM Festival'] += 1;
+          scores['Primavera Sound'] += 2;
+          scores['Indie Music Fest'] += 3;
           scores['MEO Kalorama'] += 2;
+          scores['Vodafone Paredes de Coura'] += 1;
           break;
-        case 'energia':
-          scores['NOS Alive'] += 2;
+        case 'conhecido':
+          scores['Sumol Summer Fest'] += 1;
+          scores['NOS Alive'] += 1;
+          scores['MEO Marés Vivas'] += 2;
           break;
       }
+
+      switch (answers.get('q5')) {
+        case 'qualidade':
+          scores['Vodafone Paredes de Coura'] += 1;
+          scores['MEO Marés Vivas'] += 1;
+          scores['NOS Alive'] += 1;
+          scores['Neopop'] += 1;
+          break;
+        case 'diversidade':
+          scores['NOS Alive'] += 2;
+          scores['MEO Marés Vivas'] += 1;
+          scores['Primavera Sound'] += 2;
+          scores['MEO Kalorama'] += 2;
+          scores['Vodafone Paredes de Coura'] += 1;
+          break;
+        case 'ambiente':
+          scores['Indie Music Fest'] += 2;
+          scores['Vodafone Paredes de Coura'] += 2;
+          scores['MEO Kalorama'] += 1;
+          scores['BOOM Festival'] += 1;
+          break;
+      }
+
+      switch (answers.get('q6')) {
+        case 'dancar':
+          scores['RFM SOMNII Intermaché'] += 1;
+          scores['Sumol Summer Fest'] += 1;
+          scores['Neopop'] += 1;
+          break;
+        case 'tranquilidade':
+          scores['Indie Music Fest'] += 2;
+          scores['MEO Marés Vivas'] += 1;
+          scores['Vodafone Paredes de Coura'] += 1;
+          scores['MEO Kalorama'] += 1;
+          break;
+        case 'intensidade':
+          scores['Primavera Sound'] += 2;
+          scores['Evil Live'] += 1;
+          scores['BOOM Festival'] += 1;
+          scores['NOS Alive'] += 2;
+          scores['Neopop'] += 1;
+          break;
+      }
+
+      switch (answers.get('q7')) {
+        case 'experiencias':
+          scores['BOOM Festival'] += 2;
+          scores['RFM SOMNII Intermaché'] += 1;
+          scores['Indie Music Fest'] += 2;
+          scores['Vodafone Paredes de Coura'] += 1;
+          break;
+      }
+
 
       // Resultado
       let bestFestival = '';
@@ -197,7 +344,7 @@
         }
       }
 
-      document.getElementById('result').textContent = `Você deveria ir ao ${bestFestival}!`;
+      document.getElementById('result').textContent = `festival: ${bestFestival}!`;
     });
   </script>
 </body>
