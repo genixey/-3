@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>Qual festival combina consigo?</title>
   <style>
@@ -11,7 +12,7 @@
     }
 
     .quiz-container {
-      background: white;
+      background: rgb(255, 255, 255);
       max-width: 700px;
       margin: auto;
       padding: 30px;
@@ -39,6 +40,7 @@
     }
 
     .option {
+      font-size:18px;
       padding: 15px;
       border: 2px solid #ccc;
       border-radius: 10px;
@@ -49,7 +51,7 @@
 
     .option:hover {
       background-color: #e8f0ff;
-      border-color: #0073e6;
+      border-color: #0069a6;
     }
 
     .option input {
@@ -58,19 +60,29 @@
 
     .option.selected {
       background-color: #dceeff;
-      border-color: #0073e6;
+      border-color: #0069a6;
     }
 
     button {
-      background: #0073e6;
+      background: #0069a6;
+      box-shadow: 0 7px 10px rgba(51, 160, 223, 0.37);
       color: white;
       padding: 12px 25px;
       border: none;
       border-radius: 6px;
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
       display: block;
       margin: 0 auto;
+    }
+
+    button:hover{
+      background-color: #329ad6;
+      transform:translateY(-1px)
+    }
+
+    button:active{
+      transform: translateY(2px);
     }
 
     #result {
@@ -78,6 +90,23 @@
       font-size: 22px;
       font-weight: bold;
       text-align: center;
+    }
+
+    @media(max-width:500px){
+      .body{
+        padding:10px;
+      }
+      .quiz-container{
+        max-width:300px;
+        padding:10px;
+      }
+      .question h3{
+        font-size:17px;
+      }
+      .option{
+        font-size:16px;
+      }
+
     }
   </style>
 </head>
@@ -137,17 +166,17 @@
       <div class="question">
         <h3>Como costuma ser o seu estado de espírito durante um festival?</h3>
         <div class="options" data-question="q6">
-          <label class="option"><input type="radio" name="q5" value="dancar">Quero dançar do início ao fim</label>
-          <label class="option"><input type="radio" name="q5" value="tranquilidade">Gosto de desfrutar da música com tranquilidade</label>
-          <label class="option"><input type="radio" name="q5" value="intensidade">Quero viver cada momento com intensidade</label>
+          <label class="option"><input type="radio" name="q6" value="dancar">Quero dançar do início ao fim</label>
+          <label class="option"><input type="radio" name="q6" value="tranquilidade">Gosto de desfrutar da música com tranquilidade</label>
+          <label class="option"><input type="radio" name="q6" value="intensidade">Quero viver cada momento com intensidade</label>
         </div>
       </div>
 
       <div class="question">
         <h3>Valoriza festivais que oferecem atividades para além da música?</h3>
         <div class="options" data-question="q7">
-          <label class="option"><input type="radio" name="q5" value="experiencias">Sim, considero importante haver experiências complementares</label>
-          <label class="option"><input type="radio" name="q5" value="musica">Não, o essencial é a música</label>
+          <label class="option"><input type="radio" name="q7" value="experiencias">Sim, considero importante haver experiências complementares</label>
+          <label class="option"><input type="radio" name="q7" value="musica">Não, o essencial é a música</label>
         </div>
       </div>
 
@@ -333,7 +362,7 @@
       }
 
 
-      // Resultado
+      
       let bestFestival = '';
       let maxScore = -1;
 
