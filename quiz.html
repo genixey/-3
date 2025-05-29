@@ -158,7 +158,7 @@
       <div class="question">
         <h3>O que mais valoriza num festival?</h3>
         <div class="options" data-question="q5">
-          <label class="option"><input type="radio" name="q5" value="qualidade">A qualidade do som</label>
+          <label class="option"><input type="radio" name="q5" value="qualidade">A qualidade do som</label> <!-- change this option/question -->
           <label class="option"><input type="radio" name="q5" value="diversidade">A diversidade de artistas</label>
           <label class="option"><input type="radio" name="q5" value="ambiente">O ambiente e o público</label>
         </div>
@@ -225,7 +225,7 @@
         'Vagos Metal Fest':0
       };
 
-      // question1
+
       switch (answers.get('q1')) {
         case 'rock':
           scores['NOS Alive'] += 6;
@@ -264,6 +264,12 @@
           scores['Evil Live'] += 7;
           scores['Vagos Metal Fest'] +=7;
           break;
+        case 'outro': 
+          scores['NOS Alive'] +=2;
+          scores['MEO Marés Vivas'] += 2;
+          scores['Vodafone Paredes de Coura'] +=1;
+          scores['Indie Music Fest'] +=2;
+
       }
 
       switch (answers.get('q2')) {
