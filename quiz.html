@@ -158,7 +158,7 @@
       <div class="question">
         <h3>O que mais valoriza num festival?</h3>
         <div class="options" data-question="q5">
-          <label class="option"><input type="radio" name="q5" value="qualidade">A qualidade do som</label> <!-- change this option/question -->
+          <label class="option"><input type="radio" name="q5" value="qualidade"></label> <!-- change this option/question -->
           <label class="option"><input type="radio" name="q5" value="diversidade">A diversidade de artistas</label>
           <label class="option"><input type="radio" name="q5" value="ambiente">O ambiente e o público</label>
         </div>
@@ -187,6 +187,10 @@
           <label class="option"><input type="radio" name="q8" value="um">Prefiro focar-me num artista de cada vez</label>
           <label class="option"><input type="radio" name="q8" value="varios">Gosto de vários palcos e estilos a acontecer em simultâneo</label>
         </div>
+      </div>
+
+      <div class="question">
+        <h3></h3>
       </div>
 
       <button type="submit">Ver resultado</button>
@@ -222,7 +226,8 @@
         'Neopop':0,
         'Vodafone Paredes de Coura':0,
         'Indie Music Fest':0,
-        'Vagos Metal Fest':0
+        'Vagos Metal Fest':0,
+        'Festival Vilar de Mouros':0 //rock, pop, punk, hip hop + eletronica
       };
 
 
@@ -233,6 +238,7 @@
           scores['MEO Marés Vivas'] += 6;
           scores['MEO Kalorama'] += 6;
           scores['Vodafone Paredes de Coura'] += 6;
+          scores['Festival Vilar de Mouros'] +=5;
           break;
         case 'eletronica':
           scores['Neopop'] += 6;
@@ -241,6 +247,7 @@
           scores['RFM SOMNII Intermaché'] += 6;
           scores['MEO Kalorama'] += 2;
           scores['NOS Alive'] += 2;
+          scores['Festival Vilar de Mouros'] += 1;
           break;
         case 'pop':
           scores['Primavera Sound'] += 2; 
@@ -248,6 +255,7 @@
           scores['MEO Marés Vivas'] += 4;
           scores['NOS Alive'] += 4;
           scores['Sumol Summer Fest'] += 2;
+          scores['Festival Vilar de Mouros'] +=2;
           break;
         case 'hip-hop':
           scores['Sumol Summer Fest'] += 7;
@@ -259,39 +267,41 @@
           scores['Indie Music Fest'] += 6;
           scores['Primavera Sound'] += 4;
           scores['Vodafone Paredes de Coura'] += 4;
+          scores['Festival Vilar de Mouros'] +=2;
           break;
         case 'metal':
           scores['Evil Live'] += 7;
-          scores['Vagos Metal Fest'] +=7;
+          scores['Vagos Metal Fest'] += 7;
+          scores['Festival Vilar de Mouros'] +=1;
           break;
         case 'outro': 
           scores['NOS Alive'] +=2;
           scores['MEO Marés Vivas'] += 2;
           scores['Vodafone Paredes de Coura'] +=1;
           scores['Indie Music Fest'] +=2;
+          scores['Festival Vilar de Mouros'] +=2;
 
       }
 
       switch (answers.get('q2')) {
         case 'arLivre':
-          scores['RFM SOMNII Intermaché'] += 2;
+          scores['RFM SOMNII Intermaché'] += 1;
           scores['BOOM Festival'] += 1;
-          scores['Vodafone Paredes de Coura'] += 2;
+          scores['Vodafone Paredes de Coura'] += 1;
           scores['MEO Marés Vivas'] += 1;
           scores['Sumol Summer Fest'] += 1;
           scores['Vagos Metal Fest'] +=1;
+          scores['Festival Vilar de Mouros'] +=1;
+          scores['NOS Alive'] += 1;
+          scores['Primavera Sound'] += 1;
+          scores['MEO Kalorama'] += 1;
           break;
         case 'recintos':
-          scores['NOS Alive'] += 2;
-          scores['MEO Marés Vivas'] += 2;
           scores['Evil Live'] += 1;
-          scores['Primavera Sound'] += 1;
-
           break;
         case 'espaçoPequeno':
-          scores['Indie Music Fest'] += 2;
-          scores['Neopop'] += 2;
-          scores['MEO Kalorama'] += 1;
+          scores['Indie Music Fest'] += 1; //tmb e ar livre
+          scores['Neopop'] += 1; //ar livre mas pequeno 
           break;
       }
 
@@ -301,6 +311,7 @@
           scores['Neopop'] += 1;
           scores['Primavera Sound'] += 1;
           scores['Vagos Metal Fest'] +=1;
+          scores['Festival Vilar de Mouros'] +=1;
           break;
         case 'curto':
           scores['Sumol Summer Fest'] += 2;
@@ -321,6 +332,7 @@
           scores['MEO Kalorama'] += 2;
           scores['Vodafone Paredes de Coura'] += 1;
           scores['Vagos Metal Fest'] +=1;
+          scores['Festival Vilar de Mouros'] +=1;
           break;
         case 'conhecido':
           scores['Sumol Summer Fest'] += 1;
@@ -332,10 +344,7 @@
 
       switch (answers.get('q5')) {
         case 'qualidade':
-          scores['Vodafone Paredes de Coura'] += 1;
-          scores['MEO Marés Vivas'] += 1;
-          scores['NOS Alive'] += 1;
-          scores['Neopop'] += 1;
+          
           break;
         case 'diversidade':
           scores['NOS Alive'] += 2;
@@ -349,6 +358,7 @@
           scores['Vodafone Paredes de Coura'] += 2;
           scores['MEO Kalorama'] += 1;
           scores['BOOM Festival'] += 1;
+          scores['Festival Vilar de Mouros'] += 1;
           break;
       }
 
