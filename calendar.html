@@ -1,389 +1,889 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <title>Qual festival combina consigo?</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      padding: 20px;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    .quiz-container {
-      background: rgb(255, 255, 255);
-      max-width: 700px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verão 2025</title>
+<style>
 
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+body {
+margin:0;
+}
 
-    .question {
-      margin-bottom: 30px;
-    }
+.calendar-content-wrap{
+background-image: url("calendar_images/stage_LS.png");
+background-size: auto;
+background-repeat: no-repeat;
+background-position: top center;
+font-family: "Montserrat", sans-serif;
+font-weight: 450;
+display: flex;
+align-items: center;
+min-height: 100vh;
+background-color: #f4f4f9;
+margin: 0;
+flex-direction: column;
+padding-bottom: 100px;
+}
 
-    .question h3 {
-      margin-bottom: 15px;
-    }
+.calendar {
+max-width: 100%;
+border: 1px solid #ececec;
+box-shadow: 0 4px 8px rgba(248, 123, 7, 0.12);
+}
 
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+.calendar-header {
+display: flex;
+align-items: center;
+gap: 15px;
+text-align: center;
+background-color: #3ec1d3;
+color: #ffffff;
+padding: 10px;
+font-size: 1.3em;
+font-family: "Montserrat", sans-serif;
+font-weight: 500;
+max-height: 24px;
+justify-content: center;
+}
 
-    .option {
-      font-size:18px;
-      padding: 15px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.2s;
-      background-color: #f5f5f5;
-    }
+.calendar-days {
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+background-color: #75cdd8;
+color: #f0f2e7;
+}
 
-    .option:hover {
-      background-color: #e8f0ff;
-      border-color: #0069a6;
-    }
+.calendar-days div {
+padding: 10px;
+text-align: center;
+font-weight: bold;
+}
 
-    .option input {
-      display: none;
-    }
+.calendar-dates {
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+}
 
-    .option.selected {
-      background-color: #dceeff;
-      border-color: #0069a6;
-    }
+.calendar-dates div {
+padding: 20px;
+text-align: center;
+border: 1px solid #ececec;
+position: relative;
+cursor: pointer;
+background-color: white;
+}
 
-    button {
-      background: #0069a6;
-      box-shadow: 0 7px 10px rgba(51, 160, 223, 0.37);
-      color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
-      font-size: 18px;
-      cursor: pointer;
-      display: block;
-      margin: 0 auto;
-    }
+.highlight {
+background-image: linear-gradient(#ff9253, #ffbe81);
+font-weight: 650;
+}
 
-    button:hover{
-      background-color: #329ad6;
-      transform:translateY(-1px)
-    }
+.festivals {
+display: none;
+position: absolute;
+bottom: 100%;
+left: 50%;
+transform: translateX(-50%);
+background-image: linear-gradient(rgba(0, 9, 39, 0.95), rgba(27, 52, 134, 0.95));
+box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+color: white;
+padding: 8px;
+border-radius: 5px;
+white-space: nowrap;
+font-size: 15px;
+z-index: 10;
+text-align: center;
+font-weight: normal;
+}
 
-    button:active{
-      transform: translateY(2px);
-    }
+.festivals br {
+display: block;
+content: "";
+margin-bottom: 3px;
+}
 
-    #result {
-      margin-top: 30px;
-      font-size: 22px;
-      font-weight: bold;
-      text-align: center;
-    }
+.calendar-dates div:hover .festivals {
+display: block;
+}
 
-    @media(max-width:500px){
-      .body{
-        padding:10px;
-      }
-      .quiz-container{
-        max-width:300px;
-        padding:10px;
-      }
-      .question h3{
-        font-size:17px;
-        margin-left:4px;
-      }
-      .option{
-        font-size:16px;
-      }
+.artists, .artists {
+color: rgba(240, 240, 240, 0.856);
+font-size: 14px;
+}
 
-    }
-  </style>
+.info {
+color: rgba(240, 240, 240, 0.664);
+font-size: 12px;
+}
+
+.title, .paragraph {
+text-align: center;
+font-family: "Montserrat", sans-serif;
+font-weight: 500;
+color:white;
+}
+
+.title {
+font-size: 30px;
+text-align: center;
+margin-top:50px;
+}
+
+.paragraph {
+font-size: 19px;
+max-width: 820px;
+margin-bottom: 170px;
+margin-top: 5px;
+}
+
+.container {
+display: flex;
+gap: 20px;
+}   
+
+.calendar-container {
+display: none;
+position: relative;
+}
+
+.calendar-container.active {
+display: block;
+}
+
+.calendar-wrapper {
+align-items: center;
+gap: 10px;
+}
+
+.mobile-lights,.mobile-speaker,.mobile-floor{
+display:none;
+}
+
+button {
+cursor: pointer;
+font-size: 20px;
+background: none;
+padding-bottom: 25px;
+border-radius: 5px;
+border-color: #3ec1d3;
+height: 25px;
+}
+
+@media (max-width: 650px) {
+/* phone*/
+.mobile-lights,.mobile-floor{
+display: block; 
+}
+.mobile-lights img{
+max-width:350px;
+}
+.mobile-floor img{
+max-width:350px;
+}
+.mobile-speaker{
+display:none;
+margin-top:8px;
+width: 100%;
+max-width: 350px;
+}
+.mobile-speaker img{
+max-width:50px;
+}
+.mobile-speaker2{
+float: right;
+}
+
+.calendar-content-wrap{
+background-image:none;
+}
+.calendar {
+width: 100%;
+max-width: 350px;
+}
+.calendar-header {
+font-size: 1.1em;
+padding: 8px;
+}
+.calendar-days, .calendar-dates {
+font-size: 0.9em;
+}
+.calendar-dates div {
+padding: 15px;
+position: relative;
+}
+.festivals {
+transform: translateX(-50%);
+font-size: 0.96em;
+max-width: 200px;
+white-space: normal;
+text-align: center;
+padding: 5px;
+          /*!!! when white-space:normal = too small but fits screen; white-space-nowrap=doesnt fit(overflows)*/
+}
+.artists{
+font-size:0.89em;
+}
+.title,
+.paragraph {
+max-width: 330px;
+color:black;
+margin-bottom:10px;
+margin-top:10px;
+}
+}
+
+@media (min-width:651px) and (max-width:717px){
+.paragraph{
+margin-bottom:130px;
+}
+.title{
+margin-bottom:50px;
+margin-top:30px;
+}
+} /*smaller tablet*/
+
+@media (min-width:718px) and (max-width:830px){
+.title{
+margin-bottom: 75px;
+margin-top:45px;
+}
+.paragraph{
+margin-bottom:135px;
+}
+}/*bigger tablet*/
+
+@media (min-width: 651px) and (max-width: 830px) {
+/*tablet overall*/
+.calendar-content-wrap {
+background-image: url("calendar_images/stage_LS.png");
+background-size: 900px auto; 
+background-repeat: no-repeat;
+background-position: center;
+}
+.title{
+color:black;
+}
+.paragraph{
+font-size:1.1em;
+padding: 0 20px;
+max-width: 670px;
+}
+}
+
+
+
+</style>
 </head>
+
 <body>
-  <div class="quiz-container">
-    <h1>Qual festival combina consigo?</h1>
-    <form id="quizForm">
-      
-      <div class="question">
-        <h3>Qual é o seu género musical favorito?</h3>
-        <div class="options" data-question="q1">
-          <label class="option"><input type="radio" name="q1" value="rock">Rock</label>
-          <label class="option"><input type="radio" name="q1" value="eletronica">Eletrónica</label>
-          <label class="option"><input type="radio" name="q1" value="pop">Pop</label>
-          <label class="option"><input type="radio" name="q1" value="hip-hop">Hip-Hop</label> 
-          <label class="option"><input type="radio" name="q1" value="indie">Indie</label> 
-          <label class="option"><input type="radio" name="q1" value="metal">Metal</label> 
-          <label class="option"><input type="radio" name="q1" value="outro">Outros</label>
-          
-        </div>
-      </div>
+<div class="calendar-content-wrap">
 
-      <div class="question">
-        <h3>Qual é o seu cenário ideal para um festival?</h3>
-        <div class="options" data-question="q2">
-          <label class="option"><input type="radio" name="q2" value="arLivre">Ao ar livre</label>
-          <label class="option"><input type="radio" name="q2" value="recintos">Em grandes recintos</label>
-          <label class="option"><input type="radio" name="q2" value="espaçoPequeno">Num espaço mais pequeno e alternativo</label>
-        </div>
-      </div>
+<div class="title"> Prepare a sua agenda para os festivais de verão</div>
+<div class="paragraph"> O verão aproxima-se e, com ele, chegam os festivais que fazem vibrar o país. De junho a setembro, há eventos espalhados por toda a região, com cartazes imperdíveis. 
+Seja rock, pop, eletrónica ou indie, há opções para todos os gostos. Consulte aqui o calendário dos principais festivais e descubra onde viver o próximo grande concerto!
+</div>
+<div class="mobile-lights">
+<img src="calendar_images/stage_dblue_lights.png">
+</div>
+<div class="container">
+<div style="position: relative;">
 
-      <div class="question">
-        <h3>A duração de um festival é um fator importante para si?</h3>
-        <div class="options" data-question="q3">
-          <label class="option"><input type="radio" name="q3" value="longo">Não, quanto mais longo, melhor</label>
-          <label class="option"><input type="radio" name="q3" value="curto">Sim, prefiro eventos mais curtos</label>
-          <label class="option"><input type="radio" name="q3" value="depende1">Depende da programação e dos artistas</label>
-        </div>
-      </div>
+<button id="prevMonth" style=" position:absolute; left: 10px; top:6px; font-size: 17px; color: #3ec1d3; background: #fff; z-index: 2; text-align: center;">&#x25C0;</button> 
+<button id="nextMonth" style=" position:absolute; right: 10px; top:6px; font-size: 17px; color: #3ec1d3; background: #fff; z-index: 2;">&#x25B6;</button> 
 
-      <div class="question">
-        <h3>Como encara novos estilos musicais?</h3>
-        <div class="options" data-question="q4">
-          <label class="option"><input type="radio" name="q4" value="descobrir">Gosto de descobrir novas músicas e artistas</label>
-          <label class="option"><input type="radio" name="q4" value="conhecido">Prefiro ouvir o que já conheço</label>
-        </div>
-      </div>
+<div class="calendar-container" id="juneCalendar">
+<div class="calendar">
+<div class="calendar-header"> 
+<p>junho 2025</p>
+</div>
+<div class="calendar-days">
+<div>Dom</div>
+<div>Seg</div>
+<div>Ter</div>
+<div>Qua</div>
+<div>Qui</div>
+<div>Sex</div>
+<div>Sáb</div>
+</div>
+<div class="calendar-dates">
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+<div class="highlight">12
+<span class="festivals"><strong>Primavera Sound</strong> - Porto<br>
+<small class="artists">Charlie XCX</small> </span>
+</div>
+<div class="highlight">
+13
+<span class="festivals">
+<strong>Primavera Sound</strong> - Porto <br>
+<small class="artists">Central Cee, Deftones</small> <br> 
+<p></p>
+<strong>Praxis Beer Fest</strong> - Coimbra <br>
+<small class="artists">GNR, Capitão Fausto</small>
+</span>
+</div>
+<div class="highlight">
+14
+<span class="festivals">
+<strong>Primavera Sound</strong> - Porto <br>
+<small class="artists">Jamie XX, Capitão Fausto</small> <br> 
+<p></p>
+<strong>Praxis Beer Fest</strong> - Coimbra <br>
+<small class="artists">Miguel Araújo</small>
+</span>
+</div>
+<div class="highlight">
+15
+<span class="festivals">
+<strong>Primavera Sound</strong> - Porto <br>
+<small class="artists">Mura Masa</small> <br> 
+<p></p>
+<strong>Praxis Beer Fest</strong> - Coimbra <br>
+<small class="artists">Anaquim</small>
+</span>
+</div>
+<div>16</div>
+<div>17</div>
+<div>18</div>
+<div class="highlight">
+19
+<span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
+<small class="artists">Pet Shop Boys</small>
+</span>
+</div>
+<div class="highlight">
+20
+<span class="festivals"><strong>MEO Kalorama</strong> - Lisboa<br>
+<small class="artists">Azealia Banks</small>
+</span>
+</div>
+<div class="highlight">
+21
+<span class="festivals"><strong>MEO Kalorama</strong> - Lisboa <br>
+<small class="artists">Damiano David, Jorja Smith</small>
+</span>
+</div>
+<div>22</div>
+<div>23</div>
+<div>24</div>
+<div>25</div>
+<div>26</div>
+<div class="highlight">
+27
+<span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+<small class="artists">Judas Priest</small>
+</span>
+</div>
+<div class="highlight">
+28
+<span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+<small class="artists">Korn</small>
+</span>
+</div>
+<div class="highlight">
+29
+<span class="festivals"><strong>Evil Live</strong> - Lisboa <br>
+<small class="artists">Slipknot</small>
+</span>
+</div>
+<div>30</div>
+<div></div><div></div><div></div><div></div><div></div>
+</div>
+</div>
+</div>
 
-      <div class="question">
-        <h3>O que mais valoriza num festival?</h3>
-        <div class="options" data-question="q5">//subsituir qualidade por outra cena!!!!!
-          <label class="option"><input type="radio" name="q5" value="qualidade">A qualidade do som</label>
-          <label class="option"><input type="radio" name="q5" value="diversidade">A diversidade de artistas</label>
-          <label class="option"><input type="radio" name="q5" value="ambiente">O ambiente e o público</label>
-        </div>
-      </div>
+<div class="calendar-container" id="julyCalendar">
+<div>
+<div class="calendar">
+<div class="calendar-header">
+<p>julho 2025</p>
+</div>
+<div class="calendar-days">
+<div>Dom</div>
+<div>Seg</div>
+<div>Ter</div>
+<div>Qua</div>
+<div>Qui</div>
+<div>Sex</div>
+<div>Sáb</div>
+</div>
+<div class="calendar-dates">
+<div></div>
+<div></div>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div class="highlight">
+4
+<span class="festivals">
+<strong>Sumol Summer Fest</strong> - Costa da Caparica<br>
+<small class="artists">Lil Tecca, MC Cabelinho</small> <br> 
+<p></p>
+<strong>RFM SOMNII Intermarché</strong> - Figueira da Foz <br>
+<small class="artists">Alok</small>
+</span>
+</div>
+<div class="highlight">
+5
+<span class="festivals">
+<strong>Sumol Summer Fest</strong> - Costa da Caparica<br>
+<small class="artists">Lil Tjay</small> <br> 
+<p></p>
+<strong>RFM SOMNII Intermarché</strong> - Figueira da Foz<br>
+<small class="artists">Steve Aoki</small>
+</span>
+</div>
+<div class="highlight">
+6
+<span class="festivals"><strong>RFM SOMNII Intermarché</strong> - Figueira da Foz <br>
+<small class="artists">Timmy Trumpet</small>
+</span>
+</div>
+<div>7</div>
+<div>8</div>
+<div class="highlight">
+9
+<span class="festivals"><strong>Afro Nation</strong> - Portimão <br>
+<small class="artists">Burna Boy, Tems, Davido</small> <br>
+<span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+</span>
+</div>
+<div class="highlight">
+10
+<span class="festivals">
+<strong>Afro Nation</strong> - Portimão<br>
+<small class="artists">Burna Boy, Tems, Davido</small> <br> 
+<span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+<p></p>
 
-      <div class="question">
-        <h3>Como costuma ser o seu estado de espírito durante um festival?</h3>
-        <div class="options" data-question="q6">
-          <label class="option"><input type="radio" name="q6" value="dancar">Quero dançar do início ao fim</label>
-          <label class="option"><input type="radio" name="q6" value="tranquilidade">Gosto de desfrutar da música com tranquilidade</label>
-          <label class="option"><input type="radio" name="q6" value="intensidade">Quero viver cada momento com intensidade</label>
-        </div>
-      </div>
+<strong>NOS Alive</strong> - Oeiras <br>
+<small class="artists">Olivia Rodrigo, Glass Animals</small>
+</span>
+</div>
+<div class="highlight">
+11
+<span class="festivals">
+<strong>Afro Nation</strong> - Portimão<br>
+<small class="artists">Burna Boy, Tems, Davido</small> <br>
+<span class="info">&#40;ainda sem datas confirmadas&#41; </span>
+<p></p>
 
-      <div class="question">
-        <h3>Valoriza festivais que oferecem atividades para além da música?</h3>
-        <div class="options" data-question="q7">
-          <label class="option"><input type="radio" name="q7" value="experiencias">Sim, considero importante haver experiências complementares</label>
-          <label class="option"><input type="radio" name="q7" value="musica">Não, o essencial é a música</label>
-        </div>
-      </div>
+<strong>NOS Alive</strong> - Oeiras <br>
+<small class="artists">Mother Mother, Girl in Red</small>
+</span>
+</div>
+<div class="highlight">
+12
+<span class="festivals"><strong>NOS Alive</strong> - Oeiras <br>
+<small class="artists">Nine Inch Nails</small>
+</span>
+</div>
+<div>13</div>
+<div>14</div>
+<div>15</div>
+<div>16</div>
+<div class="highlight">
+17
+<span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+</div>
+<div class="highlight">
+18
+<span class="festivals">
+<strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
+<p></p>
+<strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
+<small class="artists">Scorpions, Xutos e Pontapés</small>
+</span>
+</div>
+<div class="highlight">
+19
+<span class="festivals">
+<strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
+<p></p>
+<strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
+<small class="artists"> Thirty Seconds to Mars</small>
+</span>
+</div>
+<div class="highlight">
+20
+<span class="festivals">
+<strong>BOOM Festival</strong> - Idanha-a-Nova<br> 
+<p></p>
+<strong>MEO Marés Vivas</strong> - Vila Nova de Gaia <br>
+<small class="artists">Pedro Sampaio, Calema</small>
+</span>
+</div>
+<div class="highlight">
+21
+<span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+</div>
+<div class="highlight">
+22
+<span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+</div>
+<div class="highlight">
+23
+<span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+</div>
+<div class="highlight">
+24
+<span class="festivals"><strong>BOOM Festival</strong> - Idanha-a-Nova</span>
+</div>
+<div>25</div>
+<div>26</div>
+<div>27</div>
+<div>28</div>
+<div>29</div>
+<div>30</div>
+<div class="highlight">
+31
+<span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
+<small class="artists">P.O.D, Candlemass</small> 
+</span>
+</div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="calendar-container" id="augustCalendar">
+<div>
+<div class="calendar">
+<div class="calendar-header">
+<p>agosto 2025</p>
+</div>
+<div class="calendar-days">
+<div>Dom</div>
+<div>Seg</div>
+<div>Ter</div>
+<div>Qua</div>
+<div>Qui</div>
+<div>Sex</div>
+<div>Sáb</div>
+</div>
+<div class="calendar-dates">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div class="highlight">
+1
+<span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
+<small class="artists">Moonspell, Rhapsody of Fire</small> 
+</span>
+</div>
+<div class="highlight">
+2
+<span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
+<small class="artists">Black Flag, The True Mayhem, Mata-Ratos</small>
+</span>
+</div>
+<div class="highlight">
+3
+<span class="festivals"><strong>Vagos Metal Fest</strong> - Vagos <br>
+<small class="artists">Hatebreed, thrown</small>
+</span>
+</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div class="highlight">
+7
+<span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
+<small class="artists">Biia, Aurora Halal</small>
+</span>
+</div>
+<div class="highlight">
+8
+<span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
+<small class="artists">Ben Klock</small>
+</span>
+</div>
+<div class="highlight">
+9
+<span class="festivals"><strong>Neopop</strong> - Viana do Castelo <br>
+<small class="artists">Nina Kraviz</small>
+</span>
+</div>
+<div>10</div>
+<div>11</div>
+<div>12</div>
+<div class="highlight">
+13
+<span class="festivals"><strong>Mar Me Quer</strong> - Portimão <br>
+<small class="artists">Calema, Dillaz</small> <br> 
+<p></p>
+<strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
+<small class="artists">Vampire Weekend, Zaho de Sagazan</small>
+</span>
+</div>
+<div class="highlight">
+14
+<span class="festivals">
+<strong>Mar Me Quer</strong> - Portimão<br>
+<small class="artists">Da Weasel</small> <br> 
+<p></p>
+<strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br> 
+<small class="artists">Lola Young, Portugal. The Man</small> 
+<p></p>
+<strong>Sol da Caparica</strong> - Costa da Caparica<br>
+<small class="artists">Plutónio, Dillaz</small>
+</span>
+</div>
+<div class="highlight">
+15
+<span class="festivals">
+<strong>Mar Me Quer</strong> - Portimão<br>
+<small class="artists">Plutónio</small> <br> 
+<p></p>
+<strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
+<small class="artists">King Krule, Mk.gee</small> <br>
+<p></p>
+<strong>Sol da Caparica</strong> - Costa da Caparica <br>
+<small class="artists">Menos é Mais</small>
+</span>
+</div>
+<div class="highlight">
+16
+<span class="festivals">
+<strong>Vodafone Paredes de Coura</strong> - Paredes de Coura<br>
+<small class="artists">Franz Ferdinand, Air</small> <br>
+<p></p>
+<strong>Sol da Caparica</strong> - Costa da Caparica <br>
+<small class="artists">Lon3r Johny, Da Weasel</small>
+</span>
+</div>
+<div class="highlight">
+17
+<span class="festivals">
+<strong>Sol da Caparica</strong> - Costa da Caparica <br>
+<small class="artists">Wet Bed Gang</small>
+</span>
+</div>
+<div>18</div>
+<div>19</div>
+<div>20</div>
+<div class="highlight">
+21
+<span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
+<small class="artists">Da Weasel</small> <br>
+<span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
+</div>
+<div class="highlight">
+22
+<span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
+<small class="artists">Da Weasel</small> <br>
+<span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
+</div>
+<div class="highlight">
+23
+<span class="festivals"><strong>Festival Vilar de Mouros</strong> - Vilar de Mouros <br>
+<small class="artists">Da Weasel</small> <br>
+<span class="info">&#40;ainda sem datas confirmadas&#41;  </span>
+</div>
+<div>24</div>
+<div>25</div>
+<div>26</div>
+<div>27</div>
+<div>28</div>
+<div class="highlight">
+29
+<span class="festivals"><strong>Barrelas Summer Fest</strong> - Viseu <br>
+<small class="artists">Gabriel o Pensador, Ornatos Violeta</small> 
+</span>
+</div>
+<div class="highlight">
+30
+<span class="festivals"><strong>Barrelas Summer Fest</strong> - Viseu <br>
+<small class="artists">Hybrid Theory, Richie Campbell</small>
+</span>
+</div>
+<div>31</div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
 
-      <div class="question">
-        <h3>Prefere festivais com um, ou vários artistas a tocar ao mesmo tempo?</h3>
-        <div class="options" data-question="q8">
-          <label class="option"><input type="radio" name="q8" value="um">Prefiro ouvir um artista blah blah focar</label>
-          <label class="option"><input type="radio" name="q8" value="varios">gosto de bueeeeeeeeee palcos 1000 palcos vs eu wooooooooooooooooooooooooo</label>
-        </div>
-      </div>
+</div>
+<div class="calendar-container" id="septemberCalendar">
+<div>
+<div class="calendar">
+<div class="calendar-header">
+<p>setembro 2025</p>
+</div>
+<div class="calendar-days">
+<div>Dom</div>
+<div>Seg</div>
+<div>Ter</div>
+<div>Qua</div>
+<div>Qui</div>
+<div>Sex</div>
+<div>Sáb</div>
+</div>
+<div class="calendar-dates">
+<div></div>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div class="highlight">
+4
+<span class="festivals">
+<strong>Indie Music Fest</strong> - Paredes<br>
+<small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
+<span class="info">&#40;ainda sem datas confirmadas&#41;</span> 
+</span>
+</div>
+<div class="highlight">
+5
+<span class="festivals">
+<strong>Indie Music Fest</strong> - Paredes<br>
+<small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
+<span class="info">&#40;ainda sem datas confirmadas&#41;</span> <br>
+<p></p>
+<strong>Festa do Avante</strong> - Seixal <br>
+<span class="info">&#40;ainda sem artistas confirmados&#41;</span>
+</span>
+</div>
+<div class="highlight">
+6
+<span class="festivals">
+<strong>Indie Music Fest</strong> - Paredes<br>
+<small class="artists">Os Pontos Negros, David Bruno, Bateu Matou</small> <br>  
+<span class="info">&#40;ainda sem datas confirmadas&#41;</span> <br>
+<p></p>
+<strong>Festa do Avante</strong> - Seixal <br>
+<span class="info">&#40;ainda sem artistas confirmados&#41;</span>
+</span>
+</div>
+<div class="highlight">
+7
+<span class="festivals">
+<strong>Festa do Avante</strong> - Seixal <br>
+<span class="info">&#40;ainda sem artistas confirmados&#41;</span>
+</span>
+</div>
 
-      <button type="submit">Ver resultado</button>
-    </form>
-    <div id="result"></div>
-  </div>
+<div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div>
+<div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
 
-  <script>
-    
-    document.querySelectorAll('.options').forEach(group => {
-      group.querySelectorAll('.option').forEach(option => {
-        option.addEventListener('click', () => {
-          group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
-          option.classList.add('selected');
-          option.querySelector('input').checked = true;
-        });
-      });
-    });
-
-    document.getElementById('quizForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const answers = new FormData(this);
-
-      const scores = {
-        'Primavera Sound':0,
-        'MEO Kalorama':0,
-        'Evil Live':0,
-        'Sumol Summer Fest':0,
-        'RFM SOMNII Intermaché':0,
-        'NOS Alive':0,
-        'BOOM Festival':0,
-        'MEO Marés Vivas':0,
-        'Neopop':0,
-        'Vodafone Paredes de Coura':0,
-        'Indie Music Fest':0
-      };
-
-      switch (answers.get('q1')) {
-        case 'rock':
-          scores['NOS Alive'] += 3;
-          scores['Primavera Sound'] += 3;
-          scores['MEO Marés Vivas'] += 3;
-          scores['MEO Kalorama'] += 3;
-          scores['Vodafone Paredes de Coura'] += 3;
-          break;
-        case 'eletronica':
-          scores['Neopop'] += 3;
-          scores['BOOM Festival'] += 3;
-          scores['Primavera Sound'] += 1;
-          scores['RFM SOMNII Intermaché'] += 3;
-          scores['MEO Kalorama'] += 1;
-          scores['NOS Alive'] += 1;
-          break;
-        case 'pop':
-          scores['Primavera Sound'] += 1; 
-          scores['MEO Kalorama'] += 2;
-          scores['MEO Marés Vivas'] += 2;
-          scores['NOS Alive'] += 2;
-          scores['Sumol Summer Fest'] += 1;
-          break;
-        case 'hip-hop':
-          scores['Sumol Summer Fest'] += 4;
-          scores['MEO Marés Vivas'] += 1;
-          scores['Primavera Sound'] += 2;
-          scores['MEO Kalorama'] += 2;
-          break;
-        case 'indie':
-          scores['Indie Music Fest'] += 4;
-          scores['Primavera Sound'] += 2;
-          scores['Vodafone Paredes de Coura'] += 2;
-          break;
-        case 'metal':
-          scores['Evil Live'] += 4;
-          break;
-      }
-
-      switch (answers.get('q2')) {
-        case 'arLivre':
-          scores['RFM SOMNII Intermaché'] += 2;
-          scores['BOOM Festival'] += 2;
-          scores['Vodafone Paredes de Coura'] += 2;
-          scores['MEO Marés Vivas'] += 1;
-          scores['Sumol Summer Fest'] += 1;
-          break;
-        case 'recintos':
-          scores['NOS Alive'] += 2;
-          scores['MEO Marés Vivas'] += 2;
-          scores['Evil Live'] += 1;
-          scores['Primavera Sound'] += 1;
-
-          break;
-        case 'espaçoPequeno':
-          scores['Indie Music Fest'] += 2;
-          scores['Neopop'] += 2;
-          scores['MEO Kalorama'] += 1;
-          break;
-      }
-
-      switch (answers.get('q3')) {
-        case 'longo':
-          scores['BOOM Festival'] += 2;
-          scores['Neopop'] += 1;
-          scores['Primavera Sound'] += 1;
-          break;
-        case 'curto':
-          scores['Sumol Summer Fest'] += 2;
-          scores['MEO Kalorama'] += 1;
-          scores['Evil Live'] += 1;
-          scores['RFM SOMNII Intermaché'] += 1;
-          scores['NOS Alive'] += 1;
-          scores['MEO Marés Vivas'] += 1;
-          scores['Indie Music Fest'] += 1;
-          break;
-      }
-
-      switch (answers.get('q4')) {
-        case 'descobrir':
-          scores['BOOM Festival'] += 1;
-          scores['Primavera Sound'] += 2;
-          scores['Indie Music Fest'] += 3;
-          scores['MEO Kalorama'] += 2;
-          scores['Vodafone Paredes de Coura'] += 1;
-          break;
-        case 'conhecido':
-          scores['Sumol Summer Fest'] += 1;
-          scores['NOS Alive'] += 1;
-          scores['MEO Marés Vivas'] += 2;
-          break;
-      }
-
-      switch (answers.get('q5')) {
-        case 'qualidade': //noooooooooooooooooooooooooooooooooooooooooooooo
-          scores['Vodafone Paredes de Coura'] += 1;
-          scores['MEO Marés Vivas'] += 1;
-          scores['NOS Alive'] += 1;
-          scores['Neopop'] += 1;
-          break;
-        case 'diversidade':
-          scores['NOS Alive'] += 2;
-          scores['MEO Marés Vivas'] += 1;
-          scores['Primavera Sound'] += 2;
-          scores['MEO Kalorama'] += 2;
-          scores['Vodafone Paredes de Coura'] += 1;
-          break;
-        case 'ambiente':
-          scores['Indie Music Fest'] += 2;
-          scores['Vodafone Paredes de Coura'] += 2;
-          scores['MEO Kalorama'] += 1;
-          scores['BOOM Festival'] += 1;
-          break;
-      }
-
-      switch (answers.get('q6')) {
-        case 'dancar':
-          scores['RFM SOMNII Intermaché'] += 1;
-          scores['Sumol Summer Fest'] += 1;
-          scores['Neopop'] += 1;
-          break;
-        case 'tranquilidade':
-          scores['Indie Music Fest'] += 2;
-          scores['MEO Marés Vivas'] += 1;
-          scores['Vodafone Paredes de Coura'] += 1;
-          scores['MEO Kalorama'] += 1;
-          break;
-        case 'intensidade':
-          scores['Primavera Sound'] += 2;
-          scores['Evil Live'] += 1;
-          scores['BOOM Festival'] += 1;
-          scores['NOS Alive'] += 2;
-          scores['Neopop'] += 1;
-          break;
-      }
-
-      switch (answers.get('q7')) {
-        case 'experiencias':
-          scores['BOOM Festival'] += 2;
-          scores['RFM SOMNII Intermaché'] += 1;
-          scores['Indie Music Fest'] += 2;
-          scores['Vodafone Paredes de Coura'] += 1;
-          break;
-      }
+<div class="highlight">
+26
+<span class="festivals">
+<strong>Under the Doom</strong> - Lisboa<br>
+<small class="artists">My Dying Bride, Saturnus</small> <br>
+<span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+</span>
+</div>
+<div class="highlight">
+27
+<span class="festivals">
+<strong>Under the Doom</strong> - Lisboa<br>
+<small class="artists">My Dying Bride, Saturnus</small> <br>
+<span class="info">&#40;ainda sem datas confirmadas&#41;</span>
+</span>
+</div>
+<div>28</div><div>29</div><div>30</div><div></div><div></div><div></div><div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-      
-      let bestFestival = '';
-      let maxScore = -1;
+</div>
+<div class="mobile-speaker">
+<img class="mobile-speaker1" src="calendar_images/stage_dblue_speakers.png">
+<img class="mobile-speaker2" src="calendar_images/stage_dblue_speakers.png">
+</div>
+<div class="mobile-floor">
+<img src="calendar_images/stage_dblue_floor.png">
+</div>
 
-      for (const [festival, score] of Object.entries(scores)) {
-        if (score > maxScore) {
-          bestFestival = festival;
-          maxScore = score;
-        }
-      }
 
-      document.getElementById('result').textContent = `festival: ${bestFestival}!`;
-    });
-  </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+const dates = document.querySelectorAll(".calendar-dates div");
+
+function applyMobileBehavior() {
+return window.matchMedia("(max-width: 600px)").matches;
+}
+
+if (applyMobileBehavior()) {
+dates.forEach(date => {
+date.addEventListener("click", function(event) {
+event.stopPropagation();
+const festivalInfo = this.querySelector(".festivals");
+
+if (festivalInfo) {
+festivalInfo.style.display = festivalInfo.style.display === "block" ? "none" : "block";
+
+document.querySelectorAll(".festivals").forEach(other => {
+if (other !== festivalInfo) {
+other.style.display = "none";
+}
+});
+}
+});
+});
+
+document.addEventListener("click", function(event) {
+if (!event.target.closest(".calendar-dates div")) {
+document.querySelectorAll(".festivals").forEach(festival => {
+festival.style.display = "none";
+});
+}
+});
+}
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+const calendars = document.querySelectorAll(".calendar-container");
+const prevButton = document.getElementById("prevMonth");
+const nextButton = document.getElementById("nextMonth");
+
+let currentMonthIndex = 0;
+
+function showCalendar(index) {
+calendars.forEach((cal, i) => {
+cal.classList.toggle("active", i === index);
+});
+}
+
+prevButton.addEventListener("click", function() {
+currentMonthIndex = (currentMonthIndex - 1 + calendars.length) % calendars.length;
+showCalendar(currentMonthIndex);
+});
+
+nextButton.addEventListener("click", function() {
+currentMonthIndex = (currentMonthIndex + 1) % calendars.length;
+showCalendar(currentMonthIndex);
+});
+
+showCalendar(currentMonthIndex);
+});
+</script>
 </body>
 </html>
