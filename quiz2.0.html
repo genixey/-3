@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Festival Quiz</title>
+<style>
+
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: black; /* or something neutral */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .quiz-container {
+    background: url('quiz_images/festival1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px 30px;
+    border-radius: 12px;
+    width: 90vw;
+    max-width: 800px; 
+    min-height: 500px; 
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #ff5c5c;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  button:disabled {
+    background-color: #aa3d3d;
+    cursor: not-allowed;
+  }
+  .option {
+    display: block;
+    background-color: #333;
+    margin: 10px 150px 10px 150px; /*remove on mobile*/
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .option.selected {
+    background-color: #ff5c5c;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-container" id="quiz">
+
+  <!-- Intro Screen -->
+  <div id="intro-screen">
+    <h2>Find out what festival you're going to!</h2>
+    <button id="start-btn">Start Quiz</button>
+  </div>
+
+  <!-- Question Screen -->
+  <div id="question-screen" style="display:none;">
+    <h3 id="question-text"></h3>
+    <div id="options-container"></div>
+    <button id="next-btn" disabled>Next</button>
+  </div>
+
+  <!-- Result Screen -->
+  <div id="result-screen" style="display:none;">
+    <h2>Your Festival Is:</h2>
+    <p id="result-text"></p>
+    <button id="restart-btn">Take Again</button>
+  </div>
+
+</div>
+
+<script>
+
+  const questionBackgrounds = [
+  "url('quiz_images/festival1.jpg')",
+  "url('quiz_images/festival2.jpg')",
+  "url('quiz_images/festival3.jpg')"
+];
+
+
+  const quizData = [
+    {
+      question: "What's your favorite music genre?",
+      options: ["Rock", "EDM", "Jazz", "Pop"],
+      // just example scoring — you can adjust logic as you want
+      scores: [0, 1, 2, 3]
+    },
+    {
+      question: "Which activity do you enjoy most?",
+      options: ["Camping", "Dancing all night", "Listening to live bands", "Chilling with friends"],
+      scores: [0, 1, 2, 3]
+    },
+    {
+      question: "Pick a festival vibe:",
+      options: ["Laid-back & cozy", "Wild & energetic", "Sophisticated & artsy", "Fun & colorful"],
+      scores: [0, 1, 2, 3]
+    }
+  ];
+
+  // You can define results based on total score
+  const results = [
+    { minScore: 0, maxScore: 2, text: "Cozy Folk Festival in the mountains" },
+    { minScore: 3, maxScore: 5, text: "Wild EDM Festival at the beach" },
+    { minScore: 6, maxScore: 7, text: "Jazz & Arts Festival in the city" },
+    { minScore: 8, maxScore: 9, text: "Colorful Pop Festival with your best friends" }
+  ];
+
+  const startBtn = document.getElementById('start-btn');
+  const introScreen = document.getElementById('intro-screen');
+  const questionScreen = document.getElementById('question-screen');
+  const questionText = document.getElementById('question-text');
+  const optionsContainer = document.getElementById('options-container');
+  const nextBtn = document.getElementById('next-btn');
+  const resultScreen = document.getElementById('result-screen');
+  const resultText = document.getElementById('result-text');
+  const restartBtn = document.getElementById('restart-btn');
+
+  let currentQuestionIndex = 0;
+  let selectedOptionIndex = null;
+  let totalScore = 0;
+
+  startBtn.addEventListener('click', () => {
+    introScreen.style.display = 'none';
+    questionScreen.style.display = 'block';
+    showQuestion();
+  });
+
+  restartBtn.addEventListener('click', () => {
+    resultScreen.style.display = 'none';
+    introScreen.style.display = 'block';
+    currentQuestionIndex = 0;
+    totalScore = 0;
+  });
+
+  function showQuestion() {
+    nextBtn.disabled = true;
+    selectedOptionIndex = null;
+    const currentQuestion = quizData[currentQuestionIndex];
+    questionText.textContent = currentQuestion.question;
+    optionsContainer.innerHTML = '';
+
+    currentQuestion.options.forEach((option, index) => {
+      const optionDiv = document.createElement('div');
+      optionDiv.textContent = option;
+      optionDiv.classList.add('option');
+      optionDiv.addEventListener('click', () => {
+        selectOption(index);
+      });
+      optionsContainer.appendChild(optionDiv);
+    });
+
+    document.getElementById('quiz').style.backgroundImage = questionBackgrounds[currentQuestionIndex];
+  }
+
+  function selectOption(index) {
+    selectedOptionIndex = index;
+    nextBtn.disabled = false;
+    // Highlight selected
+    const optionDivs = optionsContainer.querySelectorAll('.option');
+    optionDivs.forEach((div, i) => {
+      div.classList.toggle('selected', i === index);
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (selectedOptionIndex === null) return;
+
+    // Add score from selected option
+    totalScore += quizData[currentQuestionIndex].scores[selectedOptionIndex];
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex >= quizData.length) {
+      showResult();
+    } else {
+      showQuestion();
+    }
+  });
+
+  function showResult() {
+    questionScreen.style.display = 'none';
+    resultScreen.style.display = 'block';
+
+    // Find result text by totalScore
+    const result = results.find(r => totalScore >= r.minScore && totalScore <= r.maxScore);
+    resultText.textContent = result ? result.text : "A festival just for you!";
+  }
+</script>
+
+</body>
+</html>
