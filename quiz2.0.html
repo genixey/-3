@@ -3,17 +3,41 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Festival Quiz</title>
+<title>quiz</title>
 <style>
 
   body, html {
     margin: 0; padding: 0; height: 100%;
     font-family: Arial, sans-serif;
-    background-color: black; /* or something neutral */
+    background-color: black; 
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  h2{
+    font-size: 30px;
+    text-shadow: 0.05em 0 black,
+      0 0.05em black,
+      -0.05em 0 black,
+      0 -0.05em black,
+      -0.05em -0.05em black,
+      -0.05em 0.05em black,
+      0.05em -0.05em black,
+      0.05em 0.05em black;
+  }
+
+  h3{
+    font-size: 27px;
+    text-shadow: 0.05em 0 black,
+      0 0.05em black,
+      -0.05em 0 black,
+      0 -0.05em black,
+      -0.05em -0.05em black,
+      -0.05em 0.05em black,
+      0.05em -0.05em black,
+      0.05em 0.05em black;
   }
 
   .quiz-container {
@@ -33,31 +57,69 @@
   button {
     margin-top: 20px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 19px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     background-color: #ff5c5c;
     color: white;
     transition: background-color 0.3s ease;
+
   }
+  button:hover{
+    background-color: #ff3030;
+  }
+
   button:disabled {
     background-color: #aa3d3d;
     cursor: not-allowed;
   }
+  #intro-screen{
+    margin-top: 110px;
+  }
+
   .option {
     display: block;
-    background-color: #333;
+    background-color: #000000c7;
     margin: 10px 150px 10px 150px; /*remove on mobile*/
     padding: 12px;
     border-radius: 8px;
     cursor: pointer;
     user-select: none;
+    font-size: 20px;
     transition: background-color 0.3s ease;
   }
+  
+  .option:hover{
+    background-color:#ff6b6bb6
+  }
+
   .option.selected {
     background-color: #ff5c5c;
   }
+
+  #result-text{
+    font-size: 30px;
+  }
+
+  @media(max-width:800px){
+    .option {
+      margin:  10px 0px 10px 0px; 
+    }
+  }
+
+  @media(max-width:420px){
+    h2{
+      font-size:25px;
+    }
+    h3{
+      font-size:22px;
+    }
+    .option{
+      font-size:18px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -66,22 +128,22 @@
 
   <!-- Intro Screen -->
   <div id="intro-screen">
-    <h2>Find out what festival you're going to!</h2>
-    <button id="start-btn">Start Quiz</button>
+    <h2>Qual festival combina consigo?</h2>
+    <button id="start-btn">Começar</button>
   </div>
 
   <!-- Question Screen -->
   <div id="question-screen" style="display:none;">
     <h3 id="question-text"></h3>
     <div id="options-container"></div>
-    <button id="next-btn" disabled>Next</button>
+    <button id="next-btn" disabled>Próximo</button>
   </div>
 
   <!-- Result Screen -->
   <div id="result-screen" style="display:none;">
-    <h2>Your Festival Is:</h2>
+    <h2>Festival:</h2>
     <p id="result-text"></p>
-    <button id="restart-btn">Take Again</button>
+    <button id="restart-btn">Tentar Novamente</button>
   </div>
 
 </div>
@@ -91,35 +153,74 @@
   const questionBackgrounds = [
   "url('quiz_images/festival1.jpg')",
   "url('quiz_images/festival2.jpg')",
-  "url('quiz_images/festival3.jpg')"
+  "url('quiz_images/festival3.jpg')",
+  "url('quiz_images/instrumentos.jpg')",
+  "url('quiz_images/instrumentos2.jpg')",
+  "url('quiz_images/instrumentos3.jpg')",
+  "url('quiz_images/instrumentos4.jpg')"
 ];
 
 
   const quizData = [
     {
-      question: "What's your favorite music genre?",
-      options: ["Rock", "EDM", "Jazz", "Pop"],
+      question: "Qual é o seu género musical favorito?",
+      options: ["Rock", "Eletrónica", "Pop", "Hip-Hop", "Indie", "Metal","Outros"],
       // just example scoring — you can adjust logic as you want
       scores: [0, 1, 2, 3]
     },
     {
-      question: "Which activity do you enjoy most?",
-      options: ["Camping", "Dancing all night", "Listening to live bands", "Chilling with friends"],
+      question: "Qual é o seu cenário ideal para um festival?",
+      options: ["Ao ar livre", "Em grandes recintos", "Num espaço mais pequeno e alternativo"],
       scores: [0, 1, 2, 3]
     },
     {
-      question: "Pick a festival vibe:",
-      options: ["Laid-back & cozy", "Wild & energetic", "Sophisticated & artsy", "Fun & colorful"],
+      question: "A duração de um festival é um fator importante para si?",
+      options: ["Não, quanto mais longo, melhor", "Sim, prefiro eventos mais curtos","Depende da programação e dos artistas"],
+      scores: [0, 1, 2, 3]
+    },
+    {
+      question: "Como encara novos estilos musicais?",
+      options: ["Gosto de descobrir novas músicas e artistas", "Prefiro ouvir o que já conheço"],
+      scores: [0, 1, 2, 3]
+    },
+    {
+      question: "Como costuma ser o seu estado de espírito durante um festival?",
+      options: ["Quero dançar do início ao fim", "Gosto de desfrutar da música com tranquilidade","Quero viver cada momento com intensidade"],
+      scores: [0, 1, 2, 3]
+    },
+    {
+      question: "O que mais valoriza num festival?",
+      options: ["change", "A diversidade de artistas","O ambiente e o público"],
+      scores: [0, 1, 2, 3]
+    },
+    {
+      question: "Valoriza festivais que oferecem atividades para além da música?",
+      options: ["Sim, considero importante haver experiências complementares", "Não, o essencial é a música"],
+      scores: [0, 1, 2, 3]
+    },
+    {
+      question: "Prefere festivais com um, ou vários artistas a tocar ao mesmo tempo?",
+      options: ["Prefiro focar-me num artista de cada vez", "Gosto de vários palcos e estilos a acontecer em simultâneo"],
       scores: [0, 1, 2, 3]
     }
   ];
 
   // You can define results based on total score
   const results = [
-    { minScore: 0, maxScore: 2, text: "Cozy Folk Festival in the mountains" },
-    { minScore: 3, maxScore: 5, text: "Wild EDM Festival at the beach" },
-    { minScore: 6, maxScore: 7, text: "Jazz & Arts Festival in the city" },
-    { minScore: 8, maxScore: 9, text: "Colorful Pop Festival with your best friends" }
+    { minScore: 0, maxScore: 2, text: "Primavera Sound" },
+    { minScore: 3, maxScore: 5, text: "MEO Kalorama" },
+    { minScore: 6, maxScore: 7, text: "Evil Live" },
+    { minScore: 8, maxScore: 9, text: "Sumol Summer Fest" },
+    { minScore: 8, maxScore: 9, text: "RFM SOMNII Intermaché" },
+    { minScore: 8, maxScore: 9, text: "NOS Alive" },
+    { minScore: 8, maxScore: 9, text: "BOOM Festival" },
+    { minScore: 8, maxScore: 9, text: "MEO Marés Vivas" },
+    { minScore: 8, maxScore: 9, text: "Neopop" },
+    { minScore: 8, maxScore: 9, text: "Vodafone Paredes de Coura" },
+    { minScore: 8, maxScore: 9, text: "Indie Music Fest" },
+    { minScore: 8, maxScore: 9, text: "Vagos Metal Fest" },
+    { minScore: 8, maxScore: 9, text: "Festival Vilar de Mouros" },
+
   ];
 
   const startBtn = document.getElementById('start-btn');
