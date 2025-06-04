@@ -18,26 +18,12 @@
 
   h2{
     font-size: 30px;
-    text-shadow: 0.05em 0 black,
-      0 0.05em black,
-      -0.05em 0 black,
-      0 -0.05em black,
-      -0.05em -0.05em black,
-      -0.05em 0.05em black,
-      0.05em -0.05em black,
-      0.05em 0.05em black;
+    text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
   }
 
   h3{
     font-size: 27px;
-    text-shadow: 0.05em 0 black,
-      0 0.05em black,
-      -0.05em 0 black,
-      0 -0.05em black,
-      -0.05em -0.05em black,
-      -0.05em 0.05em black,
-      0.05em -0.05em black,
-      0.05em 0.05em black;
+    text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
   }
 
   .quiz-container {
@@ -100,18 +86,10 @@
 
   #result-text{
     font-size: 30px;
-    text-shadow: 0.05em 0 black,
-      0 0.05em black,
-      -0.05em 0 black,
-      0 -0.05em black,
-      -0.05em -0.05em black,
-      -0.05em 0.05em black,
-      0.05em -0.05em black,
-      0.05em 0.05em black;
+    text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
   }
 
   @media(max-width:800px){
-    
     .option {
       margin:  10px 0px 10px 0px; 
     }
@@ -135,20 +113,17 @@
 
 <div class="quiz-container" id="quiz">
 
-  <!-- Intro Screen -->
   <div id="intro-screen">
     <h2>Qual festival combina consigo?</h2>
     <button id="start-btn">Começar</button>
   </div>
 
-  <!-- Question Screen -->
   <div id="question-screen" style="display:none;">
     <h3 id="question-text"></h3>
     <div id="options-container"></div>
     <button id="next-btn" disabled>Próximo</button>
   </div>
 
-  <!-- Result Screen -->
   <div id="result-screen" style="display:none;">
     <h2>Festival:</h2>
     <p id="result-text"></p>
@@ -170,13 +145,14 @@
   "url('quiz_images/festival4.webp')"
 ];
 
-//ideas to replce 1. u step into a music store. which genre cd do u pick up? / which instrument do u pick. + title try tthis quiz to find out which summer festival matches your vibe
+//ideas to replace 1. u step into a music store. which genre cd do u pick up? / which instrument do u pick. + title try this quiz to find out which summer festival matches your vibe
 //what i could TRY doing: multiple vinyls/albuns and u choose one with artists that are going to the fesivals. 
 //primavera sound: deftones? search others...meo kalorama:azealia banks or petshop boys...evil live:slipknot... sumol summer fest: lil tecca/lil tjay... rfm somnii intermache:alok/steve aoki/timmy trumpet...
 //nos alive: Olivia Rodrigo...meo mares vivas: xutos e pontapes/scorpions...neopop:biia?...vodafone paredes de coura: franz ferdinand...indie music fest:os pontos negros/david bruno
 //vagos metal fest: black flag/Moonspell(or same as evil live)...festival vilar de mouros:sex pistols/papa roach
-//2. do u prefer to spend ur time in idk parks or wa
+//2. do u prefer to spend ur time in idk parks or wa(how do you like spending your free time?)
 //r u an early bird or night owl + energy lvls? 
+
   const quizData = [
     {
       question: "Qual é o seu género musical favorito?",
@@ -217,19 +193,19 @@
 
   // You can define results based on total score
   const results = [
-    { minScore: 0, maxScore: 2, text: "Primavera Sound" },
-    { minScore: 3, maxScore: 5, text: "MEO Kalorama" },
-    { minScore: 6, maxScore: 7, text: "Evil Live" },
-    { minScore: 8, maxScore: 9, text: "Sumol Summer Fest" },
-    { minScore: 8, maxScore: 9, text: "RFM SOMNII Intermaché" },
-    { minScore: 8, maxScore: 9, text: "NOS Alive" },
-    { minScore: 8, maxScore: 9, text: "BOOM Festival" },
-    { minScore: 8, maxScore: 9, text: "MEO Marés Vivas" },
-    { minScore: 8, maxScore: 9, text: "Neopop" },
-    { minScore: 8, maxScore: 9, text: "Vodafone Paredes de Coura" },
-    { minScore: 8, maxScore: 9, text: "Indie Music Fest" },
-    { minScore: 8, maxScore: 9, text: "Vagos Metal Fest" },
-    { minScore: 8, maxScore: 9, text: "Festival Vilar de Mouros" },
+    { minScore: 0, maxScore: 2, text: "Primavera Sound" }, // rock6 eletronica2 pop2 hiphop3 indie4
+    { minScore: 3, maxScore: 5, text: "MEO Kalorama" }, // rock6 eletronica2 pop4 hiphop3
+    { minScore: 6, maxScore: 7, text: "Evil Live" }, // metal7
+    { minScore: 8, maxScore: 10, text: "Sumol Summer Fest" }, // pop2 hiphop7
+    { minScore: 11, maxScore: 13, text: "RFM SOMNII Intermaché" }, //eletronica6
+    { minScore: 14, maxScore: 16, text: "NOS Alive" }, // rock6 eletronica2 pop4 outros2
+    { minScore: 17, maxScore: 19, text: "BOOM Festival" }, // eletronica6
+    { minScore: 20, maxScore: 22, text: "MEO Marés Vivas" }, // rock6 pop4 hihop2 outros2
+    { minScore: 23, maxScore: 25, text: "Neopop" }, // eletronica6
+    { minScore: 26, maxScore: 27, text: "Vodafone Paredes de Coura" }, // rock6 indie4 outros1
+    { minScore: 28, maxScore: 30, text: "Indie Music Fest" }, // indie6 outros2
+    { minScore: 31, maxScore: 33, text: "Vagos Metal Fest" }, //metal7
+    { minScore: 34, maxScore: 36, text: "Festival Vilar de Mouros" }, // rock5 eletronica1 pop2 indie2 metal1 outros2
 
   ];
 
@@ -256,8 +232,10 @@
   restartBtn.addEventListener('click', () => {
     resultScreen.style.display = 'none';
     introScreen.style.display = 'block';
+    document.getElementById("quiz").style.backgroundImage = "url('quiz_images/festival1.webp')";
     currentQuestionIndex = 0;
     totalScore = 0;
+    selectedOptionIndex = null;
   });
 
   function showQuestion() {
