@@ -41,7 +41,7 @@
   }
 
   .quiz-container {
-    background: url('quiz_images/festival1.jpg');
+    background: url('quiz_images/festival1.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -100,10 +100,18 @@
 
   #result-text{
     font-size: 30px;
+    text-shadow: 0.05em 0 black,
+      0 0.05em black,
+      -0.05em 0 black,
+      0 -0.05em black,
+      -0.05em -0.05em black,
+      -0.05em 0.05em black,
+      0.05em -0.05em black,
+      0.05em 0.05em black;
   }
 
-
   @media(max-width:800px){
+    
     .option {
       margin:  10px 0px 10px 0px; 
     }
@@ -152,17 +160,23 @@
 <script>
 
   const questionBackgrounds = [
-  "url('quiz_images/festival1.webp')",
+  "url('quiz_images/instrumentos5.webp')",
   "url('quiz_images/festival2.webp')",
   "url('quiz_images/festival3.webp')",
   "url('quiz_images/instrumentos.webp')",
-  "url('quiz_images/instrumentos2.webp')",
+  "url('quiz_images/festival5.webp')",
   "url('quiz_images/instrumentos3.webp')",
-  "url('quiz_images/instrumentos4.webp')",
+  "url('quiz_images/instrumentos2.webp')",
   "url('quiz_images/festival4.webp')"
 ];
 
-
+//ideas to replce 1. u step into a music store. which genre cd do u pick up? / which instrument do u pick. + title try tthis quiz to find out which summer festival matches your vibe
+//what i could TRY doing: multiple vinyls/albuns and u choose one with artists that are going to the fesivals. 
+//primavera sound: deftones? search others...meo kalorama:azealia banks or petshop boys...evil live:slipknot... sumol summer fest: lil tecca/lil tjay... rfm somnii intermache:alok/steve aoki/timmy trumpet...
+//nos alive: Olivia Rodrigo...meo mares vivas: xutos e pontapes/scorpions...neopop:biia?...vodafone paredes de coura: franz ferdinand...indie music fest:os pontos negros/david bruno
+//vagos metal fest: black flag/Moonspell(or same as evil live)...festival vilar de mouros:sex pistols/papa roach
+//2. do u prefer to spend ur time in idk parks or wa
+//r u an early bird or night owl + energy lvls? 
   const quizData = [
     {
       question: "Qual é o seu género musical favorito?",
@@ -187,11 +201,6 @@
     {
       question: "Como costuma ser o seu estado de espírito durante um festival?",
       options: ["Quero dançar do início ao fim", "Gosto de desfrutar da música com tranquilidade","Quero viver cada momento com intensidade"],
-      scores: [0, 1, 2, 3]
-    },
-    {
-      question: "O que mais valoriza num festival?",
-      options: ["change", "A diversidade de artistas","O ambiente e o público"],
       scores: [0, 1, 2, 3]
     },
     {
