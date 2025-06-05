@@ -145,10 +145,10 @@
     "url('quiz_images/festival4.webp')"
   ];
 
-  // Your quiz questions here
+
   const questions = [
     {
-      text: "Qual género musical preferes?",
+      text: "Qual é o seu género musical favorito?",
       options: [
         { text: "Rock", value: "rock" },
         { text: "Eletrónica", value: "eletronica" },
@@ -156,10 +156,55 @@
         { text: "Hip-Hop", value: "hip-hop" },
         { text: "Indie", value: "indie" },
         { text: "Metal", value: "metal" },
-        { text: "Outro", value: "outro" },
+        { text: "Outros", value: "outro" }
       ],
     },
-    // Add more questions here for a fuller quiz
+    {
+      text: "Qual é o seu cenário ideal para um festival?",
+        options: [
+          { text: "Ao ar livre", value: "arLivre" },
+          { text: "Em grandes recintos", value: "recintos" },
+          { text: "Num espaço mais pequeno e alternativo", value: "espaçoPequeno" }
+        ],
+    },
+    {
+      text: "A duração de um festival é um fator importante para si?",
+        options: [
+          { text: "Não, quanto mais longo, melhor", value: "longo" },
+          { text: "Sim, prefiro eventos mais curtos", value: "curto" },
+          { text: "Dependa da progamação e dos artistas", value: "idk" }
+        ],
+    },
+    {
+      text: "Como encara novos estilos musicais?",
+        options: [
+          { text: "Gosto de descobrir novas músicas e artistas", value: "descobrir" },
+          { text: "Prefiro ouvir o que já conheço", value: "conhecido" },
+        ],
+    },
+    {
+      text: "Como costuma ser o seu estado de espírito durante um festival?",
+        options: [
+          { text: "Quero dançar do início ao fim", value: "dancar" },
+          { text: "Gosto de desfrutar da música com tranquilidade", value: "tranquilidade" },
+          { text: "Quero viver cada momento com intensidade", value: "intensidade" }
+        ],
+    },
+    {
+      text: "Valoriza festivais que oferecem atividades para além da música?",
+        options: [
+          {text: "Sim, considero importamte haver experiências complementares", value:"experiencias"},
+          {text:"Não, o essencial é a música", value:"musica"}
+        ]
+    },
+    {
+      text:"Prefere festivais com um, ou vários artistas a tocar ao mesmo tempo?",
+        options: [
+          {text: "Prefiro focar-me num artista de cada vez", value:"um"},
+          {text:"Gosto de vários palcos e estilos a aconetecer em simultâneo", value:"varios"}
+        ]
+    }
+    
   ];
 
   const startBtn = document.getElementById('start-btn');
@@ -215,16 +260,17 @@
       optionsContainer.appendChild(div);
     });
 
-    // Change background
+
     document.querySelector('.quiz-container').style.backgroundImage = questionBackgrounds[currentQuestionIndex];
   }
 
   function calculateResult() {
-    // Calculate festival scores based on selected answers
+
     resetScores();
 
     selectedAnswers.forEach(answer => {
       switch (answer) {
+        //1st
         case 'rock':
           festivalScores['NOS Alive'] += 6;
           festivalScores['Primavera Sound'] += 6;
@@ -237,35 +283,165 @@
           festivalScores['Neopop'] += 6;
           festivalScores['BOOM Festival'] += 6;
           festivalScores['Primavera Sound'] += 2;
-          festivalScores['RFM SOMNII Intermaché'] += 2;
+          festivalScores['RFM SOMNII Intermaché'] += 6;
+          festivalScores['MEO Kalorama'] += 2;
+          festivalScores['NOS Alive'] += 2;
+          festivalScores['Festival Vilar de Mouros'] += 1;
           break;
         case 'pop':
-          festivalScores['Sumol Summer Fest'] += 6;
-          festivalScores['RFM SOMNII Intermaché'] += 6;
-          festivalScores['MEO Kalorama'] += 3;
-          festivalScores['NOS Alive'] += 1;
+          festivalScores['Primavera Sound'] += 2; 
+          festivalScores['MEO Kalorama'] += 4;
+          festivalScores['MEO Marés Vivas'] += 4;
+          festivalScores['NOS Alive'] += 4;
+          festivalScores['Sumol Summer Fest'] += 2;
+          festivalScores['Festival Vilar de Mouros'] +=2;
           break;
         case 'hip-hop':
-          festivalScores['MEO Kalorama'] += 6;
-          festivalScores['Primavera Sound'] += 4;
+          festivalScores['Sumol Summer Fest'] += 7;
+          festivalScores['MEO Marés Vivas'] += 2;
+          festivalScores['MEO Kalorama'] += 3;
+          festivalScores['Primavera Sound'] += 3;
           break;
         case 'indie':
-          festivalScores['Primavera Sound'] += 5;
+          festivalScores['Primavera Sound'] += 4;
           festivalScores['Indie Music Fest'] += 6;
-          festivalScores['MEO Kalorama'] += 5;
+          festivalScores['Vodafone Paredes de Coura'] += 4;
+          festivalScores['Festival Vilar de Mouros'] +=2;
           break;
         case 'metal':
-          festivalScores['Vagos Metal Fest'] += 6;
-          festivalScores['Evil Live'] += 6;
-          festivalScores['Festival Vilar de Mouros'] += 5;
+          festivalScores['Vagos Metal Fest'] += 7;
+          festivalScores['Evil Live'] += 7;
+          festivalScores['Festival Vilar de Mouros'] += 1;
           break;
         case 'outro':
+          festivalScores['NOS Alive'] +=2;
+          festivalScores['MEO Marés Vivas'] += 2;
+          festivalScores['Vodafone Paredes de Coura'] +=1;
+          festivalScores['Indie Music Fest'] +=2;
+          festivalScores['Festival Vilar de Mouros'] +=2;
+          break;
+
+        //2nd
+        case 'arLivre':
+          festivalScores['RFM SOMNII Intermaché'] += 1;
+          festivalScores['BOOM Festival'] += 1;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
+          festivalScores['MEO Marés Vivas'] += 1;
+          festivalScores['Sumol Summer Fest'] += 1;
+          festivalScores['Vagos Metal Fest'] +=1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
+          festivalScores['NOS Alive'] += 1;
           festivalScores['Primavera Sound'] += 1;
+          festivalScores['MEO Kalorama'] += 1;
+          break;
+        case 'recintos':
+          festivalScores['Evil Live'] += 1;
+          break;
+        case 'espaçoPequeno':
+          festivalScores['Indie Music Fest'] += 1; //tmb e ar livre
+          festivalScores['Neopop'] += 1; //ar livre mas pequeno 
+          break;
+
+        //3rd
+        case 'longo':
+          festivalScores['BOOM Festival'] += 1;
+          festivalScores['Neopop'] += 1;
+          festivalScores['Primavera Sound'] += 1;
+          festivalScores['Vagos Metal Fest'] +=1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
+          festivalScores['Vodafone Paredes de Coura'] +=1;
+          break;
+        case 'curto':
+          festivalScores['Sumol Summer Fest'] += 2;
+          festivalScores['MEO Kalorama'] += 1;
+          festivalScores['Evil Live'] += 1;
+          festivalScores['RFM SOMNII Intermaché'] += 1;
+          festivalScores['NOS Alive'] += 1;
+          festivalScores['MEO Marés Vivas'] += 1;
+          festivalScores['Indie Music Fest'] += 1;
+          break;
+
+        //4th
+        case 'descobrir':
+          festivalScores['BOOM Festival'] += 1;
+          festivalScores['Primavera Sound'] += 2;
+          festivalScores['Indie Music Fest'] += 2;
+          festivalScores['MEO Kalorama'] += 2;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
+          festivalScores['Vagos Metal Fest'] +=1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
+          festivalScores['Neopop'] +=1;
+          break;
+        case 'conhecido':
+          festivalScores['Sumol Summer Fest'] += 1;
+          festivalScores['NOS Alive'] += 1;
+          festivalScores['MEO Marés Vivas'] += 2;
+          festivalScores['Evil Live'] += 1;
+          festivalScores['RFM SOMNII Intermaché'] +=1;
+          break;
+
+        //5th
+        case 'dancar':
+          festivalScores['RFM SOMNII Intermaché'] += 1;
+          festivalScores['Sumol Summer Fest'] += 1;
+          festivalScores['Neopop'] += 1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
+          break;
+        case 'tranquilidade':
+          festivalScores['Indie Music Fest'] += 2;
+          festivalScores['MEO Marés Vivas'] += 1;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
+          festivalScores['MEO Kalorama'] += 1;
+          break;
+        case 'intensidade':
+          festivalScores['Primavera Sound'] += 2;
+          festivalScores['Evil Live'] += 1;
+          festivalScores['BOOM Festival'] += 1;
+          festivalScores['NOS Alive'] += 2;
+          festivalScores['Neopop'] += 1;
+          festivalScores['Vagos Metal Fest'] +=1;
+          break;
+
+        //6th
+        case 'experiencias':
+          festivalScores['BOOM Festival'] += 2;
+          festivalScores['RFM SOMNII Intermaché'] +=1;
+          festivalScores['Indie Music Fest'] += 2;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
+          festivalScores['Vagos Metal Fest'] += 1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
+          break;
+        case 'musica':
+          festivalScores['Primavera Sound'] += 1;
+          festivalScores['MEO Kalorama'] += 1;
+          festivalScores['Evil Live'] += 1;
+          festivalScores['Sumol Summer Fest'] +=1;
+          festivalScores['NOS Alive'] +=1;
+          festivalScores['MEO Marés Vivas'] +=1;
+          festivalScores['Neopop'] +=1;
+          break;
+
+        //7th - festival vilar de mouros - quantos palcos?
+        case 'um':
+          festivalScores['Evil Live'] += 1;
+          festivalScores['Sumol Summer Fest'] += 1;
+          festivalScores['MEO Marés Vivas'] += 1;
+          festivalScores['Indie Music Fest'] +=1;
+          festivalScores['Vagos Metal Fest'] +=1;
+          break;
+        case 'varios': 
+          festivalScores['Primavera Sound'] +=1;
+          festivalScores['MEO Kalorama'] +=1;
+          festivalScores['NOS Alive'] +=1;
+          festivalScores['BOOM Festival'] +=1;
+          festivalScores['RFM SOMNII Intermaché'] +=1;
+          festivalScores['Neopop'] += 1;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
           break;
       }
     });
 
-    // Get top festival
+
     let topFestival = null;
     let maxScore = -Infinity;
     for (const festival in festivalScores) {
@@ -296,7 +472,7 @@
     if (currentQuestionIndex < questions.length) {
       showQuestion();
     } else {
-      // Quiz done, show result
+
       questionScreen.style.display = 'none';
       resultScreen.style.display = 'block';
       const festival = calculateResult();
