@@ -132,81 +132,34 @@
 
 </div>
 
+
 <script>
-
   const questionBackgrounds = [
-  "url('quiz_images/instrumentos5.webp')",
-  "url('quiz_images/festival2.webp')",
-  "url('quiz_images/festival3.webp')",
-  "url('quiz_images/instrumentos.webp')",
-  "url('quiz_images/festival5.webp')",
-  "url('quiz_images/instrumentos3.webp')",
-  "url('quiz_images/instrumentos2.webp')",
-  "url('quiz_images/festival4.webp')"
-];
-
-//ideas to replace 1. u step into a music store. which genre cd do u pick up? / which instrument do u pick. + title try this quiz to find out which summer festival matches your vibe
-//what i could TRY doing: multiple vinyls/albuns and u choose one with artists that are going to the fesivals. 
-//primavera sound: deftones? search others...meo kalorama:azealia banks or petshop boys...evil live:slipknot... sumol summer fest: lil tecca/lil tjay... rfm somnii intermache:alok/steve aoki/timmy trumpet...
-//nos alive: Olivia Rodrigo...meo mares vivas: xutos e pontapes/scorpions...neopop:biia?...vodafone paredes de coura: franz ferdinand...indie music fest:os pontos negros/david bruno
-//vagos metal fest: black flag/Moonspell(or same as evil live)...festival vilar de mouros:sex pistols/papa roach
-//2. do u prefer to spend ur time in idk parks or wa(how do you like spending your free time?)
-//r u an early bird or night owl + energy lvls? 
-
-  const quizData = [
-    {
-      question: "Qual é o seu género musical favorito?",
-      options: ["Rock", "Eletrónica", "Pop", "Hip-Hop", "Indie", "Metal","Outros"],
-      scores: [0, 1, 2, 3]
-    },
-    {
-      question: "Qual é o seu cenário ideal para um festival?",
-      options: ["Ao ar livre", "Em grandes recintos", "Num espaço mais pequeno e alternativo"],
-      scores: [0, 1, 2, 3]
-    },
-    {
-      question: "A duração de um festival é um fator importante para si?",
-      options: ["Não, quanto mais longo, melhor", "Sim, prefiro eventos mais curtos","Depende da programação e dos artistas"],
-      scores: [0, 1, 2, 3]
-    },
-    {
-      question: "Como encara novos estilos musicais?",
-      options: ["Gosto de descobrir novas músicas e artistas", "Prefiro ouvir o que já conheço"],
-      scores: [0, 1, 2, 3]
-    },
-    {
-      question: "Como costuma ser o seu estado de espírito durante um festival?",
-      options: ["Quero dançar do início ao fim", "Gosto de desfrutar da música com tranquilidade","Quero viver cada momento com intensidade"],
-      scores: [0, 1, 2, 3]
-    },
-    {
-      question: "Valoriza festivais que oferecem atividades para além da música?",
-      options: ["Sim, considero importante haver experiências complementares", "Não, o essencial é a música"],
-      scores: [0, 1, 2, 3]
-    },
-    {
-      question: "Prefere festivais com um, ou vários artistas a tocar ao mesmo tempo?",
-      options: ["Prefiro focar-me num artista de cada vez", "Gosto de vários palcos e estilos a acontecer em simultâneo"],
-      scores: [0, 1, 2, 3]
-    }
+    "url('quiz_images/instrumentos5.webp')",
+    "url('quiz_images/festival2.webp')",
+    "url('quiz_images/festival3.webp')",
+    "url('quiz_images/instrumentos.webp')",
+    "url('quiz_images/festival5.webp')",
+    "url('quiz_images/instrumentos3.webp')",
+    "url('quiz_images/instrumentos2.webp')",
+    "url('quiz_images/festival4.webp')"
   ];
 
-  // You can define results based on total score
-  const results = [
-    { minScore: 0, maxScore: 2, text: "Primavera Sound" }, // rock6 eletronica2 pop2 hiphop3 indie4
-    { minScore: 3, maxScore: 5, text: "MEO Kalorama" }, // rock6 eletronica2 pop4 hiphop3
-    { minScore: 6, maxScore: 7, text: "Evil Live" }, // metal7
-    { minScore: 8, maxScore: 10, text: "Sumol Summer Fest" }, // pop2 hiphop7
-    { minScore: 11, maxScore: 13, text: "RFM SOMNII Intermaché" }, //eletronica6
-    { minScore: 14, maxScore: 16, text: "NOS Alive" }, // rock6 eletronica2 pop4 outros2
-    { minScore: 17, maxScore: 19, text: "BOOM Festival" }, // eletronica6
-    { minScore: 20, maxScore: 22, text: "MEO Marés Vivas" }, // rock6 pop4 hihop2 outros2
-    { minScore: 23, maxScore: 25, text: "Neopop" }, // eletronica6
-    { minScore: 26, maxScore: 27, text: "Vodafone Paredes de Coura" }, // rock6 indie4 outros1
-    { minScore: 28, maxScore: 30, text: "Indie Music Fest" }, // indie6 outros2
-    { minScore: 31, maxScore: 33, text: "Vagos Metal Fest" }, //metal7
-    { minScore: 34, maxScore: 36, text: "Festival Vilar de Mouros" }, // rock5 eletronica1 pop2 indie2 metal1 outros2
-
+  // Your quiz questions here
+  const questions = [
+    {
+      text: "Qual género musical preferes?",
+      options: [
+        { text: "Rock", value: "rock" },
+        { text: "Eletrónica", value: "eletronica" },
+        { text: "Pop", value: "pop" },
+        { text: "Hip-Hop", value: "hip-hop" },
+        { text: "Indie", value: "indie" },
+        { text: "Metal", value: "metal" },
+        { text: "Outro", value: "outro" },
+      ],
+    },
+    // Add more questions here for a fuller quiz
   ];
 
   const startBtn = document.getElementById('start-btn');
@@ -220,77 +173,145 @@
   const restartBtn = document.getElementById('restart-btn');
 
   let currentQuestionIndex = 0;
-  let selectedOptionIndex = null;
-  let totalScore = 0;
+  let selectedAnswers = [];
+  let festivalScores = {};
+
+  function resetScores() {
+    festivalScores = {
+      'Primavera Sound': 0,
+      'MEO Kalorama': 0,
+      'Evil Live': 0,
+      'Sumol Summer Fest': 0,
+      'RFM SOMNII Intermaché': 0,
+      'NOS Alive': 0,
+      'BOOM Festival': 0,
+      'MEO Marés Vivas': 0,
+      'Neopop': 0,
+      'Vodafone Paredes de Coura': 0,
+      'Indie Music Fest': 0,
+      'Vagos Metal Fest': 0,
+      'Festival Vilar de Mouros': 0
+    };
+  }
+
+  function showQuestion() {
+    const question = questions[currentQuestionIndex];
+    questionText.textContent = question.text;
+    optionsContainer.innerHTML = '';
+    nextBtn.disabled = true;
+
+    question.options.forEach(option => {
+      const div = document.createElement('div');
+      div.className = 'option';
+      div.textContent = option.text;
+      div.dataset.value = option.value;
+
+      div.addEventListener('click', () => {
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+        div.classList.add('selected');
+        nextBtn.disabled = false;
+      });
+
+      optionsContainer.appendChild(div);
+    });
+
+    // Change background
+    document.querySelector('.quiz-container').style.backgroundImage = questionBackgrounds[currentQuestionIndex];
+  }
+
+  function calculateResult() {
+    // Calculate festival scores based on selected answers
+    resetScores();
+
+    selectedAnswers.forEach(answer => {
+      switch (answer) {
+        case 'rock':
+          festivalScores['NOS Alive'] += 6;
+          festivalScores['Primavera Sound'] += 6;
+          festivalScores['MEO Marés Vivas'] += 6;
+          festivalScores['MEO Kalorama'] += 6;
+          festivalScores['Vodafone Paredes de Coura'] += 6;
+          festivalScores['Festival Vilar de Mouros'] += 5;
+          break;
+        case 'eletronica':
+          festivalScores['Neopop'] += 6;
+          festivalScores['BOOM Festival'] += 6;
+          festivalScores['Primavera Sound'] += 2;
+          festivalScores['RFM SOMNII Intermaché'] += 2;
+          break;
+        case 'pop':
+          festivalScores['Sumol Summer Fest'] += 6;
+          festivalScores['RFM SOMNII Intermaché'] += 6;
+          festivalScores['MEO Kalorama'] += 3;
+          festivalScores['NOS Alive'] += 1;
+          break;
+        case 'hip-hop':
+          festivalScores['MEO Kalorama'] += 6;
+          festivalScores['Primavera Sound'] += 4;
+          break;
+        case 'indie':
+          festivalScores['Primavera Sound'] += 5;
+          festivalScores['Indie Music Fest'] += 6;
+          festivalScores['MEO Kalorama'] += 5;
+          break;
+        case 'metal':
+          festivalScores['Vagos Metal Fest'] += 6;
+          festivalScores['Evil Live'] += 6;
+          festivalScores['Festival Vilar de Mouros'] += 5;
+          break;
+        case 'outro':
+          festivalScores['Primavera Sound'] += 1;
+          break;
+      }
+    });
+
+    // Get top festival
+    let topFestival = null;
+    let maxScore = -Infinity;
+    for (const festival in festivalScores) {
+      if (festivalScores[festival] > maxScore) {
+        maxScore = festivalScores[festival];
+        topFestival = festival;
+      }
+    }
+
+    return topFestival;
+  }
 
   startBtn.addEventListener('click', () => {
     introScreen.style.display = 'none';
     questionScreen.style.display = 'block';
+    currentQuestionIndex = 0;
+    selectedAnswers = [];
     showQuestion();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const selectedOption = document.querySelector('.option.selected');
+    if (!selectedOption) return;
+
+    selectedAnswers.push(selectedOption.dataset.value);
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      showQuestion();
+    } else {
+      // Quiz done, show result
+      questionScreen.style.display = 'none';
+      resultScreen.style.display = 'block';
+      const festival = calculateResult();
+      resultText.textContent = festival ? festival : "Não foi possível determinar um festival.";
+      document.querySelector('.quiz-container').style.backgroundImage = "url('quiz_images/festival1.webp')";
+    }
   });
 
   restartBtn.addEventListener('click', () => {
     resultScreen.style.display = 'none';
     introScreen.style.display = 'block';
-    document.getElementById("quiz").style.backgroundImage = "url('quiz_images/festival1.webp')";
+    selectedAnswers = [];
     currentQuestionIndex = 0;
-    totalScore = 0;
-    selectedOptionIndex = null;
+    document.querySelector('.quiz-container').style.backgroundImage = "url('quiz_images/festival1.webp')";
   });
-
-  function showQuestion() {
-    nextBtn.disabled = true;
-    selectedOptionIndex = null;
-    const currentQuestion = quizData[currentQuestionIndex];
-    questionText.textContent = currentQuestion.question;
-    optionsContainer.innerHTML = '';
-
-    currentQuestion.options.forEach((option, index) => {
-      const optionDiv = document.createElement('div');
-      optionDiv.textContent = option;
-      optionDiv.classList.add('option');
-      optionDiv.addEventListener('click', () => {
-        selectOption(index);
-      });
-      optionsContainer.appendChild(optionDiv);
-    });
-
-    document.getElementById('quiz').style.backgroundImage = questionBackgrounds[currentQuestionIndex];
-  }
-
-  function selectOption(index) {
-    selectedOptionIndex = index;
-    nextBtn.disabled = false;
-    // Highlight selected
-    const optionDivs = optionsContainer.querySelectorAll('.option');
-    optionDivs.forEach((div, i) => {
-      div.classList.toggle('selected', i === index);
-    });
-  }
-
-  nextBtn.addEventListener('click', () => {
-    if (selectedOptionIndex === null) return;
-
-    // Add score from selected option
-    totalScore += quizData[currentQuestionIndex].scores[selectedOptionIndex];
-
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex >= quizData.length) {
-      showResult();
-    } else {
-      showQuestion();
-    }
-  });
-
-  function showResult() {
-    questionScreen.style.display = 'none';
-    resultScreen.style.display = 'block';
-
-    // Find result text by totalScore
-    const result = results.find(r => totalScore >= r.minScore && totalScore <= r.maxScore);
-    resultText.textContent = result ? result.text : "A festival just for you!";
-  }
 </script>
 
 </body>
