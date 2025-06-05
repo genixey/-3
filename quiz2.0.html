@@ -19,6 +19,7 @@
   h2{
     font-size: 30px;
     text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
+    margin-top:140px;
   }
 
   h3{
@@ -132,7 +133,6 @@
 
 </div>
 
-
 <script>
   const questionBackgrounds = [
     "url('quiz_images/instrumentos5.webp')",
@@ -144,7 +144,6 @@
     "url('quiz_images/instrumentos2.webp')",
     "url('quiz_images/festival4.webp')"
   ];
-
 
   const questions = [
     {
@@ -172,7 +171,7 @@
         options: [
           { text: "Não, quanto mais longo, melhor", value: "longo" },
           { text: "Sim, prefiro eventos mais curtos", value: "curto" },
-          { text: "Dependa da progamação e dos artistas", value: "idk" }
+          { text: "Depende da progamação e dos artistas", value: "idk" }
         ],
     },
     {
@@ -193,7 +192,7 @@
     {
       text: "Valoriza festivais que oferecem atividades para além da música?",
         options: [
-          {text: "Sim, considero importamte haver experiências complementares", value:"experiencias"},
+          {text: "Sim, considero importante haver experiências complementares", value:"experiencias"},
           {text:"Não, o essencial é a música", value:"musica"}
         ]
     },
@@ -201,7 +200,7 @@
       text:"Prefere festivais com um, ou vários artistas a tocar ao mesmo tempo?",
         options: [
           {text: "Prefiro focar-me num artista de cada vez", value:"um"},
-          {text:"Gosto de vários palcos e estilos a aconetecer em simultâneo", value:"varios"}
+          {text:"Gosto de vários palcos e estilos a acontecer em simultâneo", value:"varios"}
         ]
     }
     
@@ -259,7 +258,6 @@
 
       optionsContainer.appendChild(div);
     });
-
 
     document.querySelector('.quiz-container').style.backgroundImage = questionBackgrounds[currentQuestionIndex];
   }
@@ -440,7 +438,6 @@
           break;
       }
     });
-
 
     let topFestival = null;
     let maxScore = -Infinity;
