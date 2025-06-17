@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>quiz</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz Festivais</title>
 <style>
-
+ 
   body, html {
     margin: 0; padding: 0; height: 100%;
     font-family: Arial, sans-serif;
@@ -90,6 +90,17 @@
     text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
   }
 
+  .fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+
   @media(max-width:800px){
     .option {
       margin:  10px 0px 10px 0px; 
@@ -107,45 +118,42 @@
       font-size:18px;
     }
   }
-
 </style>
 </head>
 <body>
+  <div class="quiz-container" id="quiz">
+    <div id="intro-screen">
+      <h2>Qual festival combina consigo?</h2>
+      <button id="start-btn">Começar</button>
+    </div>
 
-<div class="quiz-container" id="quiz">
+    <div id="question-screen" style="display:none;">
+      <h3 id="question-text"></h3>
+      <div id="options-container"></div>
+      <button id="next-btn" disabled>Próximo</button>
+    </div>
 
-  <div id="intro-screen">
-    <h2>Qual festival combina consigo?</h2>
-    <button id="start-btn">Começar</button>
+    <div id="result-screen" style="display:none;">
+      <h2>Festival escolhido:</h2>
+      <h3 id="result-title"></h3>
+      <p id="festival-info"></p>
+      <button id="restart-btn">Tentar Novamente</button>
+    </div>
   </div>
 
-  <div id="question-screen" style="display:none;">
-    <h3 id="question-text"></h3>
-    <div id="options-container"></div>
-    <button id="next-btn" disabled>Próximo</button>
-  </div>
+  <script>
+    const questionBackgrounds = [
+      "url('quiz_images/instrumentos5.webp')",
+      "url('quiz_images/festival2.webp')",
+      "url('quiz_images/festival3.webp')",
+      "url('quiz_images/instrumentos.webp')",
+      "url('quiz_images/festival5.webp')",
+      "url('quiz_images/instrumentos3.webp')",
+      "url('quiz_images/instrumentos2.webp')",
+      "url('quiz_images/festival4.webp')"
+    ];
 
-  <div id="result-screen" style="display:none;">
-    <h2>Festival:</h2>
-    <p id="result-text"></p>
-    <button id="restart-btn">Tentar Novamente</button>
-  </div>
-
-</div>
-
-<script>
-  const questionBackgrounds = [
-    "url('quiz_images/instrumentos5.webp')",
-    "url('quiz_images/festival2.webp')",
-    "url('quiz_images/festival3.webp')",
-    "url('quiz_images/instrumentos.webp')",
-    "url('quiz_images/festival5.webp')",
-    "url('quiz_images/instrumentos3.webp')",
-    "url('quiz_images/instrumentos2.webp')",
-    "url('quiz_images/festival4.webp')"
-  ];
-
-  const questions = [
+     const questions = [
     {
       text: "Qual é o seu género musical favorito?",
       options: [
@@ -205,275 +213,246 @@
     }
     
   ];
-
-  const startBtn = document.getElementById('start-btn');
-  const introScreen = document.getElementById('intro-screen');
-  const questionScreen = document.getElementById('question-screen');
-  const questionText = document.getElementById('question-text');
-  const optionsContainer = document.getElementById('options-container');
-  const nextBtn = document.getElementById('next-btn');
-  const resultScreen = document.getElementById('result-screen');
-  const resultText = document.getElementById('result-text');
-  const restartBtn = document.getElementById('restart-btn');
-
-  let currentQuestionIndex = 0;
-  let selectedAnswers = [];
-  let festivalScores = {};
-
-  function resetScores() {
-    festivalScores = {
-      'MEO Kalorama': 0,
-      'Evil Live': 0,
-      'Sumol Summer Fest': 0,
-      'RFM SOMNII Intermaché': 0,
-      'NOS Alive': 0,
-      'BOOM Festival': 0,
-      'MEO Marés Vivas': 0,
-      'Neopop': 0,
-      'Vodafone Paredes de Coura': 0,
-      'Indie Music Fest': 0,
-      'Vagos Metal Fest': 0,
-      'Festival Vilar de Mouros': 0
+    const festivalMessages = {
+      'MEO Kalorama': {
+        bg: "quiz_images/kalorama.webp",
+        info: "📍 Parque da Bela Vista, Lisboa<br>💸 Desde 145€<br><a href='https://meokalorama.pt' target='_blank'>Comprar bilhetes</a>"
+      },
+      'Evil Live': {
+        bg: "quiz_images/evillive.webp",
+        info: "📍 Portimão Arena, Algarve<br>💸 Desde 60€<br><a href='https://evillive.pt' target='_blank'>Comprar bilhetes</a>"
+      },
+      'Sumol Summer Fest': {
+        bg: "quiz_images/sumol.webp",
+        info: "📍 Praia de Espinho, Porto<br>💸 Desde 79€<br><a href='https://sumolsummerfest.com' target='_blank'>Comprar bilhetes</a>"
+      },
+      'RFM SOMNII Intermaché': {
+        bg: "quiz_images/rfm.webp",
+        info: "📍 Figueira da Foz<br>💸 Desde 69€<br><a href='https://rfmsomnii.pt' target='_blank'>Comprar bilhetes</a>"
+      },
+      'NOS Alive': {
+        bg: "quiz_images/nosalive.webp",
+        info: "📍 Passeio Marítimo de Algés<br>💸 Desde 84,53€<br><a href='https://nosalive.com' target='_blank'>Comprar bilhetes</a>"
+      },
+      'BOOM Festival': {
+        bg: "quiz_images/boom.webp",
+        info: "📍 Idanha‑a‑Nova<br>💸 Desde 150€<br><a href='https://boomfestival.org' target='_blank'>Comprar bilhetes</a>"
+      },
+      'MEO Marés Vivas': {
+        bg: "quiz_images/maresvivas.webp",
+        info: "📍 Vila Nova de Gaia<br>💸 Desde 59€<br><a href='https://maresvivas.pt' target='_blank'>Comprar bilhetes</a>"
+      },
+      'Neopop': {
+        bg: "quiz_images/neopop.webp",
+        info: "📍 Viana do Castelo<br>💸 Desde 65€<br><a href='https://neopopfestival.com' target='_blank'>Comprar bilhetes</a>"
+      },
+      'Vodafone Paredes de Coura': {
+        bg: "quiz_images/coura.webp",
+        info: "📍 Paredes de Coura<br>💸 Desde 129€<br><a href='https://paredesdecoura.com' target='_blank'>Comprar bilhetes</a>"
+      },
+      'Indie Music Fest': {
+        bg: "quiz_images/indie.webp",
+        info: "📍 Ermesinde, Porto<br>💸 Desde 40€<br><a href='https://indiemusicfest.com' target='_blank'>Comprar bilhetes</a>"
+      },
+      'Vagos Metal Fest': {
+        bg: "quiz_images/vagos.webp",
+        info: "📍 Vagos, Aveiro<br>💸 Desde 95€<br><a href='https://vagosmetalfest.com' target='_blank'>Comprar bilhetes</a>"
+      },
+      'Festival Vilar de Mouros': {
+        bg: "quiz_images/vilar.webp",
+        info: "📍 Vilar de Mouros<br>💸 Desde 55€<br><a href='https://vilarperm.com' target='_blank'>Comprar bilhetes</a>"
+      }
     };
-  }
 
-  function showQuestion() {
-    const question = questions[currentQuestionIndex];
-    questionText.textContent = question.text;
-    optionsContainer.innerHTML = '';
-    nextBtn.disabled = true;
+    let festivalScores;
+    let currentQuestionIndex = 0;
+    let selectedAnswers = [];
 
-    question.options.forEach(option => {
-      const div = document.createElement('div');
-      div.className = 'option';
-      div.textContent = option.text;
-      div.dataset.value = option.value;
+    const startBtn = document.getElementById('start-btn');
+    const introScreen = document.getElementById('intro-screen');
+    const questionScreen = document.getElementById('question-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const resultScreen = document.getElementById('result-screen');
+    const resultTitle = document.getElementById('result-title');
+    const festivalInfo = document.getElementById('festival-info');
+    const restartBtn = document.getElementById('restart-btn');
 
-      div.addEventListener('click', () => {
-        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-        div.classList.add('selected');
-        nextBtn.disabled = false;
+    startBtn.onclick = () => {
+      introScreen.style.display = 'none';
+      questionScreen.style.display = 'block';
+      currentQuestionIndex = 0;
+      selectedAnswers = [];
+      resetScores();
+      showQuestion();
+    };
+
+    nextBtn.onclick = () => {
+      const sel = document.querySelector('.option.selected');
+      if (sel) {
+        selectedAnswers.push(sel.dataset.value);
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length)
+          showQuestion();
+        else
+          calculateResult();
+      }
+    };
+
+    restartBtn.onclick = () => {
+      resultScreen.style.display = 'none';
+      introScreen.style.display = 'block';
+    };
+
+    function resetScores() {
+      festivalScores = {};
+      Object.keys(festivalMessages).forEach(f => festivalScores[f] = 0);
+    }
+
+    function showQuestion() {
+      const q = questions[currentQuestionIndex];
+      questionText.textContent = q.text;
+      optionsContainer.innerHTML = '';
+      nextBtn.disabled = true;
+      q.options.forEach(o => {
+        const d = document.createElement('div');
+        d.className = 'option';
+        d.textContent = o.text;
+        d.dataset.value = o.value;
+        d.onclick = () => {
+          document.querySelectorAll('.option').forEach(x => x.classList.remove('selected'));
+          d.classList.add('selected');
+          nextBtn.disabled = false;
+        };
+        optionsContainer.appendChild(d);
       });
+      document.querySelector('.quiz-container').style.backgroundImage = questionBackgrounds[currentQuestionIndex];
+    }
 
-      optionsContainer.appendChild(div);
-    });
+    function calculateResult() {
+      resetScores();
+      selectedAnswers.forEach(a => updateScores(a));
+      const top = Object.entries(festivalScores).sort((a,b) => b[1]-a[1])[0][0];
+      showResult(top);
+    }
 
-    document.querySelector('.quiz-container').style.backgroundImage = questionBackgrounds[currentQuestionIndex];
-  }
+    function showResult(f) {
+      questionScreen.style.display = 'none';
+      resultScreen.style.display = 'block';
+      resultTitle.textContent = f;
+      festivalInfo.innerHTML = festivalMessages[f].info;
+      document.querySelector('.quiz-container').style.backgroundImage =
+        `url('${festivalMessages[f].bg}')`;
+    }
 
-  function calculateResult() {
-
-    resetScores();
-
-    selectedAnswers.forEach(answer => {
-      switch (answer) {
-        //1st
+    function updateScores(answer) {
+      switch(answer) {
         case 'rock':
-          festivalScores['NOS Alive'] += 6;
-          festivalScores['MEO Marés Vivas'] += 6;
-          festivalScores['MEO Kalorama'] += 6;
-          festivalScores['Vodafone Paredes de Coura'] += 6;
-          festivalScores['Festival Vilar de Mouros'] += 5;
+          festivalScores['NOS Alive'] +=6;
+          festivalScores['MEO Marés Vivas'] +=6;
+          festivalScores['MEO Kalorama'] +=6;
+          festivalScores['Vodafone Paredes de Coura'] +=6;
+          festivalScores['Festival Vilar de Mouros'] +=5;
           break;
         case 'eletronica':
-          festivalScores['Neopop'] += 6;
-          festivalScores['BOOM Festival'] += 6;
-          festivalScores['RFM SOMNII Intermaché'] += 6;
-          festivalScores['MEO Kalorama'] += 2;
-          festivalScores['NOS Alive'] += 2;
-          festivalScores['Festival Vilar de Mouros'] += 1;
+          festivalScores['Neopop'] +=6;
+          festivalScores['BOOM Festival'] +=6;
+          festivalScores['RFM SOMNII Intermaché'] +=6;
+          festivalScores['MEO Kalorama'] +=2;
+          festivalScores['NOS Alive'] +=2;
+          festivalScores['Festival Vilar de Mouros'] +=1;
           break;
         case 'pop':
-          festivalScores['MEO Kalorama'] += 4;
-          festivalScores['MEO Marés Vivas'] += 4;
-          festivalScores['NOS Alive'] += 4;
-          festivalScores['Sumol Summer Fest'] += 2;
+          festivalScores['MEO Kalorama'] +=4;
+          festivalScores['MEO Marés Vivas'] +=4;
+          festivalScores['NOS Alive'] +=4;
+          festivalScores['Sumol Summer Fest'] +=2;
           festivalScores['Festival Vilar de Mouros'] +=2;
           break;
-        case 'hip-hop':
-          festivalScores['Sumol Summer Fest'] += 7;
-          festivalScores['MEO Marés Vivas'] += 2;
-          festivalScores['MEO Kalorama'] += 3;
+        case 'hip‑hop':
+          festivalScores['Sumol Summer Fest'] +=7;
+          festivalScores['MEO Marés Vivas'] +=2;
+          festivalScores['MEO Kalorama'] +=3;
           break;
         case 'indie':
-          festivalScores['Indie Music Fest'] += 6;
-          festivalScores['Vodafone Paredes de Coura'] += 4;
+          festivalScores['Indie Music Fest'] +=6;
+          festivalScores['Vodafone Paredes de Coura'] +=4;
           festivalScores['Festival Vilar de Mouros'] +=2;
           break;
         case 'metal':
-          festivalScores['Vagos Metal Fest'] += 7;
-          festivalScores['Evil Live'] += 7;
-          festivalScores['Festival Vilar de Mouros'] += 1;
+          festivalScores['Vagos Metal Fest'] +=7;
+          festivalScores['Evil Live'] +=7;
+          festivalScores['Festival Vilar de Mouros'] +=1;
           break;
         case 'outro':
           festivalScores['NOS Alive'] +=2;
-          festivalScores['MEO Marés Vivas'] += 2;
+          festivalScores['MEO Marés Vivas'] +=2;
           festivalScores['Vodafone Paredes de Coura'] +=1;
           festivalScores['Indie Music Fest'] +=2;
           festivalScores['Festival Vilar de Mouros'] +=2;
           break;
-
-        //2nd
         case 'arLivre':
-          festivalScores['RFM SOMNII Intermaché'] += 1;
-          festivalScores['BOOM Festival'] += 1;
-          festivalScores['Vodafone Paredes de Coura'] += 1;
-          festivalScores['MEO Marés Vivas'] += 1;
-          festivalScores['Sumol Summer Fest'] += 1;
-          festivalScores['Vagos Metal Fest'] +=1;
-          festivalScores['Festival Vilar de Mouros'] +=1;
-          festivalScores['NOS Alive'] += 1;
-          festivalScores['MEO Kalorama'] += 1;
+          ['RFM SOMNII Intermaché','BOOM Festival','Vodafone Paredes de Coura','MEO Marés Vivas','Sumol Summer Fest','Vagos Metal Fest','Festival Vilar de Mouros','NOS Alive','MEO Kalorama']
+            .forEach(f=>festivalScores[f]++);
           break;
         case 'recintos':
-          festivalScores['Evil Live'] += 1;
+          festivalScores['Evil Live']++;
           break;
         case 'espaçoPequeno':
-          festivalScores['Indie Music Fest'] += 1; //tmb e ar livre
-          festivalScores['Neopop'] += 1; //ar livre mas pequeno 
+          festivalScores['Indie Music Fest']++;
+          festivalScores['Neopop']++;
           break;
-
-        //3rd
         case 'longo':
-          festivalScores['BOOM Festival'] += 1;
-          festivalScores['Neopop'] += 1;
-          festivalScores['Vagos Metal Fest'] +=1;
-          festivalScores['Festival Vilar de Mouros'] +=1;
-          festivalScores['Vodafone Paredes de Coura'] +=1;
+          ['BOOM Festival','Neopop','Vagos Metal Fest','Festival Vilar de Mouros','Vodafone Paredes de Coura']
+            .forEach(f=>festivalScores[f]++);
           break;
         case 'curto':
-          festivalScores['Sumol Summer Fest'] += 2;
-          festivalScores['MEO Kalorama'] += 1;
-          festivalScores['Evil Live'] += 1;
-          festivalScores['RFM SOMNII Intermaché'] += 1;
-          festivalScores['NOS Alive'] += 1;
-          festivalScores['MEO Marés Vivas'] += 1;
-          festivalScores['Indie Music Fest'] += 1;
+          ['Sumol Summer Fest','MEO Kalorama','Evil Live','RFM SOMNII Intermaché','NOS Alive','MEO Marés Vivas','Indie Music Fest']
+            .forEach(f=>festivalScores[f]+=1);
           break;
-
-        //4th
         case 'descobrir':
-          festivalScores['BOOM Festival'] += 1;
-          festivalScores['Indie Music Fest'] += 2;
-          festivalScores['MEO Kalorama'] += 2;
-          festivalScores['Vodafone Paredes de Coura'] += 1;
-          festivalScores['Vagos Metal Fest'] +=1;
-          festivalScores['Festival Vilar de Mouros'] +=1;
-          festivalScores['Neopop'] +=1;
+          ['BOOM Festival','Indie Music Fest','MEO Kalorama','Vodafone Paredes de Coura','Vagos Metal Fest','Festival Vilar de Mouros','Neopop']
+            .forEach(f=>festivalScores[f]+=1);
+          festivalScores['Indie Music Fest']++;
+          festivalScores['MEO Kalorama']++;
           break;
         case 'conhecido':
-          festivalScores['Sumol Summer Fest'] += 1;
-          festivalScores['NOS Alive'] += 1;
-          festivalScores['MEO Marés Vivas'] += 2;
-          festivalScores['Evil Live'] += 1;
-          festivalScores['RFM SOMNII Intermaché'] +=1;
+          ['Sumol Summer Fest','NOS Alive','MEO Marés Vivas','Evil Live','RFM SOMNII Intermaché']
+            .forEach(f=>festivalScores[f]++);
           break;
-
-        //5th
         case 'dancar':
-          festivalScores['RFM SOMNII Intermaché'] += 1;
-          festivalScores['Sumol Summer Fest'] += 1;
-          festivalScores['Neopop'] += 1;
-          festivalScores['Festival Vilar de Mouros'] +=1;
+          ['RFM SOMNII Intermaché','Sumol Summer Fest','Neopop','Festival Vilar de Mouros']
+            .forEach(f=>festivalScores[f]++);
           break;
         case 'tranquilidade':
-          festivalScores['Indie Music Fest'] += 2;
-          festivalScores['MEO Marés Vivas'] += 1;
-          festivalScores['Vodafone Paredes de Coura'] += 1;
-          festivalScores['MEO Kalorama'] += 1;
+          ['Indie Music Fest','MEO Marés Vivas','Vodafone Paredes de Coura','MEO Kalorama']
+            .forEach(f=>festivalScores[f]++);
           break;
         case 'intensidade':
-          festivalScores['Evil Live'] += 1;
-          festivalScores['BOOM Festival'] += 1;
-          festivalScores['NOS Alive'] += 2;
-          festivalScores['Neopop'] += 1;
-          festivalScores['Vagos Metal Fest'] +=1;
+          ['Evil Live','BOOM Festival','NOS Alive','Neopop','Vagos Metal Fest']
+            .forEach(f=>festivalScores[f]++);
           break;
-
-        //6th
         case 'experiencias':
-          festivalScores['BOOM Festival'] += 2;
-          festivalScores['RFM SOMNII Intermaché'] +=1;
-          festivalScores['Indie Music Fest'] += 2;
-          festivalScores['Vodafone Paredes de Coura'] += 1;
-          festivalScores['Vagos Metal Fest'] += 1;
-          festivalScores['Festival Vilar de Mouros'] +=1;
+          ['BOOM Festival','RFM SOMNII Intermaché','Indie Music Fest','Vodafone Paredes de Coura','Vagos Metal Fest','Festival Vilar de Mouros']
+            .forEach(f=>festivalScores[f]+=1);
+          festivalScores['BOOM Festival']++;
+          festivalScores['Indie Music Fest']++;
           break;
         case 'musica':
-          festivalScores['MEO Kalorama'] += 1;
-          festivalScores['Evil Live'] += 1;
-          festivalScores['Sumol Summer Fest'] +=1;
-          festivalScores['NOS Alive'] +=1;
-          festivalScores['MEO Marés Vivas'] +=1;
-          festivalScores['Neopop'] +=1;
+          ['MEO Kalorama','Evil Live','Sumol Summer Fest','NOS Alive','MEO Marés Vivas','Neopop']
+            .forEach(f=>festivalScores[f]++);
           break;
-
-        //7th - festival vilar de mouros - quantos palcos?
         case 'um':
-          festivalScores['Evil Live'] += 1;
-          festivalScores['Sumol Summer Fest'] += 1;
-          festivalScores['MEO Marés Vivas'] += 1;
-          festivalScores['Indie Music Fest'] +=1;
-          festivalScores['Vagos Metal Fest'] +=1;
+          ['Evil Live','Sumol Summer Fest','MEO Marés Vivas','Indie Music Fest','Vagos Metal Fest']
+            .forEach(f=>festivalScores[f]++);
           break;
-        case 'varios': 
-          festivalScores['MEO Kalorama'] +=1;
-          festivalScores['NOS Alive'] +=1;
-          festivalScores['BOOM Festival'] +=1;
-          festivalScores['RFM SOMNII Intermaché'] +=1;
-          festivalScores['Neopop'] += 1;
-          festivalScores['Vodafone Paredes de Coura'] += 1;
+        case 'varios':
+          ['MEO Kalorama','NOS Alive','BOOM Festival','RFM SOMNII Intermaché','Neopop','Vodafone Paredes de Coura']
+            .forEach(f=>festivalScores[f]++);
           break;
       }
-    });
-
-    let topFestival = null;
-    let maxScore = -Infinity;
-    for (const festival in festivalScores) {
-      if (festivalScores[festival] > maxScore) {
-        maxScore = festivalScores[festival];
-        topFestival = festival;
-      }
     }
-
-    return topFestival;
-  }
-
-  startBtn.addEventListener('click', () => {
-    introScreen.style.display = 'none';
-    questionScreen.style.display = 'block';
-    currentQuestionIndex = 0;
-    selectedAnswers = [];
-    showQuestion();
-  });
-
-  nextBtn.addEventListener('click', () => {
-    const selectedOption = document.querySelector('.option.selected');
-    if (!selectedOption) return;
-
-    selectedAnswers.push(selectedOption.dataset.value);
-
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-      showQuestion();
-    } else {
-
-      questionScreen.style.display = 'none';
-      resultScreen.style.display = 'block';
-      const festival = calculateResult();
-      resultText.textContent = festival ? festival : "Não foi possível determinar um festival.";
-      document.querySelector('.quiz-container').style.backgroundImage = "url('quiz_images/festival1.webp')";
-    }
-  });
-
-  restartBtn.addEventListener('click', () => {
-    resultScreen.style.display = 'none';
-    introScreen.style.display = 'block';
-    selectedAnswers = [];
-    currentQuestionIndex = 0;
-    document.querySelector('.quiz-container').style.backgroundImage = "url('quiz_images/festival1.webp')";
-  });
-</script>
-
+  </script>
 </body>
 </html>
