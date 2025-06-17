@@ -19,11 +19,11 @@
   h2{
     font-size: 30px;
     text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
-    margin-top:140px;
+    margin-top:40px;
   }
 
   h3{
-    font-size: 27px;
+    font-size: 28px;
     text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
   }
 
@@ -91,14 +91,19 @@
   }
 
   .fade-out {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
 
-.fade-in {
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  #festival-info{
+    font-size:25px;
+    text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
+  }
 
 
   @media(max-width:800px){
@@ -118,6 +123,15 @@
       font-size:18px;
     }
   }
+
+a:link, a:visited {
+    color:#ff5c5c;
+}
+
+a:hover, a:active {
+  color:#ff3030;
+}
+  
 </style>
 </head>
 <body>
@@ -215,52 +229,52 @@
   ];
     const festivalMessages = {
       'MEO Kalorama': {
-        bg: "quiz_images/kalorama.webp",
-        info: "📍 Parque da Bela Vista, Lisboa<br>💸 Desde 145€<br><a href='https://meokalorama.pt' target='_blank'>Comprar bilhetes</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "19 a 21 de junho<br>📍 Parque da Bela Vista, Lisboa<br>Passe geral: 105€<br>passe diário: 55€<br><a href='https://meokalorama.pt' target='_blank'>Mais informações</a>"
       },
       'Evil Live': {
-        bg: "quiz_images/evillive.webp",
-        info: "📍 Portimão Arena, Algarve<br>💸 Desde 60€<br><a href='https://evillive.pt' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "27 a 29 de junho<br>📍 Estádio do Restelo, Lisboa<br>Passe geral: 169€<br>Passe 2 dias: 139€<br>Passe diário: entre 69€ e 79€<br><a href='https://evillive.rocks/en/' target='_blank'>Mais informações</a>"
       },
       'Sumol Summer Fest': {
-        bg: "quiz_images/sumol.webp",
-        info: "📍 Praia de Espinho, Porto<br>💸 Desde 79€<br><a href='https://sumolsummerfest.com' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "4 e 5 de julho<br>📍 Costa da Caparica<br>Passe geral: 69€<br>Passe diário:55€<br><a href='https://sumolsummerfest.com' target='_blank'>Mais informações</a>"
       },
       'RFM SOMNII Intermaché': {
-        bg: "quiz_images/rfm.webp",
-        info: "📍 Figueira da Foz<br>💸 Desde 69€<br><a href='https://rfmsomnii.pt' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "4 a 6 de julho<br>📍 Figueira da Foz<br>Passe geral: 85€<br>Passe diário: 51€<br><a href='https://rfmsomnii.com/' target='_blank'>Mais informações</a>"
       },
       'NOS Alive': {
-        bg: "quiz_images/nosalive.webp",
-        info: "📍 Passeio Marítimo de Algés<br>💸 Desde 84,53€<br><a href='https://nosalive.com' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "10 a 12 de julho<br>📍 Passeio Marítimo de Algés, Lisboa<br>Passe 2 dias: 168€<br>Passe diário: 84€<br><a href='https://nosalive.com' target='_blank'>Mais informações</a>"
       },
       'BOOM Festival': {
-        bg: "quiz_images/boom.webp",
-        info: "📍 Idanha‑a‑Nova<br>💸 Desde 150€<br><a href='https://boomfestival.org' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "17 a 24 de julho<br>📍 Idanha‑a‑Nova, Castelo Branco<br>Passe geral: desde 300€<br><a href='https://www.boomfestival.org/' target='_blank'>Mais informações</a>"
       },
       'MEO Marés Vivas': {
-        bg: "quiz_images/maresvivas.webp",
-        info: "📍 Vila Nova de Gaia<br>💸 Desde 59€<br><a href='https://maresvivas.pt' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "18 a 20 de julho<br>📍 Vila Nova de Gaia<br>Passe geral: 100€<br>Passe diário: 50€<br><a href='https://maresvivas.meo.pt/pt' target='_blank'>Mais informações</a>"
       },
       'Neopop': {
-        bg: "quiz_images/neopop.webp",
-        info: "📍 Viana do Castelo<br>💸 Desde 65€<br><a href='https://neopopfestival.com' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "7 a 9 de agosto<br>📍 Viana do Castelo<br>Passe geral: 130€<br>Passe diário: 60€<br><a href='https://neopopfestival.com/pt' target='_blank'>Mais informações</a>"
       },
       'Vodafone Paredes de Coura': {
-        bg: "quiz_images/coura.webp",
-        info: "📍 Paredes de Coura<br>💸 Desde 129€<br><a href='https://paredesdecoura.com' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "13 a 16 de agosto<br>📍 Paredes de Coura<br>Passe geral: 130€<br>Passe diário: 60€<br><a href='https://www.vodafoneparedesdecoura.com/' target='_blank'>Mais informações</a>"
       },
       'Indie Music Fest': {
-        bg: "quiz_images/indie.webp",
-        info: "📍 Ermesinde, Porto<br>💸 Desde 40€<br><a href='https://indiemusicfest.com' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "4 a 6 de setembro<br>📍 Baltar, Paredes<br>Passe geral: 25€<br>Passe diário: entre 10€ e 25€<br><a href='https://indiemusicfest.pt/  ' target='_blank'>Mais informações</a>"
       },
       'Vagos Metal Fest': {
-        bg: "quiz_images/vagos.webp",
-        info: "📍 Vagos, Aveiro<br>💸 Desde 95€<br><a href='https://vagosmetalfest.com' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "31 de julho a 3 de agosto<br>📍 Vagos, Aveiro<br>Passe geral: 115€<br>Passe diário: 59€<br><a href='https://vagosmetalfest.com' target='_blank'>Mais informações</a>"
       },
       'Festival Vilar de Mouros': {
-        bg: "quiz_images/vilar.webp",
-        info: "📍 Vilar de Mouros<br>💸 Desde 55€<br><a href='https://vilarperm.com' target='_blank'>Comprar bilhetes</a>"
+bg: "url('quiz_images/festival1.webp')",
+        info: "20 a 23 de agosto📍 Vilar de Mouros, Caminha<br>Passe geral: 25€<br>Passe diário: entre 10€ e 25€<br><a href='https://www.festivalvilardemouros.pt/' target='_blank'>Mais informações</a>"
       }
     };
 
@@ -392,64 +406,121 @@
           festivalScores['Indie Music Fest'] +=2;
           festivalScores['Festival Vilar de Mouros'] +=2;
           break;
-        case 'arLivre':
-          ['RFM SOMNII Intermaché','BOOM Festival','Vodafone Paredes de Coura','MEO Marés Vivas','Sumol Summer Fest','Vagos Metal Fest','Festival Vilar de Mouros','NOS Alive','MEO Kalorama']
-            .forEach(f=>festivalScores[f]++);
+         case 'arLivre':
+          festivalScores['RFM SOMNII Intermaché'] += 1;
+          festivalScores['BOOM Festival'] += 1;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
+          festivalScores['MEO Marés Vivas'] += 1;
+          festivalScores['Sumol Summer Fest'] += 1;
+          festivalScores['Vagos Metal Fest'] +=1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
+          festivalScores['NOS Alive'] += 1;
+          festivalScores['Primavera Sound'] += 1;
+          festivalScores['MEO Kalorama'] += 1;
           break;
         case 'recintos':
-          festivalScores['Evil Live']++;
+          festivalScores['Evil Live'] += 1;
           break;
         case 'espaçoPequeno':
-          festivalScores['Indie Music Fest']++;
-          festivalScores['Neopop']++;
+          festivalScores['Indie Music Fest'] += 1; //tmb e ar livre
+          festivalScores['Neopop'] += 1; //ar livre mas pequeno 
           break;
+
+        //3rd
         case 'longo':
-          ['BOOM Festival','Neopop','Vagos Metal Fest','Festival Vilar de Mouros','Vodafone Paredes de Coura']
-            .forEach(f=>festivalScores[f]++);
+          festivalScores['BOOM Festival'] += 1;
+          festivalScores['Neopop'] += 1;
+          festivalScores['Primavera Sound'] += 1;
+          festivalScores['Vagos Metal Fest'] +=1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
+          festivalScores['Vodafone Paredes de Coura'] +=1;
           break;
         case 'curto':
-          ['Sumol Summer Fest','MEO Kalorama','Evil Live','RFM SOMNII Intermaché','NOS Alive','MEO Marés Vivas','Indie Music Fest']
-            .forEach(f=>festivalScores[f]+=1);
+          festivalScores['Sumol Summer Fest'] += 2;
+          festivalScores['MEO Kalorama'] += 1;
+          festivalScores['Evil Live'] += 1;
+          festivalScores['RFM SOMNII Intermaché'] += 1;
+          festivalScores['NOS Alive'] += 1;
+          festivalScores['MEO Marés Vivas'] += 1;
+          festivalScores['Indie Music Fest'] += 1;
           break;
+
+        //4th
         case 'descobrir':
-          ['BOOM Festival','Indie Music Fest','MEO Kalorama','Vodafone Paredes de Coura','Vagos Metal Fest','Festival Vilar de Mouros','Neopop']
-            .forEach(f=>festivalScores[f]+=1);
-          festivalScores['Indie Music Fest']++;
-          festivalScores['MEO Kalorama']++;
+          festivalScores['BOOM Festival'] += 1;
+          festivalScores['Primavera Sound'] += 2;
+          festivalScores['Indie Music Fest'] += 2;
+          festivalScores['MEO Kalorama'] += 2;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
+          festivalScores['Vagos Metal Fest'] +=1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
+          festivalScores['Neopop'] +=1;
           break;
         case 'conhecido':
-          ['Sumol Summer Fest','NOS Alive','MEO Marés Vivas','Evil Live','RFM SOMNII Intermaché']
-            .forEach(f=>festivalScores[f]++);
+          festivalScores['Sumol Summer Fest'] += 1;
+          festivalScores['NOS Alive'] += 1;
+          festivalScores['MEO Marés Vivas'] += 2;
+          festivalScores['Evil Live'] += 1;
+          festivalScores['RFM SOMNII Intermaché'] +=1;
           break;
+
+        //5th
         case 'dancar':
-          ['RFM SOMNII Intermaché','Sumol Summer Fest','Neopop','Festival Vilar de Mouros']
-            .forEach(f=>festivalScores[f]++);
+          festivalScores['RFM SOMNII Intermaché'] += 1;
+          festivalScores['Sumol Summer Fest'] += 1;
+          festivalScores['Neopop'] += 1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
           break;
         case 'tranquilidade':
-          ['Indie Music Fest','MEO Marés Vivas','Vodafone Paredes de Coura','MEO Kalorama']
-            .forEach(f=>festivalScores[f]++);
+          festivalScores['Indie Music Fest'] += 2;
+          festivalScores['MEO Marés Vivas'] += 1;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
+          festivalScores['MEO Kalorama'] += 1;
           break;
         case 'intensidade':
-          ['Evil Live','BOOM Festival','NOS Alive','Neopop','Vagos Metal Fest']
-            .forEach(f=>festivalScores[f]++);
+          festivalScores['Primavera Sound'] += 2;
+          festivalScores['Evil Live'] += 1;
+          festivalScores['BOOM Festival'] += 1;
+          festivalScores['NOS Alive'] += 2;
+          festivalScores['Neopop'] += 1;
+          festivalScores['Vagos Metal Fest'] +=1;
           break;
+
+        //6th
         case 'experiencias':
-          ['BOOM Festival','RFM SOMNII Intermaché','Indie Music Fest','Vodafone Paredes de Coura','Vagos Metal Fest','Festival Vilar de Mouros']
-            .forEach(f=>festivalScores[f]+=1);
-          festivalScores['BOOM Festival']++;
-          festivalScores['Indie Music Fest']++;
+          festivalScores['BOOM Festival'] += 2;
+          festivalScores['RFM SOMNII Intermaché'] +=1;
+          festivalScores['Indie Music Fest'] += 2;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
+          festivalScores['Vagos Metal Fest'] += 1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
           break;
         case 'musica':
-          ['MEO Kalorama','Evil Live','Sumol Summer Fest','NOS Alive','MEO Marés Vivas','Neopop']
-            .forEach(f=>festivalScores[f]++);
+          festivalScores['Primavera Sound'] += 1;
+          festivalScores['MEO Kalorama'] += 1;
+          festivalScores['Evil Live'] += 1;
+          festivalScores['Sumol Summer Fest'] +=1;
+          festivalScores['NOS Alive'] +=1;
+          festivalScores['MEO Marés Vivas'] +=1;
+          festivalScores['Neopop'] +=1;
           break;
+
+        //7th - festival vilar de mouros - quantos palcos?
         case 'um':
-          ['Evil Live','Sumol Summer Fest','MEO Marés Vivas','Indie Music Fest','Vagos Metal Fest']
-            .forEach(f=>festivalScores[f]++);
+          festivalScores['Evil Live'] += 1;
+          festivalScores['Sumol Summer Fest'] += 1;
+          festivalScores['MEO Marés Vivas'] += 1;
+          festivalScores['Indie Music Fest'] +=1;
+          festivalScores['Vagos Metal Fest'] +=1;
           break;
-        case 'varios':
-          ['MEO Kalorama','NOS Alive','BOOM Festival','RFM SOMNII Intermaché','Neopop','Vodafone Paredes de Coura']
-            .forEach(f=>festivalScores[f]++);
+        case 'varios': 
+          festivalScores['Primavera Sound'] +=1;
+          festivalScores['MEO Kalorama'] +=1;
+          festivalScores['NOS Alive'] +=1;
+          festivalScores['BOOM Festival'] +=1;
+          festivalScores['RFM SOMNII Intermaché'] +=1;
+          festivalScores['Neopop'] += 1;
+          festivalScores['Vodafone Paredes de Coura'] += 1;
           break;
       }
     }
