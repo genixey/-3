@@ -106,6 +106,10 @@
     text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
   }
 
+  .date{
+    font-size: 28px;
+  }
+
   @media(max-width:800px){
     .option {
       margin:  10px 0px 10px 0px; 
@@ -127,13 +131,13 @@
     }
   }
 
-a:link, a:visited {
-  color:#ff5c5c;
-}
+  a:link, a:visited {
+    color:#ff5c5c;
+  }
 
-a:hover, a:active {
-  color:#ff3030;
-}
+  a:hover, a:active {
+    color:#ff3030;
+  }
   
 </style>
 </head>
@@ -233,51 +237,51 @@ a:hover, a:active {
     const festivalMessages = {
       'MEO Kalorama': {
         bg: "url('quiz_images/festival1.webp')",
-        info: "19 a 21 de junho<br>📍 Parque da Bela Vista, Lisboa<br>Passe geral: 105€<br>passe diário: 55€<br><a href='https://meokalorama.pt' target='_blank'>Mais informações</a>"
+        info: "<span class='date'>19 a 21 de junho</span><br>📍 Parque da Bela Vista, Lisboa<br>Passe geral: 105€<br>Passe diário: 55€<br><a href='https://meokalorama.pt' target='_blank'>Mais informações</a>"
       },
       'Evil Live': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "27 a 29 de junho<br>📍 Estádio do Restelo, Lisboa<br>Passe geral: 169€<br>Passe 2 dias: 139€<br>Passe diário: entre 69€ e 79€<br><a href='https://evillive.rocks/en/' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>27 a 29 de junho</span><br>📍 Estádio do Restelo, Lisboa<br>Passe geral: 169€<br>Passe 2 dias: 139€<br>Passe diário: entre 69€ e 79€<br><a href='https://evillive.rocks/en/' target='_blank'>Mais informações</a>"
       },
       'Sumol Summer Fest': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "4 e 5 de julho<br>📍 Costa da Caparica<br>Passe geral: 69€<br>Passe diário:55€<br><a href='https://sumolsummerfest.com' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>4 e 5 de julho</span><br>📍 Costa da Caparica<br>Passe geral: 69€<br>Passe diário: 55€<br><a href='https://sumolsummerfest.com' target='_blank'>Mais informações</a>"
       },
       'RFM SOMNII Intermaché': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "4 a 6 de julho<br>📍 Figueira da Foz<br>Passe geral: 85€<br>Passe diário: 51€<br><a href='https://rfmsomnii.com/' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>4 a 6 de julho</span><br>📍 Figueira da Foz<br>Passe geral: 85€<br>Passe diário: 51€<br><a href='https://rfmsomnii.com/' target='_blank'>Mais informações</a>"
       },
       'NOS Alive': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "10 a 12 de julho<br>📍 Passeio Marítimo de Algés, Lisboa<br>Passe 2 dias: 168€<br>Passe diário: 84€<br><a href='https://nosalive.com' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>10 a 12 de julho</span><br>📍 Passeio Marítimo de Algés, Lisboa<br>Passe 2 dias: 168€<br>Passe diário: 84€<br><a href='https://nosalive.com' target='_blank'>Mais informações</a>"
       },
       'BOOM Festival': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "17 a 24 de julho<br>📍 Idanha‑a‑Nova, Castelo Branco<br>Passe geral: desde 300€<br><a href='https://www.boomfestival.org/' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>17 a 24 de julho</span><br>📍 Idanha‑a‑Nova, Castelo Branco<br>Passe geral: desde 300€<br><a href='https://www.boomfestival.org/' target='_blank'>Mais informações</a>"
       },
       'MEO Marés Vivas': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "18 a 20 de julho<br>📍 Vila Nova de Gaia<br>Passe geral: 100€<br>Passe diário: 50€<br><a href='https://maresvivas.meo.pt/pt' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>18 a 20 de julho</span><br>📍 Vila Nova de Gaia<br>Passe geral: 100€<br>Passe diário: 50€<br><a href='https://maresvivas.meo.pt/pt' target='_blank'>Mais informações</a>"
       },
       'Neopop': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "7 a 9 de agosto<br>📍 Viana do Castelo<br>Passe geral: 130€<br>Passe diário: 60€<br><a href='https://neopopfestival.com/pt' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>7 a 9 de agosto</span><br>📍 Viana do Castelo<br>Passe geral: 130€<br>Passe diário: 60€<br><a href='https://neopopfestival.com/pt' target='_blank'>Mais informações</a>"
       },
       'Vodafone Paredes de Coura': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "13 a 16 de agosto<br>📍 Paredes de Coura<br>Passe geral: 130€<br>Passe diário: 60€<br><a href='https://www.vodafoneparedesdecoura.com/' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>13 a 16 de agosto</span><br>📍 Paredes de Coura<br>Passe geral: 130€<br>Passe diário: 60€<br><a href='https://www.vodafoneparedesdecoura.com/' target='_blank'>Mais informações</a>"
       },
       'Indie Music Fest': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "4 a 6 de setembro<br>📍 Baltar, Paredes<br>Passe geral: 25€<br>Passe diário: entre 10€ e 25€<br><a href='https://indiemusicfest.pt/  ' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>4 a 6 de setembro</span><br>📍 Baltar, Paredes<br>Passe geral: 25€<br>Passe diário: entre 10€ e 25€<br><a href='https://indiemusicfest.pt/  ' target='_blank'>Mais informações</a>"
       },
       'Vagos Metal Fest': {
-bg: "url('quiz_images/festival1.webp')",
+        bg: "url('quiz_images/festival1.webp')",
         info: "31 de julho a 3 de agosto<br>📍 Vagos, Aveiro<br>Passe geral: 115€<br>Passe diário: 59€<br><a href='https://vagosmetalfest.com' target='_blank'>Mais informações</a>"
       },
       'Festival Vilar de Mouros': {
-bg: "url('quiz_images/festival1.webp')",
-        info: "20 a 23 de agosto📍 Vilar de Mouros, Caminha<br>Passe geral: 25€<br>Passe diário: entre 10€ e 25€<br><a href='https://www.festivalvilardemouros.pt/' target='_blank'>Mais informações</a>"
+        bg: "url('quiz_images/festival1.webp')",
+        info: "<span class='date'>20 a 23 de agosto</span><br>📍 Vilar de Mouros, Caminha<br>Passe geral: 25€<br>Passe diário: entre 10€ e 25€<br><a href='https://www.festivalvilardemouros.pt/' target='_blank'>Mais informações</a>"
       }
     };
 
@@ -409,6 +413,8 @@ bg: "url('quiz_images/festival1.webp')",
           festivalScores['Indie Music Fest'] +=2;
           festivalScores['Festival Vilar de Mouros'] +=2;
           break;
+
+        //2nd
          case 'arLivre':
           festivalScores['RFM SOMNII Intermaché'] += 1;
           festivalScores['BOOM Festival'] += 1;
@@ -418,8 +424,9 @@ bg: "url('quiz_images/festival1.webp')",
           festivalScores['Vagos Metal Fest'] +=1;
           festivalScores['Festival Vilar de Mouros'] +=1;
           festivalScores['NOS Alive'] += 1;
-          festivalScores['Primavera Sound'] += 1;
           festivalScores['MEO Kalorama'] += 1;
+          festivalScores['Indie Music Fest'] += 1;
+          festivalScores['Neopop'] += 1;
           break;
         case 'recintos':
           festivalScores['Evil Live'] += 1;
@@ -433,7 +440,6 @@ bg: "url('quiz_images/festival1.webp')",
         case 'longo':
           festivalScores['BOOM Festival'] += 1;
           festivalScores['Neopop'] += 1;
-          festivalScores['Primavera Sound'] += 1;
           festivalScores['Vagos Metal Fest'] +=1;
           festivalScores['Festival Vilar de Mouros'] +=1;
           festivalScores['Vodafone Paredes de Coura'] +=1;
@@ -451,7 +457,6 @@ bg: "url('quiz_images/festival1.webp')",
         //4th
         case 'descobrir':
           festivalScores['BOOM Festival'] += 1;
-          festivalScores['Primavera Sound'] += 2;
           festivalScores['Indie Music Fest'] += 2;
           festivalScores['MEO Kalorama'] += 2;
           festivalScores['Vodafone Paredes de Coura'] += 1;
@@ -481,7 +486,6 @@ bg: "url('quiz_images/festival1.webp')",
           festivalScores['MEO Kalorama'] += 1;
           break;
         case 'intensidade':
-          festivalScores['Primavera Sound'] += 2;
           festivalScores['Evil Live'] += 1;
           festivalScores['BOOM Festival'] += 1;
           festivalScores['NOS Alive'] += 2;
@@ -499,7 +503,6 @@ bg: "url('quiz_images/festival1.webp')",
           festivalScores['Festival Vilar de Mouros'] +=1;
           break;
         case 'musica':
-          festivalScores['Primavera Sound'] += 1;
           festivalScores['MEO Kalorama'] += 1;
           festivalScores['Evil Live'] += 1;
           festivalScores['Sumol Summer Fest'] +=1;
@@ -515,9 +518,9 @@ bg: "url('quiz_images/festival1.webp')",
           festivalScores['MEO Marés Vivas'] += 1;
           festivalScores['Indie Music Fest'] +=1;
           festivalScores['Vagos Metal Fest'] +=1;
+          festivalScores['Festival Vilar de Mouros'] +=1;
           break;
         case 'varios': 
-          festivalScores['Primavera Sound'] +=1;
           festivalScores['MEO Kalorama'] +=1;
           festivalScores['NOS Alive'] +=1;
           festivalScores['BOOM Festival'] +=1;
