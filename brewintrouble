@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brewinggggg</title>
+  <style>
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('brewing_trouble_images/bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+}
+
+
+/* Content above the backgrounds */
+    .content {
+      position: relative;
+      z-index: 10;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .gif {
+      display: block;
+      margin-top: 150px;
+      text-align: center;
+      z-index:-1;
+    }
+
+    .gif img{
+      transform: scale(3);
+    }
+   
+    .title {
+      text-align: center;
+      font-size: 50px;
+      line-height: 0;
+    }
+  
+    .first {
+      font-size: 60px;
+    }
+  
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #795649;
+      color: #f4e5c3;
+      border: 2px solid #c0a080;
+      font-family: 'Goudy Bookletter 1911', serif;
+      font-size: 20px;
+      text-shadow: 1px 1px 0px #a67c52;
+      box-shadow: 2px 2px 0px #a67c52;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 40px;
+    }
+  
+    .button:hover {
+      background-color: #8a6e2f;
+      box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+  
+    .button:active {
+      box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5);
+      transform: translateY(2px);
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="content">
+    <div class="title">
+      <p class="first">Brewing</p>
+      <p>Trouble</p>
+    </div>
+    <div class="gif">
+      <img src="brewing_trouble_images/brewing.gif" alt="brewing gif" />
+    </div>
+    <div class="button">Press Kit</div>
+  </div>
+</body>
+</html>
