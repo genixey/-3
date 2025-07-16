@@ -5,86 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>brewinggggg</title>
   <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-image: url('brewing_trouble_images/background.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-color: #fff;
+    }
 
-body {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background-image: url('brewing_trouble_images/bg.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #fff;
-}
-
-
-/* Content above the backgrounds */
     .content {
       position: relative;
       z-index: 10;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-  
-    .gif {
-      display: block;
-      margin-top: 150px;
-      text-align: center;
-      z-index:-1;
+      width: 100%;
+      height: 100vh;
     }
 
-    .gif img{
-      transform: scale(3);
-    }
-   
-    .title {
+    .gif {
+      display: block;
+      margin-top: 140px;
       text-align: center;
-      font-size: 50px;
-      line-height: 0;
+      z-index: -1;
     }
-  
-    .first {
-      font-size: 60px;
+
+    .gif img {
+      transform: scale(2.5);
+      margin-top: 360px;
+      pointer-events: none;
     }
+
+   .button, .button1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('brewing_trouble_images/botao_bg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  width: 250px;
+  height: 100px;
+  padding: 0;
+  color: #0e0a03;
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 25px;
+  font-weight: 520;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  image-rendering: pixelated;
+}
+
+.button:hover,
+.button1:hover,
+.button:active,
+.button1:active,
+.button:focus,
+.button1:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+
+
   
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #795649;
-      color: #f4e5c3;
-      border: 2px solid #c0a080;
-      font-family: 'Goudy Bookletter 1911', serif;
-      font-size: 20px;
-      text-shadow: 1px 1px 0px #a67c52;
-      box-shadow: 2px 2px 0px #a67c52;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 40px;
+
+    .button-wrapper {
+      position: absolute;
+      top: 37%;
+      left: 50px;
     }
-  
-    .button:hover {
-      background-color: #8a6e2f;
-      box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+
+    .button1-wrapper {
+      position: absolute;
+      top: 48%;
+      left: 50px;
     }
-  
-    .button:active {
-      box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5);
-      transform: translateY(2px);
+
+    /* 🔽 SOCIAL MEDIA BUTTONS */
+    .social-buttons {
+      position: absolute;
+      bottom: 200px;
+      right: 30px;
+      display: flex;
+      gap: 20px;
+      z-index: 10;
+    }
+    /* Outer icon button */
+.social-icon {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wrapper for extra zoom */
+.icon-zoom {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.6); /* zoom in */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The actual image */
+.icon-zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+
+    .social-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+   image-rendering: pixelated; 
+}
+
+
+    .social-icon img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     }
   </style>
-  
 </head>
 <body>
   <div class="content">
-    <div class="title">
-      <p class="first">Brewing</p>
-      <p>Trouble</p>
-    </div>
     <div class="gif">
-      <img src="brewing_trouble_images/brewing.gif" alt="brewing gif" />
+      <img src="brewing_trouble_images/brewing.gif" alt="Animated brewing cauldron" />
     </div>
-    <div class="button">Press Kit</div>
+
+    <div class="button-wrapper">
+      <div class="button">Play Demo</div>
+    </div>
+
+    <div class="button1-wrapper">
+      <div class="button1">Press Kit</div>
+    </div>
+
+    <!-- 🔽 SOCIAL MEDIA ICON BUTTONS -->
+    <div class="social-buttons">
+      <a href="https://instagram.com" target="_blank" class="social-icon">
+  <div class="icon-zoom">
+    <img src="brewing_trouble_images/ig_icon.jpg" alt="Instagram">
+  </div>
+</a>
+
+      <a href="https://twitter.com" target="_blank" class="social-icon">
+        <img src="brewing_trouble_images/x_icon.webp" alt="Twitter">
+      </a>
+    </div>
   </div>
 </body>
 </html>
